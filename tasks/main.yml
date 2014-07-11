@@ -1,0 +1,32 @@
+---
+# File: tasks/main.yml - Main tasks for ansible-couchbase-server
+
+- name: OS specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+# CentOS/RHEL tasks
+- include: RedHat.yml
+  when: ansible_os_family  == "RedHat"
+
+# Debian/Ubuntu tasks
+- include: Ubuntu.yml
+  when: ansible_os_family  == "Ubuntu"
+
+- name: Update PAM user limits
+  copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644
+
+- name: Optimized settings for Couchbase Server data and index volumes
+  mount: "name={{ couchbase_server_mountpoint }} src={{ couchbase_server_partition }} opts={{ couchbase_server_mount_options }} fstype={{ couchbase_server_filesystem }} state=mounted"
+  when: couchbase_server_tune_disks
+
+- name: Local OS config
+  template: src=etc_rc.local.j2 dest=/etc/rc.local owner=root group=root mode=0755
+  notify: Source local settings
+  when: couchbase_server_tune_disks
+
+- name: Kernel settings - dir
+  file: dest=/etc/sysctl.d state=directory
+
+- name: Kernel settings - config
+  template: src=etc_sysctl.d_couchbase-server.conf.j2 dest=/etc/sysctl.d/couchbase-server.conf owner=root group=root mode=0644
+  notify: Update kernel settings

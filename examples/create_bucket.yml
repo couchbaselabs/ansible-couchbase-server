@@ -1,0 +1,50 @@
+---
+# File: linux/create_bucket.yml
+# Ansible playbook to create a new Couchbase Server bucket
+
+- hosts: cluster_nodes
+  gather_facts: False
+  sudo: True
+  tasks:
+  - name: Create cluster grouping
+    group_by: key={{ node_role }}
+
+- hosts: primary
+  gather_facts: False
+  sudo: True
+
+  vars:
+    primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
+    b_name: makura
+    b_type: couchbase
+    b_ramsize: 256
+    b_port: 11222
+    b_replica: 1
+
+# FIXME: need to find a way to make this work with `-e` vars too
+#  vars_prompt:
+#    - name: "b_name"
+#      prompt: "Bucket name"
+#      default: "makura"
+#      private: no
+#    - name: "b_type"
+#      prompt: "Bucket type"
+#      default: "couchbase"
+#      private: no
+#    - name: "b_ramsize"
+#      prompt: "Bucket RAM Size (MB)"
+#      default: "256"
+#      private: no
+#    - name: "b_port"
+#      prompt: "Bucket port"
+#      default: "11222"
+#      private: no
+#    - name: "b_replica"
+#      prompt: "Bucket replica (1-3)"
+#      default: "1"
+#      private: no
+
+  tasks:
+    - name: Create new bucket
+      couchbase-server: "command=create-bucket admin_connection={{ primary_node}}:8091 bucket_name={{ b_name }} bucket_type={{ b_type }} bucket_port={{ b_port }} bucket_ramsize={{ b_ramsize }} bucket_replica={{ b_replica }}"
+

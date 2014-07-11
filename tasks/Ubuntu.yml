@@ -1,0 +1,16 @@
+---
+# File: tasks/debian.yml - Debian/Ubuntu tasks for ansible-couchbase-server
+
+# Download and install Couchbase Server
+
+- name: Download Couchbase Server
+  get_url: url={{ couchbase_server_ubuntu_url }} dest=/tmp/{{ couchbase_server_ubuntu_package }} sha256sum={{ couchbase_server_ubuntu_sha256 }}
+  tags: installation
+
+- name: Install Couchbase Server
+  command: dpkg -i /tmp/{{ couchbase_server_ubuntu_package }}
+  tags: installation
+
+- name: Clean up
+  file: "path=/tmp/{{ couchbase_server_ubuntu_package }} state=absent"
+  tags: installation

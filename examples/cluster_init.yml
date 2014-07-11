@@ -1,0 +1,24 @@
+---
+# File: linux/cluster_init.yml
+# Ansible playbook to initialize a new Couchbase Server cluster
+
+- hosts: cluster_nodes
+  gather_facts: False
+  sudo: True
+  tasks:
+  - name: Create cluster grouping
+    group_by: key={{ node_role }}
+
+- hosts: primary
+  gather_facts: False
+  sudo: True
+  vars:
+    primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
+  tasks:
+  - name: Initialize primary node
+    couchbase-server: "command=cluster-init admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} cluster_ram_size={{ couchbase_server.server_ram }}"
+  - name: Join additional node to cluster
+    couchbase-server: "command=server-add admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} additional_node={{hostvars[[item][0]]['inventory_hostname']}}"
+    with_items: groups['additional']
+  - name: Rebalance cluster
+    couchbase-server: "command=rebalance admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }}"

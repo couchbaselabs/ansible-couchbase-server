@@ -1,0 +1,60 @@
+---
+# File: vars/debian.yml - Debian and Ubuntu variables
+#
+# A listing of available Couchbase Server Enterprise Edition packages
+# and their metadata for Ubuntu
+
+# Couchbase Server Enterprise Edition version 2.2.0 on Ubuntu
+couchbase_server_ubuntu_version: 2.5.1
+couchbase_server_ubuntu_package: couchbase-server-enterprise_2.5.1_x86_64.deb
+couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
+couchbase_server_ubuntu_sha256: e0d333c69f86098469543c12b15d2c4cd1a33abe4ffdad88ad377693825910d2
+
+# Couchbase Server Enterprise Edition version 2.2.0 on Ubuntu
+#ubuntu:
+#  version: 2.5.0
+#  package: couchbase-server-enterprise_2.5.0_x86_64.deb
+#  url: http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.deb
+#  sha256: b5e04a3832657c7fb6c6e2c499e2c1ef6b82ca57f470952abcf03332857bedde
+
+# Couchbase Server Enterprise Edition version 2.2.0 on Ubuntu
+#ubuntu:
+#  version: 2.2.0
+#  package: couchbase-server-enterprise_2.2.0_x86_64.deb
+#  url: http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.deb
+#  sha256: aabc31fe0894ec97753a6632b78be39cf05b8aa9b25d17d68ec7eca5b304e1b0
+
+## Couchbase Server Enterprise Edition version 2.1.1
+#ubuntu:
+# version: 2.1.1
+# package: couchbase-server-enterprise_x86_64_2.1.1.deb
+# url: http://packages.couchbase.com/releases/2.1.1/couchbase-server-enterprise_x86_64_2.1.1.deb
+# sha256: 5a83a212ce292ef436678e99ac2bb0f44e050e3711b0af2619d84cd4e2013d92
+
+## Couchbase Server Enterprise Edition version 2.1.0
+#ubuntu:
+# version: 2.1.0
+# package: couchbase-server-enterprise_x86_64_2.1.0.deb
+# url: http://packages.couchbase.com/releases/2.1.0/couchbase-server-enterprise_x86_64_2.1.0.deb
+# sha256: 17b754ce149829d809c2caa80d996ed1c305b90c7d94d0748186836293f0f0e6
+
+## Couchbase Server Enterprise Edition version 2.0.1
+#ubuntu:
+# version: 2.0.1
+# package: couchbase-server-enterprise_x86_64_2.1.0.deb
+# url: http://packages.couchbase.com/releases/2.1.0/couchbase-server-enterprise_x86_64_2.1.0.deb
+# sha256: 8550436da4e408c01e232021a8d015d02dab328dd47c105ff2c829582f7059b1
+
+## Couchbase Server Enterprise Edition version 2.0.0
+#ubuntu:
+#  version: 2.0.0
+#  package: couchbase-server-enterprise_x86_64_2.0.0.deb
+#  url: http://packages.couchbase.com/releases/2.0.0/couchbase-server-enterprise_x86_64_2.0.0.deb
+#  sha256: 5b88bd0b059dba3759725c870cede5763f24c955f0a73a544a624dc39a0ba7df
+
+## Couchbase Server Enterprise Edition version 1.8.1
+#ubuntu:
+#  version: 1.8.1
+#  package: couchbase-server-enterprise_x86_64_1.8.1.deb
+#  url: http://packages.couchbase.com/releases/1.8.1/couchbase-server-enterprise_x86_64_1.8.1.deb
+#  sha256: 9a8b2fead587365c0358b37bbb8226982e6d8e3b6bd9f8e8e5bd4c9e551d2cee

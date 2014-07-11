@@ -1,0 +1,4 @@
+---
+# File: defaults/debian.yml - Debian and Ubuntu Couchbase Server defaults
+
+couchbase_server_version: 2.5.1

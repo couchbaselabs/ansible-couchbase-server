@@ -1,0 +1,11 @@
+---
+# File: vars/main.yml - Global Couchbase Server variables
+
+#############################################################################
+# Available Couchbase Server additional variables
+#
+# couchbase_server_server_ram: The per server RAM quota specified in megabytes
+#
+#############################################################################
+
+couchbase_server_server_ram: 3072
