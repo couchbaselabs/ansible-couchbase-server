@@ -21,6 +21,9 @@ variables can be left as is. However, should you need to tweak them for your
 particular situation, this section describes all variables in detail including
 their default values.
 
+Note that the variable descriptions are not visible below until you scroll the 
+tables to the left.
+
 ### Common Variables
 
 | Name                                 | Default                                                                                   | Description                             |
