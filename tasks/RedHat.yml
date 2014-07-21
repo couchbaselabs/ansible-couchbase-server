@@ -3,11 +3,11 @@
 
 # Download and install Couchbase Server
 
-- name: Download Couchbase Server
+- name: Download
   get_url: "url={{ couchbase_server_centos_url }} dest=/tmp/{{ couchbase_server_centos_package }} sha256sum={{ couchbase_server_centos_sha256 }}"
   tags: installation
   
-- name: Install Couchbase Server
+- name: Install
   yum: "name=/tmp/{{ couchbase_server_centos_package }} state=present"
   tags: installation
 

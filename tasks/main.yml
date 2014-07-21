@@ -1,7 +1,7 @@
 ---
 # File: tasks/main.yml - Main tasks for ansible-couchbase-server
 
-- name: OS specific variables
+- name: Variables
   include_vars: "{{ ansible_os_family }}.yml"
 
 # CentOS/RHEL tasks
@@ -12,7 +12,7 @@
 - include: Ubuntu.yml
   when: ansible_os_family  == "Ubuntu"
 
-- name: Update PAM user limits
+- name: Update user limits
   copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644
 
 - name: Optimized settings for Couchbase Server data and index volumes
@@ -24,9 +24,9 @@
   notify: Source local settings
   when: couchbase_server_tune_disks
 
-- name: Kernel settings - dir
+- name: Kernel settings dir
   file: dest=/etc/sysctl.d state=directory
 
-- name: Kernel settings - config
+- name: Kernel settings config
   template: src=etc_sysctl.d_couchbase-server.conf.j2 dest=/etc/sysctl.d/couchbase-server.conf owner=root group=root mode=0644
   notify: Update kernel settings

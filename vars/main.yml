@@ -4,8 +4,6 @@
 #############################################################################
 # Available Couchbase Server additional variables
 #
-# couchbase_server_server_ram: The per server RAM quota specified in megabytes
-#
 #############################################################################
 
-couchbase_server_server_ram: 3072
+couchbase_server_wat: nope
