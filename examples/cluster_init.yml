@@ -1,17 +1,17 @@
 ---
-# File: linux/cluster_init.yml
+# File: cluster_init.yml
 # Ansible playbook to initialize a new Couchbase Server cluster
 
 - hosts: cluster_nodes
-  gather_facts: False
   sudo: True
   tasks:
   - name: Create cluster grouping
     group_by: key={{ node_role }}
 
 - hosts: primary
-  gather_facts: False
   sudo: True
+  roles:
+    - { role: brianshumate.couchbase-server }
   vars:
     primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
   tasks:

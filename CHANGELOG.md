@@ -24,3 +24,6 @@
 
 - Note about linking role for examples
 
+## v0.1.6
+
+- Update example playbooks to use role
