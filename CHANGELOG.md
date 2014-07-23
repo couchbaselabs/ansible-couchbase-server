@@ -15,3 +15,7 @@
 ## v0.1.3
 
 - Add symlinks / plumbing to examples dir for convenience
+
+## v0.1.4
+
+- Remove the unnecessary library symlink as role pulls in the module now
