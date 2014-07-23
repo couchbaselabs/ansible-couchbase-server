@@ -46,5 +46,5 @@
 
   tasks:
     - name: Create new bucket
-      couchbase-server: "command=create-bucket admin_connection={{ primary_node}}:8091 bucket_name={{ b_name }} bucket_type={{ b_type }} bucket_port={{ b_port }} bucket_ramsize={{ b_ramsize }} bucket_replica={{ b_replica }}"
+      couchbase_server: "command=create-bucket admin_connection={{ primary_node}}:8091 bucket_name={{ b_name }} bucket_type={{ b_type }} bucket_port={{ b_port }} bucket_ramsize={{ b_ramsize }} bucket_replica={{ b_replica }}"
 

@@ -16,9 +16,9 @@
     primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
   tasks:
   - name: Initialize primary node
-    couchbase-server: "command=cluster-init admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} cluster_ram_size={{ couchbase_server.server_ram }}"
+    couchbase_server: "command=cluster-init admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} cluster_ram_size={{ couchbase_server.server_ram }}"
   - name: Join additional node to cluster
-    couchbase-server: "command=server-add admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} additional_node={{hostvars[[item][0]]['inventory_hostname']}}"
+    couchbase_server: "command=server-add admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }} additional_node={{hostvars[[item][0]]['inventory_hostname']}}"
     with_items: groups['additional']
   - name: Rebalance cluster
-    couchbase-server: "command=rebalance admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }}"
+    couchbase_server: "command=rebalance admin_connection={{ primary_node }}:8091 cluster_node={{ primary_node }}"
