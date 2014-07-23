@@ -67,4 +67,4 @@ Apache
 
 ## Author Information
 
-- Brian Shumate (<brian@couchbase.com>)
+- Brian Shumate (brian at couchbase.com)
