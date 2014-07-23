@@ -1,2 +1,6 @@
-This is convenience link for the examples
+NB: Link the role here prior to using the examples:
+
+```
+ln -s ../.. brianshumate.couchbase-server
+```
 

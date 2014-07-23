@@ -19,3 +19,8 @@
 ## v0.1.4
 
 - Remove the unnecessary library symlink as role pulls in the module now
+
+## v0.1.5
+
+- Note about linking role for examples
+
