@@ -27,3 +27,7 @@
 ## v0.1.6
 
 - Update example playbooks to use role
+
+## v0.1.7
+
+- Add an example_hosts inventory to the examples dir
