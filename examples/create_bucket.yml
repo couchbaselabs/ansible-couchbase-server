@@ -1,6 +1,6 @@
 ---
 # File: create_bucket.yml
-# Ansible playbook to create a new Couchbase Server bucket
+# Example Ansible playbook to create a new Couchbase Server bucket
 
 - hosts: cluster_nodes
   sudo: True

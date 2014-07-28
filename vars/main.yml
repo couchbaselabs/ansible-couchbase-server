@@ -6,4 +6,4 @@
 #
 #############################################################################
 
-couchbase_server_wat: nope
+couchbase_server_bucket_replica: 1

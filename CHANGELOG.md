@@ -31,3 +31,8 @@
 ## v0.1.7
 
 - Add an example_hosts inventory to the examples dir
+
+## v0.1.8
+
+- Remove the Couchbase Server module
+- Add a site playbook to the examples

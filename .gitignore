@@ -1,2 +1,3 @@
 .DS_Store
-
+examples/labmachines
+examples/cluster_uninstall.yml
