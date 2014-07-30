@@ -1,0 +1,16 @@
+# File: ubuntu
+# Couchbase Server cluster node hosts configuration for Vagrant on Ubuntu
+#
+# NB: Replace the hosts below with your preferred node hostnames and continue
+#     the 'nodeN' pattern for additional nodes past 'node3'
+#     Do not modify the labels (text appearing between []), however
+
+[ubuntu]
+node1.local ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+node2.local ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+node3.local ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+
+[cluster_nodes]
+node1.local node_role=primary ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+node2.local node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key
+node3.local node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=~/.vagrant.d/insecure_private_key

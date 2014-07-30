@@ -1,0 +1,84 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Vagrantfile for bootstrapping a development Couchbase Server cluster on
+# Mac OS X with VirtualBox provider and Ansible provisioiner
+
+VAGRANTFILE_API_VERSION = "2"
+BOX_MEM = ENV['BOX_MEM'] || "1536"
+BOX_NAME =  ENV['BOX_NAME'] || "centos64"
+BOX_URI = ENV['BOX_URI'] || "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.4_chef-provisionerless.box"
+CLUSTER_HOSTS = ENV['CLUSTER_HOSTS'] || "centos"
+
+Vagrant.require_version ">= 1.5.0"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  # Configure 3 Couchbase Server nodes
+  config.vm.define :node1 do |node1_config|
+    node1_config.vm.box = BOX_NAME
+    node1_config.vm.box_url = BOX_URI
+    node1_config.vm.network :private_network, ip: "10.1.42.10"
+    node1_config.vm.hostname = "node1.local"
+    node1_config.ssh.forward_agent = true
+    node1_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-node1"
+      v.customize ["modifyvm", :id, "--memory", BOX_MEM]
+      v.customize ["modifyvm", :id, "--ioapic", "on"]
+      v.customize ["modifyvm", :id, "--cpus", "2"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
+    node1_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['node1.local']
+        provisioner.add_host '10.1.42.20', ['node2.local']
+        provisioner.add_host '10.1.42.30', ['node3.local']
+    end
+  end
+  config.vm.define :node2 do |node2_config|
+    node2_config.vm.box = BOX_NAME
+    node2_config.vm.box_url = BOX_URI
+    node2_config.vm.network :private_network, ip: "10.1.42.20"
+    node2_config.vm.hostname = "node2.local"
+    node2_config.ssh.forward_agent = true
+    node2_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-node2"
+      v.customize ["modifyvm", :id, "--memory", BOX_MEM]
+      v.customize ["modifyvm", :id, "--ioapic", "on"]
+      v.customize ["modifyvm", :id, "--cpus", "2"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
+    node2_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['node1.local']
+        provisioner.add_host '10.1.42.20', ['node2.local']
+        provisioner.add_host '10.1.42.30', ['node3.local']
+    end
+  end
+  config.vm.define :node3 do |node3_config|
+    node3_config.vm.box = BOX_NAME
+    node3_config.vm.box_url = BOX_URI
+    node3_config.vm.network :private_network, ip: "10.1.42.30"
+    node3_config.vm.hostname = "node3.local"
+    node3_config.ssh.forward_agent = true
+    node3_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-node3"
+      v.customize ["modifyvm", :id, "--memory", BOX_MEM]
+      v.customize ["modifyvm", :id, "--ioapic", "on"]
+      v.customize ["modifyvm", :id, "--cpus", "2"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    end
+    node3_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['node1.local']
+        provisioner.add_host '10.1.42.20', ['node2.local']
+        provisioner.add_host '10.1.42.30', ['node3.local']
+    end
+    # Bit of a hack since VirtualBox does not support parallel provisioning
+    node3_config.vm.provision :ansible do |ansible|
+      ansible.inventory_path = CLUSTER_HOSTS
+      ansible.playbook = "site.yml"
+      ansible.limit = "all"
+    end
+  end
+end
