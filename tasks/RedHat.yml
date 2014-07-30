@@ -3,10 +3,19 @@
 
 # Download and install Couchbase Server
 
+---
+# File: tasks/redhat.yml - CentOS/RHEL tasks for ansible-couchbase-server
+
+# Download and install SELinux Python moduel and Couchbase Server
+
+- name: SELinux Python Module
+  yum: name=libselinux-python state=present
+  tags: installation
+
 - name: Download
   get_url: "url={{ couchbase_server_centos_url }} dest=/tmp/{{ couchbase_server_centos_package }} sha256sum={{ couchbase_server_centos_sha256 }}"
   tags: installation
-  
+
 - name: Install
   yum: "name=/tmp/{{ couchbase_server_centos_package }} state=present"
   tags: installation

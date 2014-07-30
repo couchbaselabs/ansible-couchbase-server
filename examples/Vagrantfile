@@ -77,7 +77,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Bit of a hack since VirtualBox does not support parallel provisioning
     node3_config.vm.provision :ansible do |ansible|
       ansible.inventory_path = CLUSTER_HOSTS
-      ansible.playbook = "site.yml"
+      ansible.playbook = "cluster_init.yml"
       ansible.limit = "all"
     end
   end

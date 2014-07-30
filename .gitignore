@@ -1,3 +1,4 @@
 .DS_Store
+.vagrant
 examples/labmachines
 examples/cluster_uninstall.yml

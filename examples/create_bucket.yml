@@ -12,7 +12,7 @@
   sudo: True
   gather_facts: False
   vars_files:
-    - roles/brianshumate.couchbase-server/defaults/main.yml
+    - roles/couchbase.couchbase-server/defaults/main.yml
   #roles:
   #  - brianshumate.couchbase-server
   vars:
