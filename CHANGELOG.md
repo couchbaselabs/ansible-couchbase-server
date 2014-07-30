@@ -36,3 +36,7 @@
 
 - Remove the Couchbase Server module
 - Add a site playbook to the examples
+
+## v0.1.9
+
+- Update example create_bucket playbook to use shell module
