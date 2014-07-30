@@ -41,3 +41,7 @@
 ## v0.1.9
 
 - Added Vagrant example for Mac OS X development clusters
+
+## v0.2.0
+
+- Corrected bad references to old role
