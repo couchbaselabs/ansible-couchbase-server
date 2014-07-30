@@ -11,7 +11,7 @@
 - hosts: cluster_nodes
   sudo: True
   roles:
-    - brianshumate.couchbase-server
+    - couchbase.couchbase-server
   tasks:
   - name: Couchbase Server Service
     service: name=couchbase-server state=started

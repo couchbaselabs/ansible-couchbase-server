@@ -13,8 +13,6 @@
   gather_facts: False
   vars_files:
     - roles/couchbase.couchbase-server/defaults/main.yml
-  #roles:
-  #  - brianshumate.couchbase-server
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
     couchbase_server_bucket_name: makura
