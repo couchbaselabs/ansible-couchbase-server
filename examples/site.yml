@@ -5,4 +5,4 @@
   hosts: cluster_nodes
   sudo: True
   roles:
-    - { role: brianshumate.couchbase-server }
+    - { role: couchbase.couchbase-server }

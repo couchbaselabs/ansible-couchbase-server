@@ -1,0 +1,68 @@
+#!/bin/bash
+
+# File: macosx/bin/preinstall - convenience script to add 
+# Couchbase Server VM node host information to /etc/hosts
+
+CHMODBIN="/bin/chmod"
+GREPBIN="/usr/bin/grep"
+NODE1="10\.1\.42\.10"
+PRIVKEY="keys/vagrant"
+SUDOBIN="/usr/bin/sudo"
+SHBIN="/bin/sh"
+VAGRANTBIN="/usr/bin/vagrant"
+
+
+# Log stuff
+function logmsg {
+  case "$1" in
+  alert)   printf "[!] $2\n"
+     ;;
+  notice)  printf "[+] $2\n"
+     ;;
+  info)    printf "[-] $2\n"
+     ;;
+  *)       printf "[!] It blowed up at me! (with $1)\n" >&2
+     ;;
+  esac
+}
+
+# Check if sudo will need password
+function sudocheck {
+  logmsg info "Enter your user account password for sudo if prompted."
+  $SUDOBIN true
+}
+
+# Add hosts entries if necessary
+function add_hosts {
+  if $GREPBIN $NODE1 /etc/hosts > /dev/null 2>&1; then
+    logmsg notice "Couchbase Server VM node information present in /etc/hosts"
+  else
+    sudocheck
+    $SUDOBIN $SHBIN -c "echo '# Couchbase Server Vagrant virtual machine hosts
+10.1.42.10 node1.local node1
+10.1.42.20 node2.local node2
+10.1.42.30 node3.local node3
+' >> /etc/hosts"
+    logmsg notice "Couchbase Sever node host information added to /etc/hosts"
+  fi
+}
+
+# Set correct SSH private key permissions
+function ssh_key_perms {
+  logmsg notice "Set 0600 permissions on Vagrant SSH private key"
+  $CHMODBIN 0600 $PRIVKEY > /dev/null 2>&1
+}
+
+# Install Vagrant Hosts plugin if necessary
+function vagrant_hosts_plugin {
+  if $VAGRANTBIN plugin list | $GREPBIN vagrant-hosts > /dev/null 2>&1; then
+    logmsg notice "Vagrant Hosts plugin is installed"
+  else
+    $VAGRANTBIN plugin install vagrant-hosts > /dev/null 2>&1
+    logmsg notice "Installed Vagrant Hosts plugin"
+  fi
+}
+
+add_hosts
+ssh_key_perms
+vagrant_hosts_plugin
