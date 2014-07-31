@@ -155,12 +155,12 @@ sudo pip install ansible
 
 Now it's time for bootstrapping the Couchbase Server cluster.
 
-Open a terminal, change into the *macosx* subdirectory of this project's
+Open a terminal, change into the *examples* subdirectory of the role's
 root directory and execute the top level Ansible playbook with commands like
 the following:
 
 ```
-cd macosx
+cd <rolespath>/couchbase.couchbase-server/examples
 vagrant up
 ```
 
@@ -285,7 +285,7 @@ this project as well.
 ## Notes
 
 0. The project is confirmed to function with the following software versions:
- * Ansible version 1.6.6
+ * Ansible version 1.6.10
  * VirtualBox version 4.3.12
  * Vagrant version 1.6.3
  * Vagrant Hosts version 2.1.2
