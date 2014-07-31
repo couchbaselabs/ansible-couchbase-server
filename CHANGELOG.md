@@ -45,3 +45,9 @@
 ## v0.2.0
 
 - Corrected bad references to old role
+
+## v0.2.1
+
+- More Vagrant improvements
+- Documentation updates
+- Fixed variable names for packages
