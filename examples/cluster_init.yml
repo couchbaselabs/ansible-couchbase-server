@@ -18,8 +18,10 @@
 
 - hosts: primary
   sudo: True
-  vars_files:
-    - roles/couchbase.couchbase-server/defaults/main.yml
+  roles:
+    - couchbase.couchbase-server
+  #vars_files:
+  #  - roles/couchbase.couchbase-server/defaults/main.yml
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
   tasks:

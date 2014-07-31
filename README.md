@@ -1,9 +1,23 @@
 # Couchbase Server
 
+               .CCCCC                       CCCCC.
+              .CCCCCC                       CCCCCC.
+              .CCCCCC                       CCCCCC.
+              .CCCCCC                       CCCCCC.
+              .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
+              .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
+              .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
+               .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
+
+
+[Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
+high performance NoSQL document database available in Community and Enterprise
+editions for several operating system environments.
+
 This role can be used to install Couchbase Server on cluster nodes.
 
 You can also initialize clusters, create buckets, and uninstall clusters
-with the additional playbooks included in the `examples` directory as well.
+with the additional playbooks included in the `examples` directory.
 
 ## Requirements
 
