@@ -51,3 +51,17 @@
 - More Vagrant improvements
 - Documentation updates
 - Fixed variable names for packages
+
+## v0.2.2
+
+- Update defaults and variables
+- Inline docs updates
+
+## v0.2.3
+
+- Fix broken RedHat tasks
+
+## v0.2.4
+
+- Revert previous defaults/variables changes
+- Update include path in bucket creation playbook
