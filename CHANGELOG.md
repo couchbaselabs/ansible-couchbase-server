@@ -56,3 +56,8 @@
 
 - Update defaults and variables
 - Inline docs updates
+
+## v0.2.3
+
+- Revert previous defaults/variables changes
+- Update include path in bucket creation playbook
