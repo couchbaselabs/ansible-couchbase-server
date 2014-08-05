@@ -6,14 +6,10 @@
   yum: name=libselinux-python state=present
   tags: installation
 
-#- name: Download
-#  get_url: "url={{ couchbase_server_centos_url }} dest=/tmp/{{ couchbase_server_centos_package }} sha256sum={{ couchbase_server_centos_sha256 }}"
-#  tags: installation
+- name: Download
+  get_url: "url={{ couchbase_server_centos_url }} dest=/tmp/{{ couchbase_server_centos_package }} sha256sum={{ couchbase_server_centos_sha256 }}"
+  tags: installation
 
 - name: Install
   yum: "name=/tmp/{{ couchbase_server_centos_package }} state=present"
   tags: installation
-
-- name: Disable THP
-  shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done' >> /etc/rc.local
-  shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/defrag; do echo never > $i; done' >> /etc/rc.local
