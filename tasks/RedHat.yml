@@ -1,11 +1,5 @@
 ---
 # File: tasks/redhat.yml - CentOS/RHEL tasks for ansible-couchbase-server
-
-# Download and install Couchbase Server
-
----
-# File: tasks/redhat.yml - CentOS/RHEL tasks for ansible-couchbase-server
-
 # Download and install SELinux Python moduel and Couchbase Server
 
 - name: SELinux Python Module

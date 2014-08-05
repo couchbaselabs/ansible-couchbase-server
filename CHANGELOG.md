@@ -56,3 +56,7 @@
 
 - Update defaults and variables
 - Inline docs updates
+
+## v0.2.3
+
+- Fix broken RedHat tasks
