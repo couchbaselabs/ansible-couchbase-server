@@ -74,3 +74,7 @@
 ## v0.2.6
 
 - Immediate disabling of THP
+
+## v0.2.7
+
+- Update tasks
