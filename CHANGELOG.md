@@ -70,3 +70,7 @@
 
 - Add disable THP
 - comment out experimental sysctls
+
+## v0.2.6
+
+- Immediate disabling of THP
