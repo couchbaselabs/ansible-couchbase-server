@@ -4,14 +4,6 @@
 # FIXME: This needs to move
 couchbase_server_version: 2.5.1
 
-# Default installed version for CentOS/RHEL is currently set to:
-# Couchbase Server Enterprise Edition version 2.5.1 on CentOS
-couchbase_server_centos_version: 2.5.1
-couchbase_server_centos_package: "couchbase-server-enterprise_2.5.1_x86_64.rpm"
-couchbase_server_centos_url: "http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm"
-couchbase_server_centos_sha256: 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875
-
-
 # TODO: This is for handling rolling upgrades and should be a bit more DRY
 # Couchbase Server Enterprise Edition version 2.5.1 on CentOS
 couchbase_server_upgrade_centos_version: 2.5.1

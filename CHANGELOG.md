@@ -60,3 +60,5 @@
 ## v0.2.3
 
 - Fix broken RedHat tasks
+- Revert previous defaults/variables changes
+- Update include path in bucket creation playbook
