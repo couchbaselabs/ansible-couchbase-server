@@ -65,3 +65,8 @@
 
 - Revert previous defaults/variables changes
 - Update include path in bucket creation playbook
+
+## v0.2.5
+
+- Add disable THP
+- comment out experimental sysctls
