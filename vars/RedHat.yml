@@ -1,63 +1,57 @@
 ---
-# File: vars/redhat.yml - RHEL and CentOS variables
+# File: vars/RedHat.yml - RHEL and CentOS variables
 
-# A listing of available Couchbase Server Enterprise Edition packages
+# A listing of available previous Couchbase Server Enterprise Edition packages
 # and their metadata for CentOS - uncomment 4 lines under *one* version
 # entry to install that version of Couchbase Server instead of the default
 # which is to install the latest version
 
-# Couchbase Server Enterprise Edition version 2.5.1 on CentOS
-couchbase_server_centos_version: 2.5.1
-couchbase_server_centos_package: couchbase-server-enterprise_2.5.1_x86_64.rpm
-couchbase_server_centos_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm
-couchbase_server_centos_sha256: 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875
-
-# TODO: this is for upgrade playbook functionality and is not currently used
-# Couchbase Server Enterprise Edition version 2.5.1 on CentOS
-# couchbase_server_upgrade_centos_version: 2.5.1
-# couchbase_server_upgrade_centos_package: "couchbase-server-enterprise_2.5.1_x86_64.rpm"
-# couchbase_server_upgrade_centos_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm
-# couchbase_server_upgrade_centos_sha256: 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875
-
 # Couchbase Server Enterprise Edition version 2.5.0 on CentOS
-#  couchbase_server_centos_version: 2.5.0
-#  couchbase_server_centos_package: "couchbase-server-enterprise_2.5.0_x86_64.rpm"
-#  couchbase_server_centos_url: "http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.rpm"
-#  couchbase_server_centos_sha256: b131f3670d99177cd83959e1283ff213f3f470fbbfd6b84cd24826e4a8287298
+#centos:
+# version: 2.5.0
+# package: "couchbase-server-enterprise_2.5.0_x86_64.rpm"
+# url: "http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.rpm"
+# sha256: b131f3670d99177cd83959e1283ff213f3f470fbbfd6b84cd24826e4a8287298
 
 
 # Couchbase Server Enterprise Edition version 2.2.0 on CentOS
-#  couchbase_server_centos_version: 2.2.0
-#  couchbase_server_centos_package: couchbase-server-enterprise_2.2.0_x86_64.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.rpm
-#  couchbase_server_centos_sha256: 6166d001fe4d9fad706b18d7fc59a800367a00f1035e21449e40148bc88e5c30
+#centos:
+# version: 2.2.0
+# package: couchbase-server-enterprise_2.2.0_x86_64.rpm
+# url: http://packages.couchbase.com/releases/2.2.0/couchbase-server-enterprise_2.2.0_x86_64.rpm
+# sha256: 6166d001fe4d9fad706b18d7fc59a800367a00f1035e21449e40148bc88e5c30
 
 ## Couchbase Server Enterprise Edition version 2.1.1
-#  couchbase_server_centos_version: 2.1.1
-#  couchbase_server_centos_package: couchbase-server-enterprise_x86_64_2.1.1.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/2.1.1/couchbase-server-enterprise_x86_64_2.1.1.rpm
-#  couchbase_server_centos_sha256: 03f89821f602902f5d9e9c55b23281c02ca2e88d5bbcf3db45ec83de8146d036
+# centos:
+# version: 2.1.1
+# package: couchbase-server-enterprise_x86_64_2.1.1.rpm
+# url: http://packages.couchbase.com/releases/2.1.1/couchbase-server-enterprise_x86_64_2.1.1.rpm
+# sha256: 03f89821f602902f5d9e9c55b23281c02ca2e88d5bbcf3db45ec83de8146d036
 
 ## Couchbase Server Enterprise Edition version 2.1.0
-#  couchbase_server_centos_version: 2.1.0
-#  couchbase_server_centos_package: couchbase-server-enterprise_x86_64_2.1.0.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/2.1.0/couchbase-server-enterprise_x86_64_2.1.0.rpm
-#  couchbase_server_centos_sha256: 9c07ecdf558968703723220f024922f9db83b1bd5daf6362d60ded1cd9a0ef84
+#centos:
+# version: 2.1.0
+# package: couchbase-server-enterprise_x86_64_2.1.0.rpm
+# url: http://packages.couchbase.com/releases/2.1.0/couchbase-server-enterprise_x86_64_2.1.0.rpm
+# sha256: 9c07ecdf558968703723220f024922f9db83b1bd5daf6362d60ded1cd9a0ef84
 
 ## Couchbase Server Enterprise Edition version 2.0.1
-#  couchbase_server_centos_version: 2.0.1
-#  couchbase_server_centos_package: couchbase-server-enterprise_x86_64_2.0.1.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/2.0.1/couchbase-server-enterprise_x86_64_2.0.1.rpm
-#  couchbase_server_centos_sha256: fa091c587134afa8a9ba853f1ee1cf78dbe3329a808086f3b4541f9ef6fab104
+#centos:
+# version: 2.0.1
+# package: couchbase-server-enterprise_x86_64_2.0.1.rpm
+# url: http://packages.couchbase.com/releases/2.0.1/couchbase-server-enterprise_x86_64_2.0.1.rpm
+# sha256: fa091c587134afa8a9ba853f1ee1cf78dbe3329a808086f3b4541f9ef6fab104
 
 ## Couchbase Server Enterprise Edition version 2.0.0
-#  couchbase_server_centos_version: 2.0.0
-#  couchbase_server_centos_package: couchbase-server-enterprise_x86_64_2.0.0.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/2.0.0/couchbase-server-enterprise_x86_64_2.0.0.rpm
-#  couchbase_server_centos_sha256: 6cb2a274ca5ab502229be5ab37a891a9c90e56bbcb724f9f09286fde59489767
+#centos:
+# version: 2.0.0
+# package: couchbase-server-enterprise_x86_64_2.0.0.rpm
+# url: http://packages.couchbase.com/releases/2.0.0/couchbase-server-enterprise_x86_64_2.0.0.rpm
+# sha256: 6cb2a274ca5ab502229be5ab37a891a9c90e56bbcb724f9f09286fde59489767
 
 ## Couchbase Server Enterprise Edition version 1.8.1
-#  couchbase_server_centos_version: 1.8.1
-#  couchbase_server_centos_package: couchbase-server-enterprise_x86_64_1.8.1.rpm
-#  couchbase_server_centos_url: http://packages.couchbase.com/releases/1.8.1/couchbase-server-enterprise_x86_64_1.8.1.rpm
-#  couchbase_server_centos_sha256: 3b4f2fec7f50a78575c8c07f246257be5449c2fe7477f01987aa24294a54f456
+#centos:
+# version: 1.8.1
+# package: couchbase-server-enterprise_x86_64_1.8.1.rpm
+# url: http://packages.couchbase.com/releases/1.8.1/couchbase-server-enterprise_x86_64_1.8.1.rpm
+# sha256: 3b4f2fec7f50a78575c8c07f246257be5449c2fe7477f01987aa24294a54f456

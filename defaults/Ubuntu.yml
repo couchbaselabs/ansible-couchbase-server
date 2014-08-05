@@ -1,4 +1,12 @@
 ---
 # File: defaults/debian.yml - Debian and Ubuntu Couchbase Server defaults
 
+# FIXME: This needs to move
 couchbase_server_version: 2.5.1
+
+# Default installed version for Ubuntu is currently set to:
+# Couchbase Server Enterprise Edition version 2.2.0 on Ubuntu
+couchbase_server_ubuntu_version: 2.5.1
+couchbase_server_ubuntu_package: couchbase-server-enterprise_2.5.1_x86_64.deb
+couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
+couchbase_server_ubuntu_sha256: e0d333c69f86098469543c12b15d2c4cd1a33abe4ffdad88ad377693825910d2

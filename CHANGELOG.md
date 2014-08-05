@@ -51,3 +51,8 @@
 - More Vagrant improvements
 - Documentation updates
 - Fixed variable names for packages
+
+## v0.2.2
+
+- Update defaults and variables
+- Inline docs updates
