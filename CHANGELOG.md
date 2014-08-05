@@ -37,3 +37,22 @@
 - Remove the Couchbase Server module
 - Add a site playbook to the examples
 - Update example create_bucket playbook to use shell module
+
+## v0.1.9
+
+- Added Vagrant example for Mac OS X development clusters
+
+## v0.2.0
+
+- Corrected bad references to old role
+
+## v0.2.1
+
+- More Vagrant improvements
+- Documentation updates
+- Fixed variable names for packages
+
+## v0.2.2
+
+- Update defaults and variables
+- Inline docs updates
