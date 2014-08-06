@@ -78,3 +78,7 @@
 ## v0.2.7
 
 - Update tasks
+
+## v0.2.8
+
+- Correct OS family variables
