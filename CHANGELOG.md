@@ -82,3 +82,7 @@
 ## v0.2.8
 
 - Correct OS family variables
+
+## v0.2.9
+
+- Update rebalance options for cluster_init playbook
