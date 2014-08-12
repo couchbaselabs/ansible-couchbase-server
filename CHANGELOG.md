@@ -86,3 +86,7 @@
 ## v0.2.9
 
 - Update rebalance options for cluster_init playbook
+
+## v0.2.10
+
+- Added wait for nodes to come up before initializing the cluster
