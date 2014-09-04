@@ -90,3 +90,7 @@
 ## v0.2.10
 
 - Added wait for nodes to come up before initializing the cluster
+
+## v0.2.20
+
+- Added a cluster_install.yml to example playbooks for installation only
