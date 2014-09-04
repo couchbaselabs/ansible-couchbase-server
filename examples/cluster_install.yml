@@ -1,0 +1,14 @@
+---
+# File: cluster_install.yml
+# Example Ansible playbook to install Couchbase Server on cluster nodes 
+# NB: This does not initialize a cluster, see cluster_init.yml for that
+
+- hosts: cluster_nodes
+  sudo: True
+  vars_files:
+    - ../vars/{{ ansible_os_family }}.yml
+  roles:
+    - couchbase.couchbase-server
+  tasks:
+  - name: Couchbase Server Service
+    service: name=couchbase-server state=started
