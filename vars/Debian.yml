@@ -1,5 +1,5 @@
 ---
-# File: vars/Ubuntu.yml - Ubuntu variables
+# File: vars/Debian.yml - Debian and Ubuntu variables
 #
 # A listing of available previous Couchbase Server Enterprise Edition packages
 # and their metadata for Ubuntu

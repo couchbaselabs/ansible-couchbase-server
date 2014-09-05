@@ -1,5 +1,5 @@
 ---
-# File: tasks/debian.yml - Debian/Ubuntu tasks for ansible-couchbase-server
+# File: tasks/Debian.yml - Debian/Ubuntu tasks for ansible-couchbase-server
 # Download and install Couchbase Server
 
 - name: Download
