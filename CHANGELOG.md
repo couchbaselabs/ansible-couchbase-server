@@ -94,3 +94,11 @@
 ## v0.2.20
 
 - Added a cluster_install.yml to example playbooks for installation only
+
+## v0.2.21
+
+- Moved Ubuntu files to Debian
+
+## v0.2.22
+
+- Fixed server RAM quota issue for Vagrant on Mac OS X

@@ -9,8 +9,8 @@
   when: ansible_os_family  == "RedHat"
 
 # Debian/Ubuntu tasks
-- include: Ubuntu.yml
-  when: ansible_os_family  == "Ubuntu"
+- include: Debian.yml
+  when: ansible_os_family  == "Debian"
 
 - name: Update user limits
   copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644
