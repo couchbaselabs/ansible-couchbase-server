@@ -12,7 +12,7 @@
 couchbase_server_ubuntu_version: 2.5.1
 couchbase_server_ubuntu_package: couchbase-server-enterprise_2.5.1_x86_64.deb
 couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
-couchbase_server_ubuntu_sha256: e0d333c69f86098469543c12b15d2c4cd1a33abe4ffdad88ad377693825910d2
+couchbase_server_ubuntu_sha256: 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a
 
 # Couchbase Server Enterprise Edition version 2.2.0
 # couchbase_server_ubuntu_version: 2.5.0
