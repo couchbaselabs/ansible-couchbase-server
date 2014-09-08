@@ -102,3 +102,8 @@
 ## v0.2.22
 
 - Fixed server RAM quota issue for Vagrant on Mac OS X
+
+## v0.3.0
+
+- Switched Vagrant box source for Ubuntu 12.04
+- Updated Ubuntu deb SHA256 sum for refreshed 2.5.1 build
