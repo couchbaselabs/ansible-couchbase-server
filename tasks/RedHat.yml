@@ -13,3 +13,7 @@
 - name: Install
   yum: "name=/tmp/{{ couchbase_server_centos_package }} state=present"
   tags: installation
+
+- name: Cleanup
+  file: "name=/tmp/{{ couchbase_server_centos_package }} state=absent"
+  tags: installation
