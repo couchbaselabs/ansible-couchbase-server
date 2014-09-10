@@ -107,3 +107,8 @@
 
 - Switched Vagrant box source for Ubuntu 12.04
 - Updated Ubuntu deb SHA256 sum for refreshed 2.5.1 build
+
+## v0.4.0
+
+- Cleanup tasks for Couchbase Server packages
+- Switch to apt module for Ubuntu package installation
