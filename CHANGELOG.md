@@ -112,3 +112,12 @@
 
 - Cleanup tasks for Couchbase Server packages
 - Switch to apt module for Ubuntu package installation
+
+## v0.5.0
+
+- Streamlined create_bucket example playbook
+- Added a load_bucket example playbook
+
+## v0.6.0
+
+- More documentation updates
