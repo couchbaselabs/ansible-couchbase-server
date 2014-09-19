@@ -117,3 +117,7 @@
 
 - Streamlined create_bucket example playbook
 - Added a load_bucket example playbook
+
+## v0.6.0
+
+- More documentation updates
