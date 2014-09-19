@@ -71,6 +71,21 @@ the operating system configuration:
 | ------------------------------------ | -------- | ---------------------------------------------- |
 | couchbase_server_tune_disks          | false    | Whether to mount disks with optimized settings |
 
+## Examples
+
+The `examples` directory contains some basic playbooks, host inventory
+examples, and Vagrant bits (primarily for Mac OS X development use) 
+as follows:
+
+* `cluster_install.yml` prepares OS and installs Couchbase Server only
+* `cluster_init.yml` installs Couchbase Server and initializes the cluster
+* `create_bucket.yml` creates an example bucket
+* `load_bucket.yml` loads sample JSON data into a bucket
+* `example_hosts` example hosts inventory in format required by this project
+* `Vagrantfile` example Vagrant development cluster definition
+* `centos` CentOS hosts inventory for Vagrant based development cluster
+* `ubuntu` Ubuntu hosts inventory for Vagrant based development cluster
+
 ## Dependencies
 
 None
