@@ -252,7 +252,7 @@ ansible-playbook -i centos cluster_install.yml \
 ## Examples
 
 The `examples` directory contains some basic playbooks, host inventory
-examples, and Vagrant bits (primarily for Mac OS X development use) 
+examples, and Vagrant bits (primarily for Mac OS X development use)
 as follows:
 
 * `cluster_install.yml` prepares OS and installs Couchbase Server only
@@ -300,10 +300,10 @@ this project as well.
 ## Notes
 
 0. The project is confirmed to function with the following software versions:
- * Ansible version 1.6.10
- * VirtualBox version 4.3.12
- * Vagrant version 1.6.3
- * Vagrant Hosts version 2.1.2
+  * Ansible version 1.7.1
+  * VirtualBox version 4.3.16
+  * Vagrant version 1.6.5
+  * Vagrant Hosts version 2.2.1
 1. The project uses CentOS 6.4 and Ubuntu 12.04 as these are the supported
    platforms which are listed on the Couchbase Server package downloads page
    (CentOS 6 and Ubuntu 12.04 to be specific)
