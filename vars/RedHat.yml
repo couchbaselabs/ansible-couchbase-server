@@ -5,14 +5,19 @@
 # their metadata for CentOS
 
 # Default installed version for CentOS/RHEL is currently set to:
-# Couchbase Server Enterprise Edition version 2.5.1
+# Couchbase Server Enterprise Edition version 3.0.0
 # Comment out the 4 variables below and uncoment the variables below a
 # a version that you wish to install. This process will be improved soon
 
-couchbase_server_centos_version: 2.5.1
-couchbase_server_centos_package: "couchbase-server-enterprise_2.5.1_x86_64.rpm"
-couchbase_server_centos_url: "http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm"
-couchbase_server_centos_sha256: 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875
+couchbase_server_centos_version: 3.0.0
+couchbase_server_centos_package: "couchbase-server-enterprise-3.0.0-centos6.x86_64.rpm"
+couchbase_server_centos_url: "http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise-3.0.0-centos6.x86_64.rpm"
+couchbase_server_centos_sha256: a10c830dec6f749708c4836c02118526bb3afb713f87064f27f91251c64867d3
+
+# couchbase_server_centos_version: 2.5.1
+# couchbase_server_centos_package: "couchbase-server-enterprise_2.5.1_x86_64.rpm"
+# couchbase_server_centos_url: "http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm"
+# couchbase_server_centos_sha256: 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875
 
 # Couchbase Server Enterprise Edition version 2.5.0
 # couchbase_server_centos_version: 2.5.0
