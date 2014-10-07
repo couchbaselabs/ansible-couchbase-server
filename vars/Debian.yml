@@ -5,14 +5,19 @@
 # and their metadata for Ubuntu
 
 # Default installed version for Ubuntu is currently set to:
-# Couchbase Server Enterprise Edition version 2.5.1
+# Couchbase Server Enterprise Edition version 3.0.0
 # Comment out the 4 variables below and uncoment the variables below a
 # a version that you wish to install. This process will be improved soon
 
-couchbase_server_ubuntu_version: 2.5.1
-couchbase_server_ubuntu_package: couchbase-server-enterprise_2.5.1_x86_64.deb
-couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
-couchbase_server_ubuntu_sha256: 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a
+couchbase_server_ubuntu_version: 3.0.0
+couchbase_server_ubuntu_package: couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
+couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
+couchbase_server_ubuntu_sha256: b86db55ee57dc465eb81443f97e21064666557c275e2e699f73d24be6b51d4d4
+
+# couchbase_server_ubuntu_version: 2.5.1
+# couchbase_server_ubuntu_package: couchbase-server-enterprise_2.5.1_x86_64.deb
+# couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb
+# couchbase_server_ubuntu_sha256: 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a
 
 # Couchbase Server Enterprise Edition version 2.2.0
 # couchbase_server_ubuntu_version: 2.5.0
