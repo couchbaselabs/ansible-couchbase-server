@@ -121,3 +121,7 @@
 ## v0.6.0
 
 - More documentation updates
+
+## v0.7.0
+
+- Updated to Couchbase Server version 3.0.0
