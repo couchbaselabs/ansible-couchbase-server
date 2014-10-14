@@ -125,3 +125,7 @@
 ## v0.7.0
 
 - Updated to Couchbase Server version 3.0.0
+
+## v0.7.1
+
+- Updated Vagrant box URL

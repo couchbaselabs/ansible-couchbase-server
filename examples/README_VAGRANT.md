@@ -71,7 +71,7 @@ prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="precise64" BOX_URI="http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="precise64" BOX_URI="https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
