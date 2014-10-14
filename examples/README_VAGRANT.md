@@ -71,7 +71,7 @@ prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="precise64" BOX_URI="http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_ubuntu-12.04_chef-provisionerless.box" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="precise64" BOX_URI="https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
@@ -300,10 +300,10 @@ this project as well.
 ## Notes
 
 0. The project is confirmed to function with the following software versions:
-  * Ansible version 1.7.1
+  * Ansible version 1.7.2
   * VirtualBox version 4.3.16
   * Vagrant version 1.6.5
-  * Vagrant Hosts version 2.2.1
+  * Vagrant Hosts version 2.2.3
 1. The project uses CentOS 6.4 and Ubuntu 12.04 as these are the supported
    platforms which are listed on the Couchbase Server package downloads page
    (CentOS 6 and Ubuntu 12.04 to be specific)
