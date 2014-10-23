@@ -32,6 +32,7 @@
   notify: Update kernel settings
 
 - name: Disable THP
+  ignore_errors: yes
   shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done' >> /etc/rc.local
   shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/defrag; do echo never > $i; done' >> /etc/rc.local
   shell: for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done
