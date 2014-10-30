@@ -129,3 +129,7 @@
 ## v0.7.1
 
 - Updated Vagrant box URL
+
+## v0.8.0
+
+- Couchbase Server version 3.0.1
