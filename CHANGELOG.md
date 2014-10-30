@@ -133,3 +133,7 @@
 ## v0.8.0
 
 - Couchbase Server version 3.0.1
+
+## v0.8.1
+
+- Comment out older version
