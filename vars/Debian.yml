@@ -12,6 +12,11 @@
 couchbase_server_ubuntu_version: 3.0.0
 couchbase_server_ubuntu_package: couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
 couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
+couchbase_server_ubuntu_sha256: 6914fb71d7e2fca314b7767f64a49cb45112f487f0d577239459f890a0a69b16
+
+couchbase_server_ubuntu_version: 3.0.0
+couchbase_server_ubuntu_package: couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
+couchbase_server_ubuntu_url: http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise_3.0.0-ubuntu12.04_amd64.deb
 couchbase_server_ubuntu_sha256: b86db55ee57dc465eb81443f97e21064666557c275e2e699f73d24be6b51d4d4
 
 # couchbase_server_ubuntu_version: 2.5.1

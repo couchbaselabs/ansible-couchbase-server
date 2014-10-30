@@ -9,6 +9,11 @@
 # Comment out the 4 variables below and uncoment the variables below a
 # a version that you wish to install. This process will be improved soon
 
+couchbase_server_centos_version: 3.0.1
+couchbase_server_centos_package: "couchbase-server-enterprise-3.0.1-centos6.x86_64.rpm"
+couchbase_server_centos_url: "http://packages.couchbase.com/releases/3.0.1/couchbase-server-enterprise-3.0.1-centos6.x86_64.rpm"
+couchbase_server_centos_sha256: 000667d4f1f075cb94e740d7296841233086ad8f704b656a38f583a334359700
+
 couchbase_server_centos_version: 3.0.0
 couchbase_server_centos_package: "couchbase-server-enterprise-3.0.0-centos6.x86_64.rpm"
 couchbase_server_centos_url: "http://packages.couchbase.com/releases/3.0.0/couchbase-server-enterprise-3.0.0-centos6.x86_64.rpm"
