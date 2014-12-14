@@ -66,12 +66,12 @@ Begin from the top level directory of this project and use the following
 5. Access the cluster at http://node1:8091 with username **Administrator**
    and password **couchbase**.
 
-By default, this project will install CentOS 6.4 based cluster nodes. If you
+By default, this project will install CentOS 6.5 based cluster nodes. If you
 prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="precise64" BOX_URI="https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
@@ -169,12 +169,12 @@ Vagrant and Ansible work their magic. If bootstrapping a cluster for the
 first time, you'll be prompted to accept the host key information for each
 node VM by ssh; be sure to answer **yes** to these prompts.
 
-By default, this project will install CentOS 6.4 based cluster nodes. If you
-prefer, it can also install Ubuntu 13.10 based nodes by changing the
+By default, this project will install CentOS 6.5 based cluster nodes. If you
+prefer, it can also install Ubuntu 12.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="precise64" BOX_URI="https://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 ## Give it a Try
@@ -300,13 +300,14 @@ this project as well.
 ## Notes
 
 0. The project is confirmed to function with the following software versions:
-  * Ansible version 1.7.2
-  * VirtualBox version 4.3.16
-  * Vagrant version 1.6.5
+  * Ansible version 1.8.1
+  * VirtualBox version 4.3.20
+  * Vagrant version 1.7.0
   * Vagrant Hosts version 2.2.3
-1. The project uses CentOS 6.4 and Ubuntu 12.04 as these are the supported
-   platforms which are listed on the Couchbase Server package downloads page
-   (CentOS 6 and Ubuntu 12.04 to be specific)
+1. The project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
+   supported major versions of platforms which are listed on the 
+   Couchbase Server package downloads page 
+   (CentOS 6 and Ubuntu 12.04 to be specific).
 2. The `bin/preinstall` shell script performs the following actions for you:
  * Adds each node's host information to the host machine's `/etc/hosts`
  * Ensures the correct permissions on Vagrant SSH private key

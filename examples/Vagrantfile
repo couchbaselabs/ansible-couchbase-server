@@ -6,8 +6,7 @@
 
 VAGRANTFILE_API_VERSION = "2"
 BOX_MEM = ENV['BOX_MEM'] || "1536"
-BOX_NAME =  ENV['BOX_NAME'] || "centos64"
-BOX_URI = ENV['BOX_URI'] || "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-6.4_chef-provisionerless.box"
+BOX_NAME =  ENV['BOX_NAME'] || "chef/centos-6.5"
 CLUSTER_HOSTS = ENV['CLUSTER_HOSTS'] || "centos"
 
 Vagrant.require_version ">= 1.5.0"
@@ -17,7 +16,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Configure 3 Couchbase Server nodes
   config.vm.define :node1 do |node1_config|
     node1_config.vm.box = BOX_NAME
-    node1_config.vm.box_url = BOX_URI
     node1_config.vm.network :private_network, ip: "10.1.42.10"
     node1_config.vm.hostname = "node1.local"
     node1_config.ssh.forward_agent = true
@@ -37,7 +35,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define :node2 do |node2_config|
     node2_config.vm.box = BOX_NAME
-    node2_config.vm.box_url = BOX_URI
     node2_config.vm.network :private_network, ip: "10.1.42.20"
     node2_config.vm.hostname = "node2.local"
     node2_config.ssh.forward_agent = true
@@ -57,7 +54,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   config.vm.define :node3 do |node3_config|
     node3_config.vm.box = BOX_NAME
-    node3_config.vm.box_url = BOX_URI
     node3_config.vm.network :private_network, ip: "10.1.42.30"
     node3_config.vm.hostname = "node3.local"
     node3_config.ssh.forward_agent = true

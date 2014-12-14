@@ -137,3 +137,8 @@
 ## v0.8.1
 
 - Comment out older version
+
+## v0.8.2
+
+- Update tested versions
+- Update private key locations in inventory for Vagrant version 1.7.0
