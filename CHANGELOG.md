@@ -142,3 +142,9 @@
 
 - Update tested versions
 - Update private key locations in inventory for Vagrant version 1.7.0
+
+## v0.9.0
+
+- Couchbase Server version 3.0.2
+- Couchbase Server version 2.52
+- Updated variables

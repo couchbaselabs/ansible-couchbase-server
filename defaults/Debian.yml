@@ -1,5 +1,4 @@
 ---
 # File: defaults/Debian.yml - Debian and Ubuntu Couchbase Server defaults
 
-# FIXME: This needs to move
-couchbase_server_version: 2.5.1
+couchbase_server_latest_version: 3.0.2
