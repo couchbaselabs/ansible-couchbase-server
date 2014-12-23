@@ -148,3 +148,7 @@
 - Couchbase Server version 3.0.2
 - Couchbase Server version 2.52
 - Updated variables
+
+## v0.9.1
+
+- Fix bad package URL
