@@ -11,7 +11,7 @@
 
 couchbase_server_centos_version: 3.0.2
 couchbase_server_centos_package: "couchbase-server-enterprise-3.0.2-centos6.x86_64.rpm"
-couchbase_server_centos_url: "http://packages.couchbase.com/releases/3.0.1/{{ couchbase_server_centos_package }}"
+couchbase_server_centos_url: "http://packages.couchbase.com/releases/3.0.2/{{ couchbase_server_centos_package }}"
 couchbase_server_centos_sha256: 7c678d4fc9207f04996c2a0a0d33df74171813504348fd3f66acf8dd0dc5b106
 
 # couchbase_server_centos_version: 3.0.1
