@@ -152,3 +152,9 @@
 ## v0.9.1
 
 - Fix bad package URL
+
+## v1.0.0
+
+- Ansible 1.8 support
+- Increased timeout in get_url tasks
+- Updated docs

@@ -3,13 +3,13 @@
 # Download and install Couchbase Server
 
 - name: Download
-  get_url: url={{ couchbase_server_ubuntu_url }} dest=/tmp/{{ couchbase_server_ubuntu_package }} sha256sum={{ couchbase_server_ubuntu_sha256 }}
+  get_url: url={{ couchbase_server_ubuntu_url }} dest=/tmp/{{ couchbase_server_ubuntu_package }} sha256sum={{ couchbase_server_ubuntu_sha256 }} timeout=30
   tags: installation
 
 - name: Install
-  apt: "deb=/tmp/{{ couchbase_server_ubuntu_package }}"
+  apt: deb=/tmp/{{ couchbase_server_ubuntu_package }}
   tags: installation
 
 - name: Cleanup
-  file: "name=/tmp/{{ couchbase_server_ubuntu_package }} state=absent"
+  file: name=/tmp/{{ couchbase_server_ubuntu_package }} state=absent
   tags: installation
