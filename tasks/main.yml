@@ -16,7 +16,7 @@
   copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644
 
 - name: Optimized settings for Couchbase Server data and index volumes
-  mount: "name={{ couchbase_server_mountpoint }} src={{ couchbase_server_partition }} opts={{ couchbase_server_mount_options }} fstype={{ couchbase_server_filesystem }} state=mounted"
+  mount: name={{ couchbase_server_mountpoint }} src={{ couchbase_server_partition }} opts={{ couchbase_server_mount_options }} fstype={{ couchbase_server_filesystem }} state=mounted
   when: couchbase_server_tune_disks
 
 - name: Additional OS config
