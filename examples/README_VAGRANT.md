@@ -326,4 +326,3 @@ this project as well.
 3. http://www.vagrantup.com/
 4. https://www.virtualbox.org/
 5. https://github.com/adrienthebo/vagrant-hosts
-6. https://github.com/opscode/bento
