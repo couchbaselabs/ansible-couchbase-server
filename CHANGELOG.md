@@ -162,3 +162,7 @@
 ## v1.0.1
 
 - Correct package versions
+
+## v1.0.2
+
+- Update versions

@@ -300,7 +300,7 @@ this project as well.
 ## Notes
 
 0. The project is confirmed to function with the following software versions:
-  * Ansible version 1.8.2
+  * Ansible version 1.8.4
   * VirtualBox version 4.3.20
   * Vagrant version 1.7.0
   * Vagrant Hosts version 2.2.3
