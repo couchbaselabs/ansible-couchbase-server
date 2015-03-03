@@ -158,3 +158,11 @@
 - Ansible 1.8 support
 - Increased timeout in get_url tasks
 - Updated docs
+
+## v1.0.1
+
+- Correct package versions
+
+## v1.0.2
+
+- Update versions

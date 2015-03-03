@@ -24,7 +24,7 @@ with the additional playbooks included in the `examples` directory.
 This role has been tested for basic functionality with the following 
 software versions:
 
-* Couchbase Server versions 1.8.1 - 2.5.1
+* Couchbase Server versions 1.8.1 - 3.0.2
 * Ansible version 1.8.2
 * CentOS versions 6.2 - 6.5
 * Ubuntu versions 12.04 - 13.10
