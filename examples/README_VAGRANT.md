@@ -301,9 +301,9 @@ this project as well.
 
 0. The project is confirmed to function with the following software versions:
   * Ansible version 1.8.4
-  * VirtualBox version 4.3.20
-  * Vagrant version 1.7.0
-  * Vagrant Hosts version 2.2.3
+  * VirtualBox version 4.3.24
+  * Vagrant version 1.7.2
+  * Vagrant Hosts version 2.4.0
 1. The project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
    supported major versions of platforms which are listed on the 
    Couchbase Server package downloads page 

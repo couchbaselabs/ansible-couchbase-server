@@ -166,3 +166,13 @@
 ## v1.0.2
 
 - Update versions
+
+## v1.0.3
+
+- Update docs
+- Update versions
+
+## v1.0.4
+
+- Fix package names in CentOS
+- Update versions
