@@ -6,14 +6,36 @@
   yum: name=libselinux-python state=present
   tags: installation
 
+# Couchbase Server Enterprise Edition
+
 - name: Download
-  get_url: url={{ couchbase_server_centos_url }} dest=/tmp/{{ couchbase_server_centos_package }} sha256sum={{ couchbase_server_centos_sha256 }} timeout=30
+  get_url: url={{ couchbase_server_centos_ee_url }} dest=/tmp/{{ couchbase_server_centos_ee_package }} sha256sum={{ couchbase_server_centos_ee_sha256 }} timeout=30
+  when: couchbase_server_edition == "enterprise"
   tags: installation
 
 - name: Install
-  yum: name=/tmp/{{ couchbase_server_centos_package }} state=present
+  yum: name=/tmp/{{ couchbase_server_centos_ee_package }} state=present
+  when: couchbase_server_edition == "enterprise"
   tags: installation
 
 - name: Cleanup
-  file: name=/tmp/{{ couchbase_server_centos_package }} state=absent
+  file: name=/tmp/{{ couchbase_server_centos_ee_package }} state=absent
+  when: couchbase_server_edition == "enterprise"
+  tags: installation
+
+# Couchbase Server Community Edition
+
+- name: Download
+  get_url: url={{ couchbase_server_centos_ce_url }} dest=/tmp/{{ couchbase_server_centos_ce_package }} sha256sum={{ couchbase_server_centos_ce_sha256 }} timeout=30
+  when: couchbase_server_edition == "community"
+  tags: installation
+
+- name: Install
+  yum: name=/tmp/{{ couchbase_server_centos_ce_package }} state=present
+  when: couchbase_server_edition == "community"
+  tags: installation
+
+- name: Cleanup
+  file: name=/tmp/{{ couchbase_server_centos_ce_package }} state=absent
+  when: couchbase_server_edition == "community"
   tags: installation

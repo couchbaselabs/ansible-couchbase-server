@@ -43,6 +43,7 @@ tables to the left.
 
 | Name                                 | Default                                                                                   | Description                             |
 | ------------------------------------ | ----------------------------------------------------------------------------------------- | --------------------------------------- |
+| couchbase_server_edition | enterprise | Edition of Couchbase Server to install: community or enterprise |
 | couchbase_server_admin_port          | 8091                                                                                      | Administration and web console port     |
 | couchbase_server_api_port            | 8092                                                                                      | Couchbase Server API port               |
 | couchbase_server_internal_ports      | 11209:11211                                                                               | Memcached and client ports              |
@@ -56,10 +57,10 @@ tables to the left.
 | couchbase_server_rhel_pkg_file       | couchbase-server-enterprise_2.5.1_x86_64.rpm                                              | RHEL package filename                   |
 | couchbase_server_rhel_pkg_url        | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm | RHEL package URL                        |
 | couchbase_server_rhel_pkg_sha256     | 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875                          | RHEL package SHA256 checksum            |
-| couchbase_server_ubuntu_pkg_version  | 2.5.1                                                                                     | Ubuntu package version                  |
-| couchbase_server_ubuntu_pkg_file     | couchbase-server-enterprise_2.5.1_x86_64.deb                                              | Ubuntu package filename                 |
-| couchbase_server_ubuntu_pkg_url      | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb | Ubuntu package URL                      |
-| couchbase_server_ubuntu_pkg_sha256   | 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a                          | Ubuntu package SHA256 checksum          |
+| couchbase_server_ubuntu_ee_pkg_version  | 2.5.1                                                                                     | Ubuntu package version                  |
+| couchbase_server_ubuntu_ee_pkg_file     | couchbase-server-enterprise_2.5.1_x86_64.deb                                              | Ubuntu package filename                 |
+| couchbase_server_ubuntu_ee_pkg_url      | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb | Ubuntu package URL                      |
+| couchbase_server_ubuntu_ee_pkg_sha256   | 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a                          | Ubuntu package SHA256 checksum          |
 
 
 ### Special Variables

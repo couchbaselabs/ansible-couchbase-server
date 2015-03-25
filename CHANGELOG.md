@@ -176,3 +176,11 @@
 
 - Fix package names in CentOS
 - Update versions
+
+## v1.0.5
+
+- Added Couchbase Server Community Edition
+- Conditionally install Community or Enterprise editions based on
+  couchbase_server_edition variable setting
+- Update software versions
+- Update documentation
