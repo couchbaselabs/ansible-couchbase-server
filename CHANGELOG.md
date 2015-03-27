@@ -184,3 +184,7 @@
   couchbase_server_edition variable setting
 - Update software versions
 - Update documentation
+
+## v1.0.6
+
+- Increase timeout for package downloads to handle extremely slow internet
