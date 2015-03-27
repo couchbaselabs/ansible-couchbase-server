@@ -9,40 +9,39 @@
               .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
                .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
 
-
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and Enterprise
 editions for several operating system environments.
 
-This role can be used to install Couchbase Server on cluster nodes.
-
-You can also initialize clusters, create buckets, and uninstall clusters
-with the additional playbooks included in the `examples` directory.
+This Ansible role can be used to install Couchbase Server on cluster nodes,
+initialize working clusters, create buckets, and load buckets with test
+documents with the additional playbooks included in the `examples` directory.
 
 ## Requirements
 
 This role has been tested for basic functionality with the following 
-software versions:
+software:
 
-* Couchbase Server versions 1.8.1 - 3.0.2
-* Ansible version 1.8.2
-* CentOS versions 6.2 - 6.5
-* Ubuntu versions 12.04 - 13.10
+* Couchbase Server (versions 1.8.1-3.0.2)
+* Ansible (version 1.8.4)
+* CentOS (versions 6.2-6.5)
+* Ubuntu (versions 12.04-13.10)
 
 ## Role Variables
 
-In most cases, the default values for the Couchbase Server role's common 
-variables can be left as is. However, should you need to tweak them for your
-particular situation, this section describes all variables in detail including
-their default values.
+In cases where you want simple clusters for development or other
+non-production use, the default values for the Couchbase Server role's common 
+variables can be left as is.
 
-Note that the variable descriptions are not visible below until you scroll the 
-tables to the left.
+However, should you need specific performance or otherwise wish to tweak them
+for your particular situation, this section describes all variables in 
+detail including their default values for your reference.
 
 ### Common Variables
 
 | Name                                 | Default                                                                                   | Description                             |
 | ------------------------------------ | ----------------------------------------------------------------------------------------- | --------------------------------------- |
+| couchbase_server_edition | enterprise | Couchbase Server edition to install: community or enterprise |
 | couchbase_server_admin_port          | 8091                                                                                      | Administration and web console port     |
 | couchbase_server_api_port            | 8092                                                                                      | Couchbase Server API port               |
 | couchbase_server_internal_ports      | 11209:11211                                                                               | Memcached and client ports              |
@@ -56,17 +55,17 @@ tables to the left.
 | couchbase_server_rhel_pkg_file       | couchbase-server-enterprise_2.5.1_x86_64.rpm                                              | RHEL package filename                   |
 | couchbase_server_rhel_pkg_url        | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.rpm | RHEL package URL                        |
 | couchbase_server_rhel_pkg_sha256     | 2310a31d177f9396e8c436a991d952b2b57a3b41f74658fa5100b19a1d7ac875                          | RHEL package SHA256 checksum            |
-| couchbase_server_ubuntu_pkg_version  | 2.5.1                                                                                     | Ubuntu package version                  |
-| couchbase_server_ubuntu_pkg_file     | couchbase-server-enterprise_2.5.1_x86_64.deb                                              | Ubuntu package filename                 |
-| couchbase_server_ubuntu_pkg_url      | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb | Ubuntu package URL                      |
-| couchbase_server_ubuntu_pkg_sha256   | 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a                          | Ubuntu package SHA256 checksum          |
+| couchbase_server_ubuntu_ee_pkg_version  | 2.5.1                                                                                     | Ubuntu package version                  |
+| couchbase_server_ubuntu_ee_pkg_file     | couchbase-server-enterprise_2.5.1_x86_64.deb                                              | Ubuntu package filename                 |
+| couchbase_server_ubuntu_ee_pkg_url      | http://packages.couchbase.com/releases/2.5.1/couchbase-server-enterprise_2.5.1_x86_64.deb | Ubuntu package URL                      |
+| couchbase_server_ubuntu_ee_pkg_sha256   | 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a                          | Ubuntu package SHA256 checksum          |
 
 
 ### Special Variables
 
-*The following variables should be set with caution* as they can cause issues,
-and should not be used without understanding the changes which are made to
-the operating system configuration:
+*The following variables should be set with caution* as they have potential 
+negative performance implications; they should not be used without knowledge
+of the changes which are made to the operating system configuration:
 
 | Name                                 | Default  | Description                                    |
 | ------------------------------------ | -------- | ---------------------------------------------- |
@@ -75,8 +74,7 @@ the operating system configuration:
 ## Examples
 
 The `examples` directory contains some basic playbooks, host inventory
-examples, and Vagrant bits (primarily for Mac OS X development use) 
-as follows:
+examples, and Vagrant bits (primarily for Mac OS X development use):
 
 * `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster

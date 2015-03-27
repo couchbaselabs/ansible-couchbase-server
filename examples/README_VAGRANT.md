@@ -169,8 +169,20 @@ Vagrant and Ansible work their magic. If bootstrapping a cluster for the
 first time, you'll be prompted to accept the host key information for each
 node VM by ssh; be sure to answer **yes** to these prompts.
 
+### Debian
+
 By default, this project will install CentOS 6.5 based cluster nodes. If you
-prefer, it can also install Ubuntu 12.04 based nodes by changing the
+prefer, you can install Debian 7.4 based nodes by changing the
+`vagrant up` command to the following:
+
+```
+BOX_NAME="chef/debian-7.4" CLUSTER_HOSTS="debian" vagrant up
+```
+
+### Ubuntu
+
+By default, this project will install CentOS 6.5 based cluster nodes. If you
+prefer, you can install Ubuntu 12.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
@@ -301,9 +313,9 @@ this project as well.
 
 0. The project is confirmed to function with the following software versions:
   * Ansible version 1.8.4
-  * VirtualBox version 4.3.20
-  * Vagrant version 1.7.0
-  * Vagrant Hosts version 2.2.3
+  * VirtualBox version 4.3.26
+  * Vagrant version 1.7.2
+  * Vagrant Hosts version 2.4.0
 1. The project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
    supported major versions of platforms which are listed on the 
    Couchbase Server package downloads page 

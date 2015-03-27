@@ -4,6 +4,7 @@
 #############################################################################
 # Available Couchbase Server default variables
 #
+# couchbase_server_edition: Couchbase Server edition: Community or Enterprise 
 # couchbase_server_ram: The per server RAM quota specified in megabytes
 # couchbase_server_admin_port: Administration and web console port
 # couchbase_server_api_port: Couchbase Server API port
@@ -18,14 +19,15 @@
 # couchbase_server_rhel_pkg_file: Default RHEL package filename
 # couchbase_server_rhel_pkg_url: Default RHEL package URL
 # couchbase_server_rhel_pkg_sha256: Default RHEL package SHA256 checksum
-# couchbase_server_ubuntu_pkg_version: Default Ubuntu package version
-# couchbase_server_ubuntu_pkg_file: Default Ubuntu package filename
-# couchbase_server_ubuntu_pkg_url: Default Ubuntu package URL
-# couchbase_server_ubuntu_pkg_sha256: Default Ubuntu package SHA256 checksum
+# couchbase_server_ubuntu_ee_pkg_version: Default Ubuntu package version
+# couchbase_server_ubuntu_ee_pkg_file: Default Ubuntu package filename
+# couchbase_server_ubuntu_ee_pkg_url: Default Ubuntu package URL
+# couchbase_server_ubuntu_ee_pkg_sha256: Default Ubuntu package SHA256 checksum
 # couchbase_server_tune_disks: Whether to mount disks with optimized settings
 #
 #############################################################################
 
+couchbase_server_edition: enterprise
 couchbase_server_admin: Administrator
 couchbase_server_password: couchbase
 couchbase_server_ram: 3072
@@ -46,8 +48,8 @@ couchbase_server_rhel_pkg_version: 2.5.1
 couchbase_server_rhel_pkg_file: couchbase-server-enterprise_2.5.0_x86_64.rpm
 couchbase_server_rhel_pkg_url: http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.rpm
 couchbase_server_rhel_pkg_sha256: b131f3670d99177cd83959e1283ff213f3f470fbbfd6b84cd24826e4a8287298
-couchbase_server_ubuntu_pkg_version: 2.5.1
-couchbase_server_ubuntu_pkg_file: couchbase-server-enterprise_2.5.0_x86_64.deb
-couchbase_server_ubuntu_pkg_url: http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.deb
-couchbase_server_ubuntu_pkg_sha256: b5e04a3832657c7fb6c6e2c499e2c1ef6b82ca57f470952abcf03332857bedde
+couchbase_server_ubuntu_ee_pkg_version: 2.5.1
+couchbase_server_ubuntu_ee_pkg_file: couchbase-server-enterprise_2.5.0_x86_64.deb
+couchbase_server_ubuntu_ee_pkg_url: http://packages.couchbase.com/releases/2.5.0/couchbase-server-enterprise_2.5.0_x86_64.deb
+couchbase_server_ubuntu_ee_pkg_sha256: b5e04a3832657c7fb6c6e2c499e2c1ef6b82ca57f470952abcf03332857bedde
 couchbase_server_tune_disks: false

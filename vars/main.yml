@@ -2,8 +2,9 @@
 # File: vars/main.yml - Global Couchbase Server variables
 
 #############################################################################
-# Available Couchbase Server additional variables
+#
+# Couchbase Server additional variables
 #
 #############################################################################
 
-couchbase_server_bucket_replica: 1
+couchbase_server_bucket_meat: seitan

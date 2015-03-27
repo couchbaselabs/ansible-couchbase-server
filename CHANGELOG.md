@@ -166,3 +166,35 @@
 ## v1.0.2
 
 - Update versions
+
+## v1.0.3
+
+- Update docs
+- Update versions
+
+## v1.0.4
+
+- Fix package names in CentOS
+- Update versions
+
+## v1.0.5
+
+- Added Couchbase Server Community Edition
+- Conditionally install Community or Enterprise editions based on
+  couchbase_server_edition variable setting
+- Update software versions
+- Update documentation
+
+## v1.0.6
+
+- Increase timeout for package downloads to handle extremely slow internet
+
+## v1.0.7
+
+- Specific distribution support for CentOS, Debian, RHEL, and Ubuntu
+- Update version support
+- Update documentation
+
+## v1.0.8
+
+- Include Debian and Red Hat hosts
