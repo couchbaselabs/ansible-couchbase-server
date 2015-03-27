@@ -192,3 +192,9 @@
 ## v1.0.7
 
 - Specific distribution support for CentOS, Debian, RHEL, and Ubuntu
+- Update version support
+- Update documentation
+
+## v1.0.8
+
+- Include Debian and Red Hat hosts
