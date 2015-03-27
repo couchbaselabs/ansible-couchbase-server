@@ -1,0 +1,4 @@
+---
+# File: defaults/CentOS.yml - CentOS Couchbase Server defaults
+
+couchbase_server_latest_version: 3.0.2

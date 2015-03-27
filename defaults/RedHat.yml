@@ -1,4 +1,4 @@
 ---
-# File: defaults/redhat.yml - RHEL and CentOS Couchbase Server defaults
+# File: defaults/RedHat.yml - RHEL Couchbase Server defaults
 
 couchbase_server_latest_version: 3.0.2

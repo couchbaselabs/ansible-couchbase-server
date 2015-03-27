@@ -1,5 +1,5 @@
 ---
-# File: vars/RedHat.yml - RHEL and CentOS variables
+# File: vars/CentOS.yml - CentOS variables
 
 # This file contains variables used for installing Couchbase software,
 # including the following:
@@ -12,7 +12,7 @@
 # COUCHBASE SERVER ENTERPRISE EDITION
 #
 # A listing of available Couchbase Server Enterprise Edition packages and
-# their metadata for RHEL
+# their metadata for CentOS and RHEL
 #
 # Default installed version is currently set to:
 # Couchbase Server Enterprise Edition version 3.0.2

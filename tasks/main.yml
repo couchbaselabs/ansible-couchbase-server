@@ -1,16 +1,24 @@
 ---
 # File: tasks/main.yml - Main tasks for ansible-couchbase-server
 
-- name: OS Variables
-  include_vars: "{{ ansible_os_family }}.yml"
+- name: Distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
 
-# CentOS/RHEL tasks
-- include: RedHat.yml
-  when: ansible_os_family  == "RedHat"
+# CentOS tasks
+- include: CentOS.yml
+  when: ansible_distribution  == "CentOS"
 
-# Debian/Ubuntu tasks
+# Debian tasks
 - include: Debian.yml
-  when: ansible_os_family  == "Debian"
+  when: ansible_distribution  == "Debian"
+
+# Red Hat tasks
+- include: RedHat.yml
+  when: ansible_distribution  == "RedHat"
+
+# Ubuntu tasks
+- include: Ubuntu.yml
+  when: ansible_distribution  == "Ubuntu"
 
 - name: Update user limits
   copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644

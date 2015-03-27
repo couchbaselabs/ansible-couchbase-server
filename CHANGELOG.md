@@ -188,3 +188,7 @@
 ## v1.0.6
 
 - Increase timeout for package downloads to handle extremely slow internet
+
+## v1.0.7
+
+- Specific distribution support for CentOS, Debian, RHEL, and Ubuntu
