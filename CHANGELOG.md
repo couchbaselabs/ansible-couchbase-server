@@ -198,3 +198,8 @@
 ## v1.0.8
 
 - Include Debian and Red Hat hosts
+
+## v1.0.9
+
+- Couchbase Server Enterprise Edition version 3.0.3
+- Update README
