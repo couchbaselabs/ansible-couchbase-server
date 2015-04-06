@@ -61,7 +61,7 @@ Begin from the top level directory of this project and use the following
  * 10.1.42.10 node1.local node1
  * 10.1.42.20 node2.local node2
  * 10.1.42.30 node3.local node3
-3. `cd macosx`
+3. `cd examples`
 4. `vagrant up`
 5. Access the cluster at http://node1:8091 with username **Administrator**
    and password **couchbase**.
@@ -306,17 +306,16 @@ ansible-playbook -i centos create_bucket.yml \
 -e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
 ```
 
-More useful operations and playbooks are planned for future versions of
-this project as well.
+Additional playbooks are planned for future versions of this project as well.
 
 ## Notes
 
-0. The project is confirmed to function with the following software versions:
-  * Ansible version 1.8.4
+0. This project is confirmed to function with the following software versions:
+  * Ansible version 1.9.0.1
   * VirtualBox version 4.3.26
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0
-1. The project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
+1. This project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
    supported major versions of platforms which are listed on the 
    Couchbase Server package downloads page 
    (CentOS 6 and Ubuntu 12.04 to be specific).

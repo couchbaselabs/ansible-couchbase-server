@@ -198,3 +198,14 @@
 ## v1.0.8
 
 - Include Debian and Red Hat hosts
+
+## v1.0.9
+
+- Couchbase Server Enterprise Edition version 3.0.3
+- Update README
+
+## v1.0.10
+
+- Specification of hostnames during node-init for >= 3.0.x clusters
+- Updated version references
+- Updated documentation
