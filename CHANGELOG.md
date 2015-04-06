@@ -203,3 +203,9 @@
 
 - Couchbase Server Enterprise Edition version 3.0.3
 - Update README
+
+## v1.0.10
+
+- Specification of hostnames during node-init for >= 3.0.x clusters
+- Updated version references
+- Updated documentation

@@ -311,7 +311,7 @@ Additional playbooks are planned for future versions of this project as well.
 ## Notes
 
 0. This project is confirmed to function with the following software versions:
-  * Ansible version 1.8.4
+  * Ansible version 1.9.0.1
   * VirtualBox version 4.3.26
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0

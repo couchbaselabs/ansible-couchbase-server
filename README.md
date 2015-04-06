@@ -11,11 +11,11 @@
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and Enterprise
-editions for several operating system environments.
+editions for several supported operating systems.
 
 This Ansible role can be used to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
-documents with the additional playbooks included in the `examples` directory.
+documents with the playbooks included in the `examples` directory.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ This role has been tested for basic functionality with the following
 software:
 
 * Couchbase Server (versions 1.8.1-3.0.3)
-* Ansible (version 1.8.4)
+* Ansible (version 1.9.0.1)
 * CentOS (versions 6.2-6.5)
 * Ubuntu (versions 12.04-13.10)
 
@@ -31,11 +31,11 @@ software:
 
 In cases where you want simple clusters for development or other
 non-production use, the default values for the Couchbase Server role's common 
-variables can be left as is.
+variables can usually be left as-is.
 
 However, should you need specific performance or otherwise wish to tweak them
-for your particular situation, this section describes all variables in 
-detail including their default values for your reference.
+for your particular purpose, this section describes all of the user editable
+variables in detail including their default values for your reference.
 
 ### Common Variables
 
@@ -85,6 +85,32 @@ examples, and Vagrant bits (primarily for Mac OS X development use):
 * `centos` CentOS hosts inventory for Vagrant based development cluster
 * `ubuntu` Ubuntu hosts inventory for Vagrant based development cluster
 
+### Quick Start for Simple Mac OS X Cluster
+
+Follow these steps to have a simple 3 node development or evaluation
+cluster on a >= 8GB Mac with OS X, VirtualBox and Vagrant:
+
+1. export ROLEPATH=<ansible_role_path>
+2. `ansible-galaxy install couchbase.couchbase-server`
+3. cd $ROLEPATH/couchbase.couchbase-server/examples
+4. vagrant up
+
+This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
+them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
+10.1.42.30 as defined in the `Vagrantfile`.
+
+To install Debian based nodes, change the command in step 4 to:
+
+```
+BOX_NAME=chef/debian-7.4 CLUSTER_HOSTS=debian vagrant up
+```
+
+To install Ubuntu based nodes, change the command in step 4 to:
+
+```
+BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
+```
+ 
 ## Dependencies
 
 None

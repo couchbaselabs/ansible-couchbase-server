@@ -5,12 +5,18 @@
 # Couchbase Server default variables
 #
 # couchbase_server_edition: Couchbase Server edition: Community or Enterprise 
+# couchbase_server_admin: Couchbase Server administrator user name
+# couchbase_server_password: Couchbase Server administrator user password
 # couchbase_server_ram: The per server RAM quota specified in megabytes
 # couchbase_server_admin_port: Administration and web console port
 # couchbase_server_api_port: Couchbase Server API port
 # couchbase_server_internal_ports: Memcached and client ports
 # couchbase_server_node_data_ports: Distributed Erlang communication ports
 # couchbase_server_config_file: Full path to the config.dat file
+# couchbase_server_filesystem: Default filesystem for data and index volumes
+# couchbase_server_mountpoint: Logical volume mountpoint
+# couchbase_server_partition: Logical volume partition
+# couchbase_server_mount_options: Additional mount options
 # couchbase_server_data_path: Path to data files
 # couchbase_server_home_path: Base path to Couchbase Server installation
 # couchbase_server_index_path: Path to index files
