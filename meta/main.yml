@@ -13,7 +13,7 @@ best performing NoSQL database'
   #
   platforms:
   - name: EL
-  #  versions:
+    versions:
   #  - all
   #  - 5
     - 6
@@ -60,7 +60,7 @@ best performing NoSQL database'
   #  - 9.1
   #  - 9.2
   - name: Ubuntu
-  #  versions:
+    versions:
   #  - all
   #  - lucid
   #  - maverick
@@ -85,7 +85,7 @@ best performing NoSQL database'
   #  - all
   #  - any
   - name: Debian
-  #  versions:
+    versions:
   #  - all
   #  - etch
   #  - lenny

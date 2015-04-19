@@ -208,18 +208,7 @@
 
 - Specification of hostnames during node-init for >= 3.0.x clusters
 - Updated version references
-- Updated documentation
-
-## v1.0.11
-
+- Corrected meta versions
 - Updated .gitignore
 - Updated supported versions
 - Updated documentation
-
-## v1.0.12
-
-- Updated documentation
-
-## v1.0.13
-
-- Corrected meta versions
