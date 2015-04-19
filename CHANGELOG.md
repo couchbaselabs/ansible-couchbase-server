@@ -227,4 +227,6 @@
 
 - Corrected meta versions
 - Updated documentation
+
+## v1.0.14
 - Corrected package/SHA
