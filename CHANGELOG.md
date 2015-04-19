@@ -219,3 +219,7 @@
 ## v1.0.12
 
 - Updated documentation
+
+## v1.0.13
+
+- Corrected meta versions
