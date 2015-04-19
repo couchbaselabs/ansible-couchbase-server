@@ -1,4 +1,4 @@
 ---
-# File: defaults/CentOS.yml - CentOS Couchbase Server defaults
+# File: defaults/CentOS.yml - CentOS ansible-couchbase-server defaults
 
 couchbase_server_latest_version: 3.0.3

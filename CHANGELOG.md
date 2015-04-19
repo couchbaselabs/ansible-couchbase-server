@@ -209,3 +209,9 @@
 - Specification of hostnames during node-init for >= 3.0.x clusters
 - Updated version references
 - Updated documentation
+
+## v1.0.11
+
+- Updated .gitignore
+- Updated supported versions
+- Updated documentation

@@ -1,5 +1,5 @@
 ---
-# File: vars/main.yml - Global Couchbase Server variables
+# File: vars/main.yml - Global ansible-couchbase-server variables
 
 #############################################################################
 #

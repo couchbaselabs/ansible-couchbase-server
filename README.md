@@ -19,18 +19,18 @@ documents with the playbooks included in the `examples` directory.
 
 ## Requirements
 
-This role has been tested for basic functionality with the following 
+This role has been tested for basic functionality with the following
 software:
 
-* Couchbase Server (versions 1.8.1-3.0.3)
+* Couchbase Server (versions 2.5.2-3.0.3)
 * Ansible (version 1.9.0.1)
-* CentOS (versions 6.2-6.5)
+* CentOS (versions 6.2-6.7)
 * Ubuntu (versions 12.04-13.10)
 
 ## Role Variables
 
 In cases where you want simple clusters for development or other
-non-production use, the default values for the Couchbase Server role's common 
+non-production use, the default values for the Couchbase Server role's common
 variables can usually be left as-is.
 
 However, should you need specific performance or otherwise wish to tweak them
@@ -63,7 +63,7 @@ variables in detail including their default values for your reference.
 
 ### Special Variables
 
-*The following variables should be set with caution* as they have potential 
+*The following variables should be set with caution* as they have potential
 negative performance implications; they should not be used without knowledge
 of the changes which are made to the operating system configuration:
 
@@ -110,7 +110,7 @@ To install Ubuntu based nodes, change the command in step 4 to:
 ```
 BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
 ```
- 
+
 ## Dependencies
 
 None

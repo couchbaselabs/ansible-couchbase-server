@@ -1,5 +1,5 @@
 ---
-# File: vars/Debian.yml - Ubuntu variables
+# File: vars/Debian.yml - Ubuntu ansible-couchbase-server variables
 #
 
 # This file contains variables used for installing Couchbase software,
@@ -45,53 +45,6 @@ couchbase_server_ubuntu_ee_sha256: 13e925fa8b806aecd09751bdb7be1f8cfa188ad894e26
 # couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}_x86_64.deb
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
 # couchbase_server_ubuntu_ee_sha256: 27a79a65758023c34ed900e8ef8c54bab4a65f4c84b7c94359cba910800a4b19
-
-# couchbase_server_ubuntu_ee_version: 2.5.1
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}_x86_64.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 26c8c990addbd56024fbc5c8e841962b985034f5b7c0e936eb9af94674e5f12a
-
-# Couchbase Server Enterprise Edition version 2.2.0
-# couchbase_server_ubuntu_ee_version: 2.5.0
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}_x86_64.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: b5e04a3832657c7fb6c6e2c499e2c1ef6b82ca57f470952abcf03332857bedde
-
-# Couchbase Server Enterprise Edition version 2.2.0
-# couchbase_server_ubuntu_ee_version: 2.2.0
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}_x86_64.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: aabc31fe0894ec97753a6632b78be39cf05b8aa9b25d17d68ec7eca5b304e1b0
-
-## Couchbase Server Enterprise Edition version 2.1.1
-# couchbase_server_ubuntu_ee_version: 2.1.1
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_x86_64_{{ couchbase_server_ubuntu_ee_version }}.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 5a83a212ce292ef436678e99ac2bb0f44e050e3711b0af2619d84cd4e2013d92
-
-## Couchbase Server Enterprise Edition version 2.1.0
-# couchbase_server_ubuntu_ee_version: 2.1.0
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_x86_64_{{ couchbase_server_ubuntu_ee_version }}.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 17b754ce149829d809c2caa80d996ed1c305b90c7d94d0748186836293f0f0e6
-
-## Couchbase Server Enterprise Edition version 2.0.1
-# couchbase_server_ubuntu_ee_version: 2.0.1
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_x86_64_{{ couchbase_server_ubuntu_ee_version }}.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 8550436da4e408c01e232021a8d015d02dab328dd47c105ff2c829582f7059b1
-
-## Couchbase Server Enterprise Edition version 2.0.0
-# couchbase_server_ubuntu_ee_version: 2.0.0
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_x86_64_{{ couchbase_server_ubuntu_ee_version }}.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 5b88bd0b059dba3759725c870cede5763f24c955f0a73a544a624dc39a0ba7df
-
-## Couchbase Server Enterprise Edition version 1.8.1
-# couchbase_server_ubuntu_ee_version: 1.8.1
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_x86_64_{{ couchbase_server_ubuntu_ee_version }}.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 9a8b2fead587365c0358b37bbb8226982e6d8e3b6bd9f8e8e5bd4c9e551d2cee
 
 #############################################################################
 #

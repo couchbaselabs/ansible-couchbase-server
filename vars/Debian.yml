@@ -1,5 +1,5 @@
 ---
-# File: vars/Debian.yml - Debian variables
+# File: vars/Debian.yml - Debian ansible-couchbase-server variables
 #
 
 # This file contains variables used for installing Couchbase software,

@@ -1,5 +1,7 @@
 .DS_Store
 .vagrant
 .tm_properties
+examples/hosts
 examples/labmachines
 examples/cluster_uninstall.yml
+
