@@ -215,3 +215,7 @@
 - Updated .gitignore
 - Updated supported versions
 - Updated documentation
+
+## v1.0.12
+
+- Updated documentation

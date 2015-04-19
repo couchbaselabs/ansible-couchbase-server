@@ -315,9 +315,9 @@ Additional playbooks are planned for future versions of this project as well.
   * VirtualBox version 4.3.26
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0
-1. This project uses CentOS 6.5 and Ubuntu 12.04 as these are among the 
-   supported major versions of platforms which are listed on the 
-   Couchbase Server package downloads page 
+1. This project uses CentOS 6.5 and Ubuntu 12.04 as these are among the
+   supported major versions of platforms which are listed on the
+   Couchbase Server package downloads page
    (CentOS 6 and Ubuntu 12.04 to be specific).
 2. The `bin/preinstall` shell script performs the following actions for you:
  * Adds each node's host information to the host machine's `/etc/hosts`
@@ -325,10 +325,8 @@ Additional playbooks are planned for future versions of this project as well.
  * Optionally installs the Vagrant hosts plugin
 3. Review the different operating system tuning changes in the following
   files to adjust or add your own:
-  * `roles/bootstrap/common/templates/etc_rc.local.j2`
-  * `roles/bootstrap/common/templates/iptables.j2`
-  * `roles/couchbase-server/centos/templates/iptables.j2`
-  * `roles/couchbase-server/ubuntu/templates/iptables.j2`
+  * `roles/couchbase-server/templates/etc_sysctl.d_couchbase-server.conf.j2`
+  * `roles/couchbase-server/templates/iptables.j2`
 
 ## References
 
