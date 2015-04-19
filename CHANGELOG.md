@@ -227,3 +227,4 @@
 
 - Corrected meta versions
 - Updated documentation
+- Corrected package/SHA
