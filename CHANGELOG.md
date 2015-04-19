@@ -212,3 +212,18 @@
 - Updated .gitignore
 - Updated supported versions
 - Updated documentation
+
+## v1.0.11
+
+- Updated supported versions
+- Updated documentation
+
+## v1.0.12
+
+- Updated supported versions
+- Updated documentation
+
+## v1.0.13
+
+- Corrected meta versions
+- Updated documentation
