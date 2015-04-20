@@ -229,4 +229,15 @@
 - Updated documentation
 
 ## v1.0.14
+
 - Corrected package/SHA
+
+## v1.0.15
+
+- Update timeout for cluster_init
+- Use ansible_os_distribution throughout
+- Do not attempt to disable THP on Ubuntu 12.04
+- Rename couchbase_server_tune_disks to couchbase_server_tune_os
+- Add template tags to templates/etc_sysctl.d_couchbase-server.conf.j2
+- Rename default bucket to "default" in create_bucket playbook
+- Update documentation

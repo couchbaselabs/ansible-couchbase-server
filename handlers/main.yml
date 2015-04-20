@@ -1,6 +1,6 @@
 ---
 # File: handlers/main.yml
-# Main handlers for the common features of the Couchbase Server role
+# Main handlers for the common features of the ansible-couchbase-server role
 
 - name: Update kernel settings
   command: sysctl -e -p /etc/sysctl.d/couchbase-server.conf

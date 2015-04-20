@@ -29,7 +29,7 @@
     register: cb_major_version
 
   - name: Wait for nodes
-    wait_for: port=8091 delay=7
+    wait_for: port=8091 delay=5
 
   - name: Configure cluster settings
     shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli cluster-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --cluster-init-password={{ couchbase_server_password }} --cluster-init-port={{couchbase_server_admin_port}} --cluster-init-ramsize={{ couchbase_server_ram }}"

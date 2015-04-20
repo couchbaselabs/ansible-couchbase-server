@@ -11,7 +11,6 @@ SUDOBIN="/usr/bin/sudo"
 SHBIN="/bin/sh"
 VAGRANTBIN="/usr/bin/vagrant"
 
-
 # Log stuff
 function logmsg {
   case "$1" in
@@ -47,12 +46,6 @@ function add_hosts {
   fi
 }
 
-# Set correct SSH private key permissions
-function ssh_key_perms {
-  logmsg notice "Set 0600 permissions on Vagrant SSH private key"
-  $CHMODBIN 0600 $PRIVKEY > /dev/null 2>&1
-}
-
 # Install Vagrant Hosts plugin if necessary
 function vagrant_hosts_plugin {
   if $VAGRANTBIN plugin list | $GREPBIN vagrant-hosts > /dev/null 2>&1; then
@@ -64,5 +57,4 @@ function vagrant_hosts_plugin {
 }
 
 add_hosts
-ssh_key_perms
 vagrant_hosts_plugin

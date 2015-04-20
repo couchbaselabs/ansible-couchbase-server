@@ -1,6 +1,7 @@
 ---
 # File: tasks/RedHat.yml - RHEL tasks for ansible-couchbase-server
-# Download and install SELinux Python module and Couchbase Server
+
+# Download and install SELinux Python module (required by Ansible)
 
 - name: SELinux Python Module
   yum: name=libselinux-python state=present
