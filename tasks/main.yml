@@ -25,12 +25,12 @@
 
 - name: Optimized settings for Couchbase Server data and index volumes
   mount: name={{ couchbase_server_mountpoint }} src={{ couchbase_server_partition }} opts={{ couchbase_server_mount_options }} fstype={{ couchbase_server_filesystem }} state=mounted
-  when: couchbase_server_tune_disks
+  when: couchbase_server_tune_os
 
 - name: Additional OS config
   template: src=etc_rc.local.j2 dest=/etc/rc.local owner=root group=root mode=0755
   notify: Source local settings
-  when: couchbase_server_tune_disks
+  when: couchbase_server_tune_os
 
 - name: Kernel settings dir
   file: dest=/etc/sysctl.d state=directory
@@ -40,7 +40,7 @@
   notify: Update kernel settings
 
 - name: Disable THP
-  ignore_errors: yes
   shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done' >> /etc/rc.local
   shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/defrag; do echo never > $i; done' >> /etc/rc.local
   shell: for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done
+  when: ansible_distribution_version != "12.04"

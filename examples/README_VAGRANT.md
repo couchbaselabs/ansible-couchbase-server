@@ -284,7 +284,7 @@ as follows:
 Upon first execution without specifying variable arguments via the `ansible-playbook` extra vars ('-e') option, the playbook will generate a
 bucket with the following properties:
 
-* Bucket name: *makura*
+* Bucket name: *default*
 * Bucket type: *couchbase*
 * Bucket port: *11222*
 * Bucket RAM size: 256MB
@@ -315,10 +315,10 @@ Additional playbooks are planned for future versions of this project as well.
   * VirtualBox version 4.3.26
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0
-1. This project uses CentOS 6.5 and Ubuntu 12.04 as these are among the
-   supported major versions of platforms which are listed on the
+1. This project uses CentOS 6.5 and Ubuntu 12.04 by default as these are
+   among the supported major versions of platforms which are listed on the
    Couchbase Server package downloads page
-   (CentOS 6 and Ubuntu 12.04 to be specific).
+   (CentOS 6.5 and Ubuntu 12.04 to be specific).
 2. The `bin/preinstall` shell script performs the following actions for you:
  * Adds each node's host information to the host machine's `/etc/hosts`
  * Ensures the correct permissions on Vagrant SSH private key

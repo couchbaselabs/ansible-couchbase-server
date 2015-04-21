@@ -7,4 +7,4 @@
 #
 #############################################################################
 
-couchbase_server_bucket_meat: seitan
+couchbase_server_default_bucket: default

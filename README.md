@@ -19,8 +19,7 @@ documents with the playbooks included in the `examples` directory.
 
 ## Requirements
 
-This role has been tested for basic functionality with the following
-software:
+This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
 * Ansible (version 1.9.0.1)
@@ -69,7 +68,7 @@ of the changes which are made to the operating system configuration:
 
 | Name                                 | Default  | Description                                    |
 | ------------------------------------ | -------- | ---------------------------------------------- |
-| couchbase_server_tune_disks          | false    | Whether to mount disks with optimized settings |
+| couchbase_server_tune_os          | false    | Whether to tune OS with optimized settings |
 
 ## Examples
 

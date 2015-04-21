@@ -1,8 +1,7 @@
 ---
 # File: tasks/Ubuntu.yml - Ubuntu tasks for ansible-couchbase-server
-# Download and install Couchbase Server
 
-# Couchbase Server Enterprise Edition
+## Couchbase Server Enterprise Edition
 
 - name: Download
   get_url: url={{ couchbase_server_ubuntu_ee_url }} dest=/tmp/{{ couchbase_server_ubuntu_ee_package }} sha256sum={{ couchbase_server_ubuntu_ee_sha256 }} timeout=240
@@ -19,7 +18,7 @@
   when: couchbase_server_edition == "enterprise"
   tags: installation
 
-# Couchbase Server Community Edition
+## Couchbase Server Community Edition
 
 - name: Download
   get_url: url={{ couchbase_server_ubuntu_ce_url }} dest=/tmp/{{ couchbase_server_ubuntu_ce_package }} sha256sum={{ couchbase_server_ubuntu_ce_sha256 }} timeout=240

@@ -16,7 +16,7 @@
     - ../defaults/main.yml
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
-    couchbase_server_bucket_name: makura
+    couchbase_server_bucket_name: default
     couchbase_server_bucket_type: couchbase
     couchbase_server_bucket_ram: 256
     couchbase_server_bucket_port: 11222
