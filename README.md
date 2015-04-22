@@ -73,7 +73,8 @@ of the changes which are made to the operating system configuration:
 ## Examples
 
 The `examples` directory contains some basic playbooks, host inventory
-examples, and Vagrant bits (primarily for Mac OS X development use):
+examples, and Vagrant bits (primarily for Mac OS X development use)
+as follows:
 
 * `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
@@ -83,6 +84,39 @@ examples, and Vagrant bits (primarily for Mac OS X development use):
 * `Vagrantfile` example Vagrant development cluster definition
 * `centos` CentOS hosts inventory for Vagrant based development cluster
 * `ubuntu` Ubuntu hosts inventory for Vagrant based development cluster
+
+### Create Buckets
+
+The example playbook `create_bucket.yml` for bucket creation can be used
+as follows:
+
+Upon first execution without specifying variable arguments via the `ansible-playbook` extra vars ('-e') option, the playbook will generate a
+bucket with the following properties:
+
+* Bucket name: *default*
+* Bucket type: *couchbase*
+* Bucket port: *11211*
+* Bucket RAM size: 256MB
+* Bucket replica number: 1
+
+If you'd like to create your own buckets, then use the `ansible-playbook`
+extra vars ('-e') option and specify values for the
+*b_name*, *b_type*, *b_port*, *b_ramsize*, and *b_replica* variables like so:
+
+```
+ansible-playbook -i centos create_bucket.yml \
+-e "b_name=danika b_type=couchbase b_port=11223 b_ramsize=256 b_replica=2"
+```
+
+or perhaps you'd like to make a memcached based bucket? No problem:
+
+```
+ansible-playbook -i centos create_bucket.yml \
+-e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
+```
+
+Additional playbooks are planned for future versions of this project as well.
+
 
 ### Quick Start for Simple Mac OS X Cluster
 
@@ -109,6 +143,7 @@ To install Ubuntu based nodes, change the command in step 4 to:
 ```
 BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
 ```
+
 
 ## Dependencies
 

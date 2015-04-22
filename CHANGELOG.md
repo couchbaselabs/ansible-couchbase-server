@@ -241,3 +241,8 @@
 - Add template tags to templates/etc_sysctl.d_couchbase-server.conf.j2
 - Rename default bucket to "default" in create_bucket playbook
 - Update documentation
+
+## v1.0.16
+
+- create_bucket playbook now creates bucket named default on correct port
+- Updated documentation
