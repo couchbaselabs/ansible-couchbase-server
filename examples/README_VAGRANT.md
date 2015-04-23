@@ -50,6 +50,29 @@ The Ansible playbooks then further refine OS configuration, Couchbase Server
 package download and installation, and the initialization of the 3 nodes
 into a ready to use cluster.
 
+## Designed for Ansible Galaxy
+
+This role is designed to be installed via the `ansible-galaxy` command
+instead of being directly run from the git repository.
+
+You should install it like this:
+
+```
+ansible-galaxy install couchbase.couchbase-server
+```
+
+You'll want to make sure you have write access to `/etc/ansible/roles/` since
+that is where the role will be installed by default, or define your own
+Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
+
+```
+[defaults]
+roles_path = <path_to_your_preferred_role_location>
+```
+
+Change `<path_to_your_preferred_role_location>` to a directory you have write
+access to.
+
 ## Quick Start
 
 Begin from the top level directory of this project and use the following
@@ -61,7 +84,7 @@ Begin from the top level directory of this project and use the following
  * 10.1.42.10 node1.local node1
  * 10.1.42.20 node2.local node2
  * 10.1.42.30 node3.local node3
-3. `cd examples`
+3. `<roles_path>/couchbase.couchbase-server/examples`
 4. `vagrant up`
 5. Access the cluster at http://node1:8091 with username **Administrator**
    and password **couchbase**.
