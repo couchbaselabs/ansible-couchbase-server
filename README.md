@@ -26,6 +26,29 @@ This role is tested for basic functionality with the following software:
 * CentOS (versions 6.2-6.7)
 * Ubuntu (versions 12.04-13.10)
 
+## Designed for Ansible Galaxy
+
+This role is designed to be installed via the `ansible-galaxy` command
+instead of being directly run from the git repository.
+
+You should install it like this:
+
+```
+ansible-galaxy install couchbase.couchbase-server
+```
+
+You'll want to make sure you have write access to `/etc/ansible/roles/` since
+that is where the role will be installed by default, or define your own
+Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
+
+```
+[defaults]
+roles_path = <path_to_your_preferred_role_location>
+```
+
+Change `<path_to_your_preferred_role_location>` to a directory you have write
+access to.
+
 ## Role Variables
 
 In cases where you want simple clusters for development or other

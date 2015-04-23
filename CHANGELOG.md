@@ -250,3 +250,7 @@
 ## v1.0.17
 
 - Wait for all nodes to be listening on 8091 before clustering operations
+
+## v1.0.18
+
+- Update documentation regarding ansile-galaxy, roles path, etc.
