@@ -16,6 +16,13 @@
   - name: Couchbase Server Service
     service: name=couchbase-server state=started
 
+- hosts: cluster_nodes
+  sudo: True
+  tasks:
+
+  - name: Wait for nodes
+    wait_for: port=8091 delay=60
+
 - hosts: primary
   sudo: True
   vars_files:
