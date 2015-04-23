@@ -246,3 +246,7 @@
 
 - create_bucket playbook now creates bucket named default on correct port
 - Updated documentation
+
+## v1.0.17
+
+- Wait for all nodes to be listening on 8091 before clustering operations
