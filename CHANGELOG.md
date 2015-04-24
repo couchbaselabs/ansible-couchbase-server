@@ -254,3 +254,10 @@
 ## v1.0.18
 
 - Update documentation regarding ansile-galaxy, roles path, etc.
+
+## v1.0.19
+
+- Added cluster_collect_info playbook
+- Removed rc.local task
+- Updated variables
+- Updated documentation
