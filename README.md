@@ -23,7 +23,7 @@ This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
 * Ansible (version 1.9.0.1)
-* CentOS (versions 6.2-6.7)
+* CentOS (versions 6.2-7.0)
 * Ubuntu (versions 12.04-13.10)
 
 ## Designed for Ansible Galaxy
@@ -49,14 +49,17 @@ roles_path = <path_to_your_preferred_role_location>
 Change `<path_to_your_preferred_role_location>` to a directory you have write
 access to.
 
+See the [ansible-galaxy](http://docs.ansible.com/galaxy.html) documentation
+for more details.
+
 ## Role Variables
 
 In cases where you want simple clusters for development or other
-non-production use, the default values for the Couchbase Server role's common
-variables can usually be left as-is.
+non-production use, the values for Couchbase Server role's default variables
+can be left as-is.
 
 However, should you need specific performance or otherwise wish to tweak them
-for your particular purpose, this section describes all of the user editable
+for your particular purpose, this section describes all of the role's
 variables in detail including their default values for your reference.
 
 ### Default Variables
@@ -96,11 +99,12 @@ of the changes which are made to the operating system configuration:
 ## Examples
 
 The `examples` directory contains some basic playbooks, host inventory
-examples, and Vagrant bits (primarily for Mac OS X development use)
+examples, and Vagrant bits (primarily for development use)
 as follows:
 
 * `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
+* `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
 * `create_bucket.yml` creates an example bucket
 * `load_bucket.yml` loads sample JSON data into a bucket
 * `example_hosts` example hosts inventory in format required by this project
@@ -141,15 +145,18 @@ ansible-playbook -i centos create_bucket.yml \
 Additional playbooks are planned for future versions of this project as well.
 
 
-### Quick Start for Simple Mac OS X Cluster
+### Quick Start for 3-Node Development Cluster
 
 Follow these steps to have a simple 3 node development or evaluation
-cluster on a >= 8GB Mac with OS X, VirtualBox and Vagrant:
+cluster on a machine with >= 8GB RAM, using VirtualBox and Vagrant:
 
 1. export ROLEPATH=<ansible_role_path>
 2. `ansible-galaxy install couchbase.couchbase-server`
 3. cd $ROLEPATH/couchbase.couchbase-server/examples
 4. vagrant up
+
+Note that <ansible_role_path> defaults to `/etc/ansible/roles` or the path
+you've specified in `~/.ansible.cfg` for *roles_path*.
 
 This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
 them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
@@ -167,6 +174,7 @@ To install Ubuntu based nodes, change the command in step 4 to:
 BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
 ```
 
+See `examples/README_VAGRANT.md` for more details.
 
 ## Dependencies
 

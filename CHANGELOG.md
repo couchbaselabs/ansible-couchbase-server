@@ -257,7 +257,12 @@
 
 ## v1.0.19
 
-- Added cluster_collect_info playbook
 - Removed rc.local task
 - Updated variables
+- Updated documentation
+
+## v1.0.20
+
+- Added cluster_collect_info playbook
+- Updated cluster_install playbook
 - Updated documentation
