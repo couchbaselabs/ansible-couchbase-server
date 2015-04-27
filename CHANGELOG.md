@@ -253,7 +253,7 @@
 
 ## v1.0.18
 
-- Update documentation regarding ansile-galaxy, roles path, etc.
+- Update documentation regarding ansible-galaxy, roles path, etc.
 
 ## v1.0.19
 
@@ -272,3 +272,9 @@
 - Added cluster_backup playbook
 - Corrected load_bucket playbook
 - Updated documentation
+
+## v1.0.22
+
+- Remove cleanup tasks (it's in the tmp dir after all)
+- Update playbooks
+- One wait instance for REST port only

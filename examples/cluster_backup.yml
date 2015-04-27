@@ -1,7 +1,8 @@
 ---
 # File: cluster_backup.yml
 # Ansible playbook to grab a full cluster backup from the specified 
-# Couchbase Server cluster with cbbackup
+# Couchbase Server cluster with cbbackup and save as a
+# tarball in $PWD/var/couchbase_backups/
 
 - hosts: cluster_nodes
   sudo: True
@@ -18,7 +19,7 @@
     - ../defaults/main.yml
   tasks:
 
-  - name: Ensure backup target path
+  - name: Ensure backup target exists
     file: "path={{ couchbase_server_cbbackup_path}} state=directory"
 
   - name: Execute cbbackup
@@ -27,8 +28,8 @@
   - name: Create backup archive
     shell: "tar zcf {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}"
 
-  - name: Gather backup
-    fetch: "src={{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz dest=var/cbbackup/{{ ansible_hostname }}.tgz flat=yes fail_on_missing=yes validate_checksum=yes"
+  - name: Retrieve backup archive
+    fetch: "src={{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz dest=var/couchbase_backups/{{ ansible_hostname }}.tgz flat=yes fail_on_missing=yes validate_checksum=yes"
 
   - name: Cleanup
     shell: "rm -rf {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }} {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz"
