@@ -21,6 +21,8 @@
 # couchbase_server_home_path: Base path to Couchbase Server installation
 # couchbase_server_index_path: Path to index files
 # couchbase_server_log_path: Path to log files
+# couchbase_server_cbcollect_path: Path to cbcollect_info output
+# couchbase_server_tmpdir: Systemwide TMPDIR for cbcollect_info
 # couchbase_server_tune_os: Whether to tune OS with optimized settings
 #
 # OS tuneables
@@ -39,11 +41,13 @@ couchbase_server_config_file: /opt/couchbase/var/lib/couchbase/config/config.dat
 couchbase_server_filesystem: ext4
 couchbase_server_mountpoint: /
 couchbase_server_partition: /dev/mapper/VolGroup-lv_root
-couchbase_server_mount_options: noatime,barrier=0,errors=remount-ro
+couchbase_server_mount_options: 'noatime,barrier=0,errors=remount-ro'
 couchbase_server_data_path: /opt/couchbase/var/lib/couchbase/data
 couchbase_server_home_path: /opt/couchbase
 couchbase_server_index_path: /opt/couchbase/var/lib/couchbase/data
 couchbase_server_log_path: /opt/couchbase/var/lib/couchbase/logs
+couchbase_server_cbcollect_path: /tmp
+couchbase_server_tmpdir: /tmp
 couchbase_server_tune_os: false
 
 # OS tuneables

@@ -4,6 +4,7 @@
 
 - hosts: cluster_nodes
   sudo: True
+  gather_facts: False
   tasks:
   - name: Create cluster grouping
     group_by: key={{ node_role }}
@@ -17,7 +18,8 @@
     service: name=couchbase-server state=started
 
 - hosts: cluster_nodes
-  sudo: True
+  sudo: False
+  gather_facts: False
   tasks:
 
   - name: Wait for nodes
@@ -25,6 +27,7 @@
 
 - hosts: primary
   sudo: True
+  gather_facts: False
   vars_files:
     - ../defaults/main.yml
   vars:
@@ -35,7 +38,7 @@
     shell: cat /opt/couchbase/VERSION.txt | cut -d '.' -f1
     register: cb_major_version
 
-  - name: Wait for nodes
+  - name: Wait for services
     wait_for: port=8091 delay=5
 
   - name: Configure cluster settings
