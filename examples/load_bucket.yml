@@ -16,7 +16,7 @@
     - ../defaults/main.yml
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
-    couchbase_server_bucket_name: makura
+    couchbase_server_bucket_name: default
     couchbase_server_bucket_item_count: 9001
     couchbase_server_bucket_item_size: 256
 

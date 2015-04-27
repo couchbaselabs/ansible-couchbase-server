@@ -67,11 +67,11 @@ Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
 
 ```
 [defaults]
-roles_path = <path_to_your_preferred_role_location>
+roles_path = PATH_TO_YOUR_PREFERRED_ROLE_LOCATION
 ```
 
-Change `<path_to_your_preferred_role_location>` to a directory you have write
-access to.
+Change `PATH_TO_YOUR_PREFERRED_ROLE_LOCATION` to a directory that you 
+have write access to.
 
 ## Quick Start
 
@@ -183,7 +183,7 @@ root directory and execute the top level Ansible playbook with commands like
 the following:
 
 ```
-cd <rolespath>/couchbase.couchbase-server/examples
+cd $ROLESPATH/couchbase.couchbase-server/examples
 vagrant up
 ```
 
