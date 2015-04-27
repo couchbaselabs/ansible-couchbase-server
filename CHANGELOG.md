@@ -266,3 +266,9 @@
 - Added cluster_collect_info playbook
 - Updated cluster_install playbook
 - Updated documentation
+
+## v1.0.21
+
+- Added cluster_backup playbook
+- Corrected load_bucket playbook
+- Updated documentation

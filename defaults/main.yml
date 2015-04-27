@@ -21,6 +21,7 @@
 # couchbase_server_home_path: Base path to Couchbase Server installation
 # couchbase_server_index_path: Path to index files
 # couchbase_server_log_path: Path to log files
+# couchbase_server_cbbackup_path: Path to store output of cbbackup
 # couchbase_server_cbcollect_path: Path to cbcollect_info output
 # couchbase_server_tmpdir: Systemwide TMPDIR for cbcollect_info
 # couchbase_server_tune_os: Whether to tune OS with optimized settings
@@ -46,6 +47,7 @@ couchbase_server_data_path: /opt/couchbase/var/lib/couchbase/data
 couchbase_server_home_path: /opt/couchbase
 couchbase_server_index_path: /opt/couchbase/var/lib/couchbase/data
 couchbase_server_log_path: /opt/couchbase/var/lib/couchbase/logs
+couchbase_server_cbbackup_path: /opt/couchbase_backups
 couchbase_server_cbcollect_path: /tmp
 couchbase_server_tmpdir: /tmp
 couchbase_server_tune_os: false

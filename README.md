@@ -150,12 +150,12 @@ Additional playbooks are planned for future versions of this project as well.
 Follow these steps to have a simple 3 node development or evaluation
 cluster on a machine with >= 8GB RAM, using VirtualBox and Vagrant:
 
-1. export ROLEPATH=<ansible_role_path>
+1. `export ROLESPATH=$ANSIBLE_ROLES_PATH`
 2. `ansible-galaxy install couchbase.couchbase-server`
-3. cd $ROLEPATH/couchbase.couchbase-server/examples
-4. vagrant up
+3. `cd $ROLESPATH/couchbase.couchbase-server/examples`
+4. `vagrant up`
 
-Note that <ansible_role_path> defaults to `/etc/ansible/roles` or the path
+Note that `$ANSIBLE_ROLES_PATH` defaults to `/etc/ansible/roles` or the path
 you've specified in `~/.ansible.cfg` for *roles_path*.
 
 This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
