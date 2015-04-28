@@ -21,7 +21,8 @@
     couchbase_server_bucket_ram: 256
     couchbase_server_bucket_port: 11211
     couchbase_server_bucket_replica: 1
-
   tasks:
+
+    #TODO: add node warmup verification task before attempting bucket creation
     - name: Create new bucket
       shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli bucket-create -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --bucket={{ couchbase_server_bucket_name }} --bucket-type={{ couchbase_server_bucket_type }} --bucket-port={{ couchbase_server_bucket_port }} --bucket-ramsize={{ couchbase_server_bucket_ram }} --bucket-replica={{ couchbase_server_bucket_replica }}"

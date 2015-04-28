@@ -19,11 +19,6 @@
   when: couchbase_server_edition == "enterprise"
   tags: installation
 
-- name: Cleanup
-  file: name=/tmp/{{ couchbase_server_centos_ee_package }} state=absent
-  when: couchbase_server_edition == "enterprise"
-  tags: installation
-
 # Couchbase Server Community Edition
 
 - name: Download
@@ -33,10 +28,5 @@
 
 - name: Install
   yum: name=/tmp/{{ couchbase_server_centos_ce_package }} state=present
-  when: couchbase_server_edition == "community"
-  tags: installation
-
-- name: Cleanup
-  file: name=/tmp/{{ couchbase_server_centos_ce_package }} state=absent
   when: couchbase_server_edition == "community"
   tags: installation
