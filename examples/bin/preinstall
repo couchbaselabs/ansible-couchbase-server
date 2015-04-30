@@ -6,7 +6,6 @@
 CHMODBIN="/bin/chmod"
 GREPBIN="/usr/bin/grep"
 NODE1="10\.1\.42\.10"
-PRIVKEY="keys/vagrant"
 SUDOBIN="/usr/bin/sudo"
 SHBIN="/bin/sh"
 VAGRANTBIN="/usr/bin/vagrant"
@@ -42,7 +41,7 @@ function add_hosts {
 10.1.42.20 node2.local node2
 10.1.42.30 node3.local node3
 ' >> /etc/hosts"
-    logmsg notice "Couchbase Sever node host information added to /etc/hosts"
+    logmsg notice "Couchbase Server node host information added to /etc/hosts"
   fi
 }
 
