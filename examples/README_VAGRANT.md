@@ -290,10 +290,14 @@ The `examples` directory contains some basic playbooks, host inventory
 examples, and Vagrant bits (primarily for Mac OS X development use)
 as follows:
 
-* `cluster_install.yml` prepares OS and installs Couchbase Server only
+* `cluster_backup.yml` full backup of cluster and retrieval of backup tarball
+* `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
+* `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `create_bucket.yml` creates an example bucket
 * `load_bucket.yml` loads sample JSON data into a bucket
+* `node_failover.yml` manual failover of cluster node
+* `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition
 * `centos` CentOS hosts inventory for Vagrant based development cluster

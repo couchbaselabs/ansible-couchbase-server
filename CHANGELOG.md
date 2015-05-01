@@ -281,6 +281,10 @@
 
 ## v1.0.23
 
+- Perform cluster operations serially
+- Add node_failover playbook
+- Add cleanup tasks back to post installation
 - Add /etc/profile.d/couchbase-server.sh template
 - Vagrant hosts convenience script updates
 - Updated Vagrantfile
+- Updated documentation
