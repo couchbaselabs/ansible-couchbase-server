@@ -34,5 +34,5 @@
 - name: Package file cleanup
   sudo: True
   shell: rm -rf /tmp/{{ couchbase_server_ubuntu_ce_package }}
-  when: couchbase_server_edition == "enterprise"
+  when: couchbase_server_edition == "community"
   tags: installation
