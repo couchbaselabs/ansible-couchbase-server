@@ -294,3 +294,4 @@
 - Update versions
 - Update documentation
 - Add retrieve_ssl_cert playbook
+- Reduce server RAM quota for Vagrants

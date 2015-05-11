@@ -6,7 +6,7 @@
 
 VAGRANTFILE_API_VERSION = "2"
 BOX_MEM = ENV['BOX_MEM'] || "1536"
-BOX_NAME =  ENV['BOX_NAME'] || "chef/centos-6.5"
+BOX_NAME =  ENV['BOX_NAME'] || "ubuntu/trusty64"
 CLUSTER_HOSTS = ENV['CLUSTER_HOSTS'] || "centos"
 
 Vagrant.require_version ">= 1.5.0"
@@ -75,7 +75,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.inventory_path = CLUSTER_HOSTS
       # Extra Ansible variables can be defined here
       ansible.extra_vars = {
-        couchbase_server_ram: 1205,
+        couchbase_server_ram: 1190,
       }
       ansible.playbook = "cluster_init.yml"
       ansible.limit = "all"
