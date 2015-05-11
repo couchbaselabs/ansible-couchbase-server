@@ -94,7 +94,7 @@ prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
@@ -209,7 +209,7 @@ prefer, you can install Ubuntu 12.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 ## Give it a Try
