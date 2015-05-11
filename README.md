@@ -22,7 +22,7 @@ documents with the playbooks included in the `examples` directory.
 This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
-* Ansible (version 1.9.0.1)
+* Ansible (version 1.9.1)
 * CentOS (versions 6.2-7.0)
 * Ubuntu (versions 12.04-13.10)
 
@@ -109,6 +109,7 @@ as follows:
 * `create_bucket.yml` creates an example bucket
 * `load_bucket.yml` loads sample JSON data into a bucket
 * `node_failover.yml` manual failover of cluster node
+* `retreive_ssl_cert.yml` retrieve and store node's SSL certificate
 * `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition

@@ -288,3 +288,9 @@
 - Vagrant hosts convenience script updates
 - Updated Vagrantfile
 - Updated documentation
+
+## v1.0.24
+
+- Update versions
+- Update documentation
+- Add retrieve_ssl_cert playbook
