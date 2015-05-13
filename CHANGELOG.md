@@ -278,3 +278,20 @@
 - Remove cleanup tasks (it's in the tmp dir after all)
 - Update playbooks
 - One wait instance for REST port only
+
+## v1.0.23
+
+- Perform cluster operations serially
+- Add node_failover playbook
+- Add cleanup tasks back to post installation
+- Add /etc/profile.d/couchbase-server.sh template
+- Vagrant hosts convenience script updates
+- Updated Vagrantfile
+- Updated documentation
+
+## v1.0.24
+
+- Update versions
+- Update documentation
+- Add retrieve_ssl_cert playbook
+- Reduce server RAM quota for Vagrants

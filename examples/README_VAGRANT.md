@@ -94,7 +94,7 @@ prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
@@ -209,7 +209,7 @@ prefer, you can install Ubuntu 12.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="hashicorp/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
 ```
 
 ## Give it a Try
@@ -290,10 +290,15 @@ The `examples` directory contains some basic playbooks, host inventory
 examples, and Vagrant bits (primarily for Mac OS X development use)
 as follows:
 
-* `cluster_install.yml` prepares OS and installs Couchbase Server only
+* `cluster_backup.yml` full backup of cluster and retrieval of backup tarball
+* `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
+* `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `create_bucket.yml` creates an example bucket
 * `load_bucket.yml` loads sample JSON data into a bucket
+* `node_failover.yml` manual failover of cluster node
+* `retreive_ssl_cert.yml` retrieve and store node's SSL certificate
+* `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition
 * `centos` CentOS hosts inventory for Vagrant based development cluster
@@ -309,7 +314,7 @@ bucket with the following properties:
 
 * Bucket name: *default*
 * Bucket type: *couchbase*
-* Bucket port: *11222*
+* Bucket port: *11211*
 * Bucket RAM size: 256MB
 * Bucket replica number: 1
 
@@ -333,8 +338,8 @@ Additional playbooks are planned for future versions of this project as well.
 
 ## Notes
 
-0. This project is confirmed to function with the following software versions:
-  * Ansible version 1.9.0.1
+0. This project functions with the following software versions:
+  * Ansible version 1.9.1
   * VirtualBox version 4.3.26
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0
@@ -346,10 +351,9 @@ Additional playbooks are planned for future versions of this project as well.
  * Adds each node's host information to the host machine's `/etc/hosts`
  * Ensures the correct permissions on Vagrant SSH private key
  * Optionally installs the Vagrant hosts plugin
-3. Review the different operating system tuning changes in the following
-  files to adjust or add your own:
-  * `roles/couchbase-server/templates/etc_sysctl.d_couchbase-server.conf.j2`
-  * `roles/couchbase-server/templates/iptables.j2`
+3. Review possible operating system tuning settings in the following files:
+ * `roles/couchbase-server/templates/etc_sysctl.d_couchbase-server.conf.j2`
+ * `roles/couchbase-server/templates/iptables.j2`
 
 ## References
 
