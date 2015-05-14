@@ -2,11 +2,11 @@
 # Example Couchbase Server cluster node hosts inventory
 #
 # Edit this and change node1.local ... node3.local to match your actual node
-# hostnames. Use 'node_role=primary' variable to designate a primary node
-# and 'node_role=additional' to specify all additional node which will join
+# hostnames. Use 'couchbase_server_node_role=primary' variable to designate a primary node
+# and 'couchbase_server_node_role=additional' to specify all additional node which will join
 # the primary node to form a cluster
 
 [cluster_nodes]
-node1.local node_role=primary
-node2.local node_role=additional
-node3.local node_role=additional
+node1.local couchbase_server_node_role=primary
+node2.local couchbase_server_node_role=additional
+node3.local couchbase_server_node_role=additional

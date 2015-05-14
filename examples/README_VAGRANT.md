@@ -178,19 +178,29 @@ sudo pip install ansible
 
 Now it's time for bootstrapping the Couchbase Server cluster.
 
-Open a terminal, change into the *examples* subdirectory of the role's
-root directory and execute the top level Ansible playbook with commands like
-the following:
+There are some environment variables which can be set to alter basic details
+about the Vagrant based setup; the defaults are in parentheses:
+
+* ANSIBLE_PLAYBOOK (cluster_init.yml) playbook executed by Ansible provisioner
+* BOX_MEM (1536) specifies virtual machine RAM in megabytes
+* BOX_NAME (ubuntu/trusty64) specifies name of the Vagrant box to use
+* CLUSTER_HOSTS (vagrant_hosts) specifies Ansible hosts inventory file
+
+Open a terminal, change into the *examples* subdirectory of this role's
+root directory and execute the Ansible playbook:
 
 ```
 cd $ROLESPATH/couchbase.couchbase-server/examples
 vagrant up
 ```
 
-Yep, that's all there is to it. One command and a bit of patience while
-Vagrant and Ansible work their magic. If bootstrapping a cluster for the
-first time, you'll be prompted to accept the host key information for each
-node VM by ssh; be sure to answer **yes** to these prompts.
+Yep, that's all there is to it.
+
+One command and a bit of patience while Vagrant and Ansible work their magic.
+
+If bootstrapping a cluster for the first time, you will be prompted to accept
+the host key information for each node VM by ssh; be sure to answer **yes**
+to these prompts.
 
 ### Debian
 
@@ -287,8 +297,7 @@ ansible-playbook -i centos cluster_install.yml \
 ## Examples
 
 The `examples` directory contains some basic playbooks, host inventory
-examples, and Vagrant bits (primarily for Mac OS X development use)
-as follows:
+examples, and Vagrant bits as follows:
 
 * `cluster_backup.yml` full backup of cluster and retrieval of backup tarball
 * `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
@@ -301,10 +310,9 @@ as follows:
 * `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition
-* `centos` CentOS hosts inventory for Vagrant based development cluster
-* `ubuntu` Ubuntu hosts inventory for Vagrant based development cluster
+* `vagrant_hosts` default Vagrant hosts inventory file
 
-### Create Buckets
+### Create Bucket
 
 The example playbook `create_bucket.yml` for bucket creation can be used
 as follows:
@@ -324,17 +332,15 @@ extra vars ('-e') option and specify values for the
 
 ```
 ansible-playbook -i centos create_bucket.yml \
--e "b_name=danika b_type=couchbase b_port=11223 b_ramsize=256 b_replica=2"
+-e "couchbase_server_bucket_name=danika couchbase_server_bucket_type_type=couchbase couchbase_server_bucket_port=11223 couchbase_server_bucket_ram=256 couchbase_server_bucket_replica=2"
 ```
 
 or perhaps you'd like to make a memcached based bucket? No problem:
 
 ```
 ansible-playbook -i centos create_bucket.yml \
--e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
+-e "couchbase_server_bucket_name=breandon couchbase_server_bucket_type_type=memcached couchbase_server_bucket_port=11224 couchbase_server_bucket_ram=512 couchbase_server_bucket_replica=0"
 ```
-
-Additional playbooks are planned for future versions of this project as well.
 
 ## Notes
 
@@ -346,7 +352,6 @@ Additional playbooks are planned for future versions of this project as well.
 1. This project uses CentOS 6.5 and Ubuntu 12.04 by default as these are
    among the supported major versions of platforms which are listed on the
    Couchbase Server package downloads page
-   (CentOS 6.5 and Ubuntu 12.04 to be specific).
 2. The `bin/preinstall` shell script performs the following actions for you:
  * Adds each node's host information to the host machine's `/etc/hosts`
  * Ensures the correct permissions on Vagrant SSH private key

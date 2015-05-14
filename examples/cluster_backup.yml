@@ -8,7 +8,7 @@
   sudo: True
   tasks:
   - name: Create cluster grouping
-    group_by: key={{ node_role }}
+    group_by: key={{ couchbase_server_node_role }}
 
 - hosts: primary
   gather_facts: False
