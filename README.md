@@ -23,7 +23,8 @@ This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
 * Ansible (version 1.9.1)
-* CentOS (versions 6.2-7.0)
+* CentOS (versions 6-7)
+* Debian (version 7)
 * Ubuntu (versions 12.04-13.10)
 
 ## Designed for Ansible Galaxy
@@ -113,8 +114,7 @@ as follows:
 * `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition
-* `centos` CentOS hosts inventory for Vagrant based development cluster
-* `ubuntu` Ubuntu hosts inventory for Vagrant based development cluster
+* `vagrant_hosts` default Vagrant hosts inventory file
 
 ### Create Buckets
 
@@ -151,8 +151,8 @@ Additional playbooks are planned for future versions of this project as well.
 
 ### Quick Start for 3-Node Development Cluster
 
-Follow these steps to have a simple 3 node development or evaluation
-cluster on a machine with >= 8GB RAM, using VirtualBox and Vagrant:
+Follow these steps to have a simple 3 node CentOS based development or
+evaluation cluster on a machine with >= 8GB RAM, using VirtualBox and Vagrant:
 
 1. `export ROLESPATH=$ANSIBLE_ROLES_PATH`
 2. `ansible-galaxy install couchbase.couchbase-server`
@@ -178,7 +178,7 @@ To install Ubuntu based nodes, change the command in step 4 to:
 BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
 ```
 
-See `examples/README_VAGRANT.md` for more details.
+See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
 
 ## Dependencies
 

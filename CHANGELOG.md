@@ -295,3 +295,13 @@
 - Update documentation
 - Add retrieve_ssl_cert playbook
 - Reduce server RAM quota for Vagrants
+
+## v1.0.25
+
+- Namespace node_role variable
+- More granularity in clustering operations in advance of 4.0.0 and 
+  per node service types
+- Update Vagrantfile with ANSIBLE_PLAYBOOK environment variable support
+- Add couchbase_server_services variable
+- Remove unnecessary OS-specific host inventory examples
+- Update documentation
