@@ -29,6 +29,8 @@
   - name: Wait for Admin
     wait_for: port=8091 delay=60
 
+  - name: Wait for EPMD
+    wait_for: port=4369 delay=60
 
 - hosts: primary
   sudo: True

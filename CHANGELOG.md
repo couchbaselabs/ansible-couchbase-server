@@ -305,3 +305,9 @@
 - Add couchbase_server_services variable
 - Remove unnecessary OS-specific host inventory examples
 - Update documentation
+
+## v1.0.26
+
+- Update Vagrantfile
+- Update cluster_init playbook
+- Add vagrant_hosts example inventory
