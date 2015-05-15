@@ -311,3 +311,9 @@
 - Update Vagrantfile
 - Update cluster_init playbook
 - Add vagrant_hosts example inventory
+
+## v1.0.27
+
+- Update Vagrantfile with additional vars examples
+- Update versions
+- Update documentation
