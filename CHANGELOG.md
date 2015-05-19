@@ -317,3 +317,7 @@
 - Update Vagrantfile with additional vars examples
 - Update versions
 - Update documentation
+
+## v1.0.28
+
+- Update documentation
