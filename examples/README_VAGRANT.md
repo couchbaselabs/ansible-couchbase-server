@@ -69,10 +69,10 @@ Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
 
 ```
 [defaults]
-roles_path = PATH_TO_YOUR_PREFERRED_ROLE_LOCATION
+roles_path = PATH_TO_ROLES
 ```
 
-Change `PATH_TO_YOUR_PREFERRED_ROLE_LOCATION` to a directory that you 
+Change `PATH_TO_ROLES` to a directory that you 
 have write access to.
 
 ## Quick Start
@@ -80,13 +80,16 @@ have write access to.
 Begin from the top level directory of this project and use the following
 5 steps to get up and running:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads), [Vagrant](http://downloads.vagrantup.com/), [vagrant-hosts](https://github.com/adrienthebo/vagrant-hosts), and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads), 
+   [Vagrant](http://downloads.vagrantup.com/), 
+   [vagrant-hosts](https://github.com/adrienthebo/vagrant-hosts), 
+   and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
 2. Edit `/etc/hosts` or use the included `bin/preinstall` script to add
    the following entries to your development system's `/etc/hosts` file:
  * 10.1.42.10 node1.local node1
  * 10.1.42.20 node2.local node2
  * 10.1.42.30 node3.local node3
-3. `<roles_path>/couchbase.couchbase-server/examples`
+3. `cd $PATH_TO_ROLES/couchbase.couchbase-server/examples`
 4. `vagrant up`
 5. Access the cluster at http://node1:8091 with username **Administrator**
    and password **couchbase**.
@@ -115,7 +118,7 @@ software can be downloaded as needed. This includes both downloading the
 prerequisite software, the VirtualBox operating system image, and Couchbase
 Server itself.
 
-You'll also need to resolve the node VM hostnames to their default IP
+You'll also need to resolve the node VM host names to their default IP
 addresses. This can be most easily done by adding the following lines to
 the `/etc/hosts` file on the host machine:
 
@@ -146,13 +149,11 @@ This guide uses Vagrant along with a supporting plugin to automate the
 creation of the VirtualBox machines which we will be using for the
 Couchbase Server nodes.
 
-The baseboxes for operating systems are fetched from the Opscode
-[Bento](https://github.com/opscode/bento) project.
-
-The plugin used in this project is [Vagrant hosts](https://github.com/adrienthebo/vagrant-hosts), which is used for
-adding hostname information to the `/etc/hosts` file on each virtual machine.
-This is required prior to the execution of Ansible playbooks so that Ansible
-will function properly over SSH.
+The plugin used in this project is 
+[Vagrant hosts](https://github.com/adrienthebo/vagrant-hosts), which is used
+for adding hostname information to the `/etc/hosts` file on each virtual 
+machine. This is required prior to the execution of Ansible playbooks so 
+that Ansible will function properly over SSH.
 
 Visit the Vagrant [downloads page](http://downloads.vagrantup.com/) to get the
 appropriate version, and proceed with installation of the package. After you
@@ -169,7 +170,7 @@ successful, you can continue with the rest of the steps in this guide.
 ### Ansible
 
 Install Ansible for Mac OS X using `pip` based on the
-[installation documentation](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip). The steps are simple and involve just 2 steps:
+[installation documentation](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip). The steps are simple:
 
 ```
 sudo easy_install pip
@@ -180,7 +181,7 @@ sudo pip install ansible
 
 Now it's time for bootstrapping the Couchbase Server cluster.
 
-There are some environment variables which can be set to alter basic details
+There are some environment variables which you set to alter basic details
 about the Vagrant based setup; the defaults are in parentheses:
 
 * ANSIBLE_PLAYBOOK (cluster_init.yml) playbook executed by Ansible provisioner
@@ -319,7 +320,8 @@ examples, and Vagrant bits as follows:
 The example playbook `create_bucket.yml` for bucket creation can be used
 as follows:
 
-Upon first execution without specifying variable arguments via the `ansible-playbook` extra vars ('-e') option, the playbook will generate a
+Upon first execution without specifying variable arguments via the 
+`ansible-playbook` extra vars ('-e') option, the playbook will generate a
 bucket with the following properties:
 
 * Bucket name: *default*
@@ -347,7 +349,7 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 ## Notes
 
 0. This project functions with the following software versions:
-  * Ansible version 1.9.1
+  * Ansible version 1.9.2
   * VirtualBox version 4.3.28
   * Vagrant version 1.7.2
   * Vagrant Hosts version 2.4.0
