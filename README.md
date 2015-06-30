@@ -22,7 +22,7 @@ documents with the playbooks included in the `examples` directory.
 This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
-* Ansible (version 1.9.1)
+* Ansible (version 1.9.2)
 * CentOS (versions 6-7)
 * Debian (version 7)
 * Ubuntu (versions 12.04-13.10)
