@@ -15,64 +15,64 @@ Vagrant.require_version ">= 1.5.0"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Configure 3 Couchbase Server nodes
-  config.vm.define :couchbase-server1 do |couchbase-server1_config|
-    couchbase-server1_config.vm.box = BOX_NAME
-    couchbase-server1_config.vm.network :private_network, ip: "10.1.42.10"
-    couchbase-server1_config.vm.hostname = "couchbase-server1.local"
-    couchbase-server1_config.ssh.forward_agent = true
-    couchbase-server1_config.vm.provider "virtualbox" do |v|
-      v.name = "couchbase-server-couchbase-server1"
+  config.vm.define :couchbase_server1 do |couchbase_server1_config|
+    couchbase_server1_config.vm.box = BOX_NAME
+    couchbase_server1_config.vm.network :private_network, ip: "10.1.42.10"
+    couchbase_server1_config.vm.hostname = "couchbase_server1.local"
+    couchbase_server1_config.ssh.forward_agent = true
+    couchbase_server1_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-couchbase_server1"
       v.customize ["modifyvm", :id, "--memory", BOX_MEM]
       v.customize ["modifyvm", :id, "--ioapic", "on"]
       v.customize ["modifyvm", :id, "--cpus", "2"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     end
-    couchbase-server1_config.vm.provision :hosts do |provisioner|
-        provisioner.add_host '10.1.42.10', ['couchbase-server1.local']
-        provisioner.add_host '10.1.42.20', ['couchbase-server2.local']
-        provisioner.add_host '10.1.42.30', ['couchbase-server3.local']
+    couchbase_server1_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['couchbase_server1.local']
+        provisioner.add_host '10.1.42.20', ['couchbase_server2.local']
+        provisioner.add_host '10.1.42.30', ['couchbase_server3.local']
     end
   end
-  config.vm.define :couchbase-server2 do |couchbase-server2_config|
-    couchbase-server2_config.vm.box = BOX_NAME
-    couchbase-server2_config.vm.network :private_network, ip: "10.1.42.20"
-    couchbase-server2_config.vm.hostname = "couchbase-server2.local"
-    couchbase-server2_config.ssh.forward_agent = true
-    couchbase-server2_config.vm.provider "virtualbox" do |v|
-      v.name = "couchbase-server-couchbase-server2"
+  config.vm.define :couchbase_server2 do |couchbase_server2_config|
+    couchbase_server2_config.vm.box = BOX_NAME
+    couchbase_server2_config.vm.network :private_network, ip: "10.1.42.20"
+    couchbase_server2_config.vm.hostname = "couchbase_server2.local"
+    couchbase_server2_config.ssh.forward_agent = true
+    couchbase_server2_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-couchbase_server2"
       v.customize ["modifyvm", :id, "--memory", BOX_MEM]
       v.customize ["modifyvm", :id, "--ioapic", "on"]
       v.customize ["modifyvm", :id, "--cpus", "2"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     end
-    couchbase-server2_config.vm.provision :hosts do |provisioner|
-        provisioner.add_host '10.1.42.10', ['couchbase-server1.local']
-        provisioner.add_host '10.1.42.20', ['couchbase-server2.local']
-        provisioner.add_host '10.1.42.30', ['couchbase-server3.local']
+    couchbase_server2_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['couchbase_server1.local']
+        provisioner.add_host '10.1.42.20', ['couchbase_server2.local']
+        provisioner.add_host '10.1.42.30', ['couchbase_server3.local']
     end
   end
-  config.vm.define :couchbase-server3 do |couchbase-server3_config|
-    couchbase-server3_config.vm.box = BOX_NAME
-    couchbase-server3_config.vm.network :private_network, ip: "10.1.42.30"
-    couchbase-server3_config.vm.hostname = "couchbase-server3.local"
-    couchbase-server3_config.ssh.forward_agent = true
-    couchbase-server3_config.vm.provider "virtualbox" do |v|
-      v.name = "couchbase-server-couchbase-server3"
+  config.vm.define :couchbase_server3 do |couchbase_server3_config|
+    couchbase_server3_config.vm.box = BOX_NAME
+    couchbase_server3_config.vm.network :private_network, ip: "10.1.42.30"
+    couchbase_server3_config.vm.hostname = "couchbase_server3.local"
+    couchbase_server3_config.ssh.forward_agent = true
+    couchbase_server3_config.vm.provider "virtualbox" do |v|
+      v.name = "couchbase-server-couchbase_server3"
       v.customize ["modifyvm", :id, "--memory", BOX_MEM]
       v.customize ["modifyvm", :id, "--ioapic", "on"]
       v.customize ["modifyvm", :id, "--cpus", "2"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
       v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     end
-    couchbase-server3_config.vm.provision :hosts do |provisioner|
-        provisioner.add_host '10.1.42.10', ['couchbase-server1.local']
-        provisioner.add_host '10.1.42.20', ['couchbase-server2.local']
-        provisioner.add_host '10.1.42.30', ['couchbase-server3.local']
+    couchbase_server3_config.vm.provision :hosts do |provisioner|
+        provisioner.add_host '10.1.42.10', ['couchbase_server1.local']
+        provisioner.add_host '10.1.42.20', ['couchbase_server2.local']
+        provisioner.add_host '10.1.42.30', ['couchbase_server3.local']
     end
     # Bit of a hack since VirtualBox does not support parallel provisioning
-    couchbase-server3_config.vm.provision :ansible do |ansible|
+    couchbase_server3_config.vm.provision :ansible do |ansible|
       ansible.inventory_path = CLUSTER_HOSTS
       # Extra Ansible variables can be defined here
       ansible.extra_vars = {

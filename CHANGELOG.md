@@ -327,3 +327,9 @@
 - Update THP task
 - Update supported Ansible version to 1.9.2
 - Update documentation
+
+# 1.0.30
+
+- Update Vagrantfile
+- Update vagrant_hosts
+- Update convenience script
