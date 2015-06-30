@@ -6,6 +6,6 @@
 #     Do not modify the labels (text appearing between []), however
 
 [cluster_nodes]
-couchbase-server1.local couchbase_server_node_role=primary ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node1/virtualbox/private_key
-couchbase-server2.local couchbase_server_node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node2/virtualbox/private_key
-couchbase-server3.local couchbase_server_node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node3/virtualbox/private_key
+cb1.local couchbase_server_node_role=primary ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node1/virtualbox/private_key
+cb2.local couchbase_server_node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node2/virtualbox/private_key
+cb3.local couchbase_server_node_role=additional ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/node3/virtualbox/private_key
