@@ -321,3 +321,9 @@
 ## v1.0.28
 
 - Update documentation
+
+## v1.0.29
+
+- Update THP task
+- Update supported Ansible version to 1.9.2
+- Update documentation
