@@ -22,7 +22,7 @@ documents with the playbooks included in the `examples` directory.
 This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-3.0.3)
-* Ansible (version 1.9.1)
+* Ansible (version 1.9.2)
 * CentOS (versions 6-7)
 * Debian (version 7)
 * Ubuntu (versions 12.04-13.10)
@@ -135,19 +135,16 @@ extra vars ('-e') option and specify values for the
 *b_name*, *b_type*, *b_port*, *b_ramsize*, and *b_replica* variables like so:
 
 ```
-ansible-playbook -i centos create_bucket.yml \
+ansible-playbook -i vagrant_hosts create_bucket.yml \
 -e "b_name=danika b_type=couchbase b_port=11223 b_ramsize=256 b_replica=2"
 ```
 
 or perhaps you'd like to make a memcached based bucket? No problem:
 
 ```
-ansible-playbook -i centos create_bucket.yml \
+ansible-playbook -i vagrant_hosts create_bucket.yml \
 -e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
 ```
-
-Additional playbooks are planned for future versions of this project as well.
-
 
 ### Quick Start for 3-Node Development Cluster
 
@@ -169,13 +166,13 @@ them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
 To install Debian based nodes, change the command in step 4 to:
 
 ```
-BOX_NAME=chef/debian-7.4 CLUSTER_HOSTS=debian vagrant up
+BOX_NAME=chef/debian-7.4 vagrant up
 ```
 
 To install Ubuntu based nodes, change the command in step 4 to:
 
 ```
-BOX_NAME=ubuntu/trusty64 CLUSTER_HOSTS=ubuntu vagrant up
+BOX_NAME=ubuntu/trusty64 vagrant up
 ```
 
 See `examples/README_VAGRANT.md` for more Vagrant cluster based details.

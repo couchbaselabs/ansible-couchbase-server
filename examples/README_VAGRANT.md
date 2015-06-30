@@ -16,20 +16,22 @@ high performance NoSQL document database available in Community and Enterprise
 editions for several operating system environments.
 
 This project provides documentation and a collection of scripts to help you
-automate the deployment of Couchbase Server Enterprise Edition using the [Ansible](http://www.ansibleworks.com/)
-orchestration engine. These are the instructions for deploying a development
-cluster on Mac OS X with Vagrant and VirtualBox.
+automate the deployment of Couchbase Server Enterprise Edition using
+[Ansible](http://www.ansibleworks.com/). These are the instructions for
+deploying a development cluster with Vagrant and VirtualBox.
 
-The documentation and scripts are merely a starting point designed to both
-help familiarize you with the processes and quickly bootstrap an environment
-for development. You may wish to expand on them and customize
-them with additional features specific to your needs later.
+The documentation and scripts are just a starting point designed to both
+help familiarize you with using Ansible to quickly bootstrap a virtualized
+Couchbase Server environment for development or evaluation. 
+
+You may wish to expand on them and customize them with additional 
+features specific to your needs for other purposes.
 
 ## Vagrant Development Cluster
 
-In some situations deploying a small cluster on your local development
-machine under Mac OS X can be handy. This document describes such a
-scenario using the following technologies:
+In some situations deploying a small virtualized cluster on your local
+development machine can be handy. This document describes such a with the
+following software:
 
 * [Couchbase Server](http://www.couchbase.com/couchbase-server/overview)
 * [VirtualBox](https://www.virtualbox.org/)
@@ -97,7 +99,7 @@ prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" vagrant up
 ```
 
 If you'd like to follow a more detailed installation process with additional
@@ -210,7 +212,7 @@ prefer, you can install Debian 7.4 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="chef/debian-7.4" CLUSTER_HOSTS="debian" vagrant up
+BOX_NAME="chef/debian-7.4" vagrant up
 ```
 
 ### Ubuntu
@@ -220,7 +222,7 @@ prefer, you can install Ubuntu 12.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="ubuntu/precise64" CLUSTER_HOSTS="ubuntu" vagrant up
+BOX_NAME="ubuntu/precise64" vagrant up
 ```
 
 ## Give it a Try
@@ -270,7 +272,7 @@ Here are some examples of tag usage:
 Install required system packages, such as *libselinux-python* on CentOS:
 
 ```
-ansible-playbook -i centos cluster_install.yml --tags "system_packages"
+ansible-playbook -i vagrant_hosts cluster_install.yml --tags "system_packages"
 ```
 
 Set the disk scheduler specified in `linux/group_vars/all` for the data
@@ -278,21 +280,21 @@ and index volumes, disable Transparent Huge Pages, and perform other system
 tuning:
 
 ```
-ansible-playbook -i centos cluster_install.yml --tags "system_tuning"
+ansible-playbook -i vagrant_hosts cluster_install.yml --tags "system_tuning"
 ```
 
 Download and install the version of Couchbase Server specified in either
 `defaults/main.yml` or `vars/main.yml` for the Linux distribution in use:
 
 ```
-ansible-playbook -i centos cluster_install.yml --tags "installation"
+ansible-playbook -i vagrant_hosts cluster_install.yml --tags "installation"
 ```
 
 You can also combine multiple tags, as in the following example, which will
 perform the system tuning and installation tasks:
 
 ```
-ansible-playbook -i centos cluster_install.yml \
+ansible-playbook -i vagrant_hosts cluster_install.yml \
 --tags "system_tuning, installation"
 ```
 ## Examples
@@ -333,14 +335,14 @@ extra vars ('-e') option and specify values for the
 *b_name*, *b_type*, *b_port*, *b_ramsize*, and *b_replica* variables like so:
 
 ```
-ansible-playbook -i centos create_bucket.yml \
+ansible-playbook -i vagrant_hosts create_bucket.yml \
 -e "couchbase_server_bucket_name=danika couchbase_server_bucket_type_type=couchbase couchbase_server_bucket_port=11223 couchbase_server_bucket_ram=256 couchbase_server_bucket_replica=2"
 ```
 
 or perhaps you'd like to make a memcached based bucket? No problem:
 
 ```
-ansible-playbook -i centos create_bucket.yml \
+ansible-playbook -i vagrant_hosts create_bucket.yml \
 -e "couchbase_server_bucket_name=breandon couchbase_server_bucket_type_type=memcached couchbase_server_bucket_port=11224 couchbase_server_bucket_ram=512 couchbase_server_bucket_replica=0"
 ```
 
