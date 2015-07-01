@@ -73,6 +73,7 @@ variables in detail including their default values for your reference.
 | couchbase_server_ram | 3072 | The per server RAM quota specified in megabytes |
 | couchbase_server_admin_port          | 8091                                                                                      | Administration and web console port     |
 | couchbase_server_api_port            | 8092                                                                                      | Couchbase Server API port               |
+| couchbase_server_epmd_port | 4369 | Erlang Port Mapper Daemon port |
 | couchbase_server_internal_ports      | 11209:11211                                                                               | Memcached and client ports              |
 | couchbase_server_node_data_ports     | 21100:21299                                                                               | Distributed Erlang communication ports  |
 | couchbase_server_config_file         | /opt/couchbase/var/lib/couchbase/config/config.dat                                        | Full path to config.dat                 |

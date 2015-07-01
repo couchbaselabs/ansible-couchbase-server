@@ -333,3 +333,9 @@
 - Update Vagrantfile
 - Update vagrant_hosts
 - Update convenience script
+
+# 1.0.31
+
+- Fix Vagrant SSH key path issue
+- Prepare firewall rules for use
+- Update documentation
