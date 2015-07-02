@@ -71,7 +71,7 @@ couchbase_server_mtu_probing: 1
 couchbase_server_file_max: 524288
 couchbase_server_netdev_max_backlog: 300000
 couchbase_server_tcp_moderate_rcvbuf: 1
-couchbase_server_tcp_congestion_control: "htcp"
+couchbase_server_tcp_congestion_control: htcp
 couchbase_server_somaxconn: 40000
 couchbase_server_tcp_max_syn_backlog: 40000
 couchbase_server_tcp_window_scaling: 1

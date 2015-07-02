@@ -339,3 +339,7 @@
 - Fix Vagrant SSH key path issue
 - Prepare firewall rules for use
 - Update documentation
+
+# 1.0.32
+
+- Fixed default variables issue
