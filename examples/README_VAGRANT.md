@@ -10,6 +10,11 @@
               .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
                .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
 
+> **NOTE: This role is experimental and not intended for production use**.
+> Feel free to use the role for evaluation, development, or testing, and
+> definitely borrow the ideas contained within for your own production role
+> or playbooks. As with other Couchbase Labs projects, this is primarily
+> for experimentation.
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and Enterprise
@@ -19,13 +24,6 @@ This project provides documentation and a collection of scripts to help you
 automate the deployment of Couchbase Server Enterprise Edition using
 [Ansible](http://www.ansibleworks.com/). These are the instructions for
 deploying a development cluster with Vagrant and VirtualBox.
-
-The documentation and scripts are just a starting point designed to both
-help familiarize you with using Ansible to quickly bootstrap a virtualized
-Couchbase Server environment for development or evaluation. 
-
-You may wish to expand on them and customize them with additional 
-features specific to your needs for other purposes.
 
 ## Vagrant Development Cluster
 
@@ -52,7 +50,7 @@ The Ansible playbooks then further refine OS configuration, Couchbase Server
 package download and installation, and the initialization of the 3 nodes
 into a ready to use cluster.
 
-## Designed for Ansible Galaxy
+## Works with Ansible Galaxy
 
 This role is designed to be installed via the `ansible-galaxy` command
 instead of being directly run from the git repository.
@@ -86,12 +84,12 @@ Begin from the top level directory of this project and use the following
    and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
 2. Edit `/etc/hosts` or use the included `bin/preinstall` script to add
    the following entries to your development system's `/etc/hosts` file:
- * 10.1.42.10 node1.local node1
- * 10.1.42.20 node2.local node2
- * 10.1.42.30 node3.local node3
+ * 10.1.42.10 cb1.local cb1
+ * 10.1.42.20 cb2.local cb2
+ * 10.1.42.30 cb3.local cb3
 3. `cd $PATH_TO_ROLES/couchbase.couchbase-server/examples`
 4. `vagrant up`
-5. Access the cluster at http://node1:8091 with username **Administrator**
+5. Access the cluster at http://cb1:8091 with username **Administrator**
    and password **couchbase**.
 
 By default, this project will install CentOS 6.5 based cluster nodes. If you
@@ -123,9 +121,9 @@ addresses. This can be most easily done by adding the following lines to
 the `/etc/hosts` file on the host machine:
 
 ```
-10.1.42.10 node1.local node1
-10.1.42.20 node2.local node2
-10.1.42.30 node3.local node3
+10.1.42.10 cb1.local cb1
+10.1.42.20 cb2.local cb2
+10.1.42.30 cb3.local cb3
 ```
 
 A convenience script, `bin/preinstall` is provided to automate this step
@@ -231,7 +229,7 @@ Once the Ansible playbooks complete without error, you can open a browser and
 access the primary Couchbase Server cluster node at the following URL:
 
 ```
-http://node1:8091
+http://cb1:8091
 ```
 
 The administrator username and password as configured by this project

@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :cb1 do |cb1_config|
     cb1_config.vm.box = BOX_NAME
     cb1_config.vm.network :private_network, ip: "10.1.42.10"
-    cb1_config.vm.hostname = "cb1"
+    cb1_config.vm.hostname = "cb1.local"
     cb1_config.ssh.forward_agent = true
     cb1_config.vm.provider "virtualbox" do |v|
       v.name = "couchbase-server-cb1"
@@ -37,7 +37,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :cb2 do |cb2_config|
     cb2_config.vm.box = BOX_NAME
     cb2_config.vm.network :private_network, ip: "10.1.42.20"
-    cb2_config.vm.hostname = "cb2"
+    cb2_config.vm.hostname = "cb2.local"
     cb2_config.ssh.forward_agent = true
     cb2_config.vm.provider "virtualbox" do |v|
       v.name = "couchbase-server-cb2"
@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :cb3 do |cb3_config|
     cb3_config.vm.box = BOX_NAME
     cb3_config.vm.network :private_network, ip: "10.1.42.30"
-    cb3_config.vm.hostname = "cb3"
+    cb3_config.vm.hostname = "cb3.local"
     cb3_config.ssh.forward_agent = true
     cb3_config.vm.provider "virtualbox" do |v|
       v.name = "couchbase-server-cb3"
@@ -79,10 +79,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         couchbase_server_ram: "1190",
         # Example variable overrides which will be passed in as if used with
         # ansible-playbook --extra-vars option
-        couchbase_server_debian_ee_version: "4.0.0",
-        couchbase_server_debian_ee_package: "couchbase-server-enterprise_4.0.0-beta-debian7_amd64.deb",
-        couchbase_server_debian_ee_url: "http://packages.couchbase.com/releases/4.0.0-beta/couchbase-server-enterprise_4.0.0-beta-debian7_amd64.deb",
-        couchbase_server_debian_ee_sha256: "375c2bdc6d3cca50f79c330a77e0618e5fa11f842320bd57fe12bf6789848007",
+        # couchbase_server_debian_ee_version: "",
+        # couchbase_server_debian_ee_package: "",
+        # couchbase_server_debian_ee_url: "",
+        # couchbase_server_debian_ee_sha256: "",
       }
       ansible.playbook = ANSIBLE_PLAYBOOK
       ansible.limit = "all"
