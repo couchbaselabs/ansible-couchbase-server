@@ -9,6 +9,7 @@
   tags: installation
 
 - name: Install
+  sudo: True
   apt: "deb=/tmp/{{ couchbase_server_ubuntu_ee_package }}"
   when: couchbase_server_edition == "enterprise"
   tags: installation
@@ -27,6 +28,7 @@
   tags: installation
 
 - name: Install
+  sudo: True
   apt: "deb=/tmp/{{ couchbase_server_ubuntu_ce_package }}"
   when: couchbase_server_edition == "community"
   tags: installation
@@ -39,5 +41,5 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: Ubuntu_firewall.yml
-  when: couchbase_server_firewall  == True
+  include: Ubuntu_firewall.yml
+  when: couchbase_server_firewall == True

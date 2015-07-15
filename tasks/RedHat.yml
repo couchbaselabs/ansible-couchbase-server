@@ -24,7 +24,7 @@
   shell: "rm -rf /tmp/{{ couchbase_server_centos_ee_package }}"
   when: couchbase_server_edition == "enterprise"
   tags: installation
-  
+
 # Couchbase Server Community Edition
 
 - name: Download
@@ -45,6 +45,6 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: RedHat_firewall.yml
-  when: couchbase_server_firewall  == True
+  include: RedHat_firewall.yml
+  when: couchbase_server_firewall == True
 
