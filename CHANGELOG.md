@@ -343,3 +343,10 @@
 # 1.0.32
 
 - Fixed default variables issue
+
+# 1.0.33
+
+- Fix firewall includes
+- Fix default varible issue
+- Update versions
+- Update README_VAGRANT
