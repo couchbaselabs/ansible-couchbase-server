@@ -45,6 +45,6 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: RedHat_firewall.yml
+  include: RedHat_firewall.yml
   when: couchbase_server_firewall == True
 

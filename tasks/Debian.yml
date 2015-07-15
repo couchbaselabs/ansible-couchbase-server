@@ -39,5 +39,5 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: Debian_firewall.yml
+  include: Debian_firewall.yml
   when: couchbase_server_firewall == True

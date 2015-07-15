@@ -39,5 +39,5 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: Ubuntu_firewall.yml
+  include: Ubuntu_firewall.yml
   when: couchbase_server_firewall == True

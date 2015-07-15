@@ -45,5 +45,5 @@
 
 # Firewall (optional)
 - name: Firewall limitations
-- include: CentOS_firewall.yml
+  include: CentOS_firewall.yml
   when: couchbase_server_firewall == true
