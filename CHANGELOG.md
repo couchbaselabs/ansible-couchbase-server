@@ -361,3 +361,7 @@
 - Updated Vagrantfile
 - Update Vagrant documentation
 - Update cluster init playbook
+
+# v1.0.36
+
+- Updated documentation

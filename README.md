@@ -9,6 +9,12 @@
               .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
                .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
 
+> **NOTE: This role is experimental and not intended for production use**.
+> Feel free to use the role for evaluation, development, or testing, and
+> definitely borrow the ideas contained within for your own production role
+> or playbooks. As with other Couchbase Labs projects, this is primarily
+> for experimentation.
+
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and Enterprise
 editions for several supported operating systems.
@@ -16,7 +22,7 @@ editions for several supported operating systems.
 This Ansible role can be used to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
 documents with the playbooks included in the `examples` directory.
-
+  
 ## Requirements
 
 This role is tested for basic functionality with the following software:
@@ -27,7 +33,7 @@ This role is tested for basic functionality with the following software:
 * Debian (version 7)
 * Ubuntu (versions 12.04-13.10)
 
-## Designed for Ansible Galaxy
+## Works with Ansible Galaxy
 
 This role is designed to be installed via the `ansible-galaxy` command
 instead of being directly run from the git repository.

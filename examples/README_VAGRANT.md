@@ -10,6 +10,11 @@
               .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
                .CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC.
 
+> **NOTE: This role is experimental and not intended for production use**.
+> Feel free to use the role for evaluation, development, or testing, and
+> definitely borrow the ideas contained within for your own production role
+> or playbooks. As with other Couchbase Labs projects, this is primarily
+> for experimentation.
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and Enterprise
@@ -19,13 +24,6 @@ This project provides documentation and a collection of scripts to help you
 automate the deployment of Couchbase Server Enterprise Edition using
 [Ansible](http://www.ansibleworks.com/). These are the instructions for
 deploying a development cluster with Vagrant and VirtualBox.
-
-The documentation and scripts are just a starting point designed to both
-help familiarize you with using Ansible to quickly bootstrap a virtualized
-Couchbase Server environment for development or evaluation. 
-
-You may wish to expand on them and customize them with additional 
-features specific to your needs for other purposes.
 
 ## Vagrant Development Cluster
 
@@ -52,7 +50,7 @@ The Ansible playbooks then further refine OS configuration, Couchbase Server
 package download and installation, and the initialization of the 3 nodes
 into a ready to use cluster.
 
-## Designed for Ansible Galaxy
+## Works with Ansible Galaxy
 
 This role is designed to be installed via the `ansible-galaxy` command
 instead of being directly run from the git repository.
