@@ -328,25 +328,29 @@
 - Update supported Ansible version to 1.9.2
 - Update documentation
 
-# 1.0.30
+# v1.0.30
 
 - Update Vagrantfile
 - Update vagrant_hosts
 - Update convenience script
 
-# 1.0.31
+# v1.0.31
 
 - Fix Vagrant SSH key path issue
 - Prepare firewall rules for use
 - Update documentation
 
-# 1.0.32
+# v1.0.32
 
 - Fixed default variables issue
 
-# 1.0.33
+# v1.0.33
 
 - Fix firewall includes
 - Fix default varible issue
 - Update versions
 - Update README_VAGRANT
+
+# v1.0.34
+
+- Include tuning variables
