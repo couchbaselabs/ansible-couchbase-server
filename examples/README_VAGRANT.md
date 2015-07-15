@@ -86,12 +86,12 @@ Begin from the top level directory of this project and use the following
    and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
 2. Edit `/etc/hosts` or use the included `bin/preinstall` script to add
    the following entries to your development system's `/etc/hosts` file:
- * 10.1.42.10 node1.local node1
- * 10.1.42.20 node2.local node2
- * 10.1.42.30 node3.local node3
+ * 10.1.42.10 cb1.local cb1
+ * 10.1.42.20 cb2.local cb2
+ * 10.1.42.30 cb3.local cb3
 3. `cd $PATH_TO_ROLES/couchbase.couchbase-server/examples`
 4. `vagrant up`
-5. Access the cluster at http://node1:8091 with username **Administrator**
+5. Access the cluster at http://cb1:8091 with username **Administrator**
    and password **couchbase**.
 
 By default, this project will install CentOS 6.5 based cluster nodes. If you
@@ -123,9 +123,9 @@ addresses. This can be most easily done by adding the following lines to
 the `/etc/hosts` file on the host machine:
 
 ```
-10.1.42.10 node1.local node1
-10.1.42.20 node2.local node2
-10.1.42.30 node3.local node3
+10.1.42.10 cb1.local cb1
+10.1.42.20 cb2.local cb2
+10.1.42.30 cb3.local cb3
 ```
 
 A convenience script, `bin/preinstall` is provided to automate this step
@@ -231,7 +231,7 @@ Once the Ansible playbooks complete without error, you can open a browser and
 access the primary Couchbase Server cluster node at the following URL:
 
 ```
-http://node1:8091
+http://cb1:8091
 ```
 
 The administrator username and password as configured by this project

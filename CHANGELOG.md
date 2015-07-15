@@ -354,3 +354,10 @@
 # v1.0.34
 
 - Include tuning variables
+
+# v1.0.35
+
+- Update preinstall script
+- Updated Vagrantfile
+- Update Vagrant documentation
+- Update cluster init playbook
