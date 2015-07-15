@@ -1,6 +1,8 @@
 ---
 # File: tasks/main.yml - Main tasks for ansible-couchbase-server
 
+- include_vars: ../defaults/tuning.yml
+
 - name: Distribution specific variables
   include_vars: "{{ ansible_distribution }}.yml"
 

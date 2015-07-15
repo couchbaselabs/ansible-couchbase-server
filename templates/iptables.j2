@@ -1,8 +1,0 @@
-# File templates/ipatables.j2
-# Firewall rules set by ansible-couchbase-server
-#
--A INPUT -p tcp -m state --state NEW -m tcp --dport 4369 -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server.admin_port }} -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server.api_port }} -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server.internal_ports }} -j ACCEPT
--A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server.node_data_ports }} -j ACCEPT
