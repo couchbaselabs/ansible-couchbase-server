@@ -365,3 +365,15 @@
 # v1.0.36
 
 - Updated documentation
+
+# v1.0.37
+
+- Merge PR from Jordan Moore to prefer ansible_fqdn in cluster init steps
+- Updated all playbooks to use ansible_fqdn where applicable
+- Updated default variables
+- Updated playbooks to use new variables
+- Added node health verification in create bucket playbook
+- Added bucket warmup verification in load bucket playbook
+- Added bucket warmup verification in cluster backup playbook
+- Fixed variable issue in cluster backup playbook
+- Updated documentation

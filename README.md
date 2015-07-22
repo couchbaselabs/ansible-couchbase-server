@@ -73,26 +73,31 @@ variables in detail including their default values for your reference.
 
 | Name                                 | Default                                                                                   | Description                             |
 | ------------------------------------ | ----------------------------------------------------------------------------------------- | --------------------------------------- |
-| couchbase_server_edition | enterprise | Couchbase Server edition to install: community or enterprise |
-| couchbase_server_admin | Administrator | Couchbase Server administrator user name |
-| couchbase_server_password | couchbase | Couchbase Server administrator user password |
-| couchbase_server_ram | 3072 | The per server RAM quota specified in megabytes |
-| couchbase_server_admin_port          | 8091                                                                                      | Administration and web console port     |
-| couchbase_server_api_port            | 8092                                                                                      | Couchbase Server API port               |
-| couchbase_server_epmd_port | 4369 | Erlang Port Mapper Daemon port |
-| couchbase_server_internal_ports      | 11209:11211                                                                               | Memcached and client ports              |
-| couchbase_server_node_data_ports     | 21100:21299                                                                               | Distributed Erlang communication ports  |
-| couchbase_server_config_file         | /opt/couchbase/var/lib/couchbase/config/config.dat                                        | Full path to config.dat                 |
-| couchbase_server_filesystem | ext4 | Default filesystem for data and index volumes |
-| couchbase_server_mountpoint | / | Logical volume mountpoint |
-| couchbase_server_partition | /dev/mapper/VolGroup-lv_root | Logical volume partition |
-| couchbase_server_mount_options | 'noatime,barrier=0,errors=remount-ro' | Additional mount options |
-| couchbase_server_data_path           | /opt/couchbase/var/lib/couchbase/data                                                     | Path to data files                      |
-| couchbase_server_home_path           | /opt/couchbase                                                                            | Couchbase Server installation base path |
-| couchbase_server_index_path          | /opt/couchbase/var/lib/couchbase/data                                                     | Path to index files                     |
-| couchbase_server_log_path            | /opt/couchbase/var/lib/couchbase/logs                                                     | Path to log files                       |
-| couchbase_server_cbcollect_path | /tmp |  Path to cbcollect_info output |
-| couchbase_server_tmpdir | /tmp | System wide TMPDIR for cbcollect_info |
+| `couchbase_server_edition` | enterprise | Couchbase Server edition: Community or Enterprise |
+| `couchbase_server_admin` | Administrator | Couchbase Server administrator user name |
+| `couchbase_server_password` | couchbase |: Couchbase Server administrator user password |
+| `couchbase_server_ram` | 3072 | The per server RAM quota specified in megabytes |
+| `couchbase_server_admin_port` | 8091 | Administration and web console port |
+| `couchbase_server_api_port` | 8092 | Couchbase Server API port |
+| `couchbase_server_admin_ssl_port` | 18091 | SSL enabled Couchbase Server REST port |
+| `couchbase_server_api_ssl_port` | 18092 | SSL enabled Couchbase Server CAPI port |
+| `couchbase_server_internal_ports` | 11209:11211 | Memcached and client ports |
+| `couchbase_server_node_data_ports` | 21100:21299 | Distributed Erlang communication ports |
+| `couchbase_server_home_path` | /opt/couchbase | Base path to Couchbase Server installation |
+| `couchbase_server_bin_path` | /opt/couchbase/bin | Path to Couchbase Server binary utilities |
+| `couchbase_server_config_file` | /opt/couchbase/var/lib/couchbase/config/config.dat | Full path to the config.dat file |
+| `couchbase_server_filesystem` | EXT4 | Default filesystem for data and index volumes |
+| `couchbase_server_mountpoint` | / | Logical volume mountpoint |
+| `couchbase_server_partition` | /dev/mapper/VolGroup-lv_root | Logical volume partition |
+| `couchbase_server_mount_options` | 'noatime,barrier=0,errors=remount-ro' | Additional mount options |
+| `couchbase_server_data_path` | /opt/couchbase/var/lib/couchbase/data | Path to data files |
+| `couchbase_server_index_path` | /opt/couchbase/var/lib/couchbase/data | Path to index files |
+| `couchbase_server_log_path` | /opt/couchbase/var/lib/couchbase/logs | Path to log files |
+| `couchbase_server_cbbackup_path` | /tmp | Path to output of cbbackup on node |
+| `couchbase_server_cbcollect_path` | /tmp | Path to cbcollect_info output on node |
+| `couchbase_server_tmpdir` | /tmp | System wide TMPDIR for cbcollect_info |
+| `couchbase_server_tune_os` | false | Whether to tune OS with optimized settings |
+| `couchbase_server_firewall` | false | Whether to use strict firewall rules |
 
 ### Special Variables
 
@@ -102,7 +107,7 @@ of the changes which are made to the operating system configuration:
 
 | Name                                 | Default  | Description                                    |
 | ------------------------------------ | -------- | ---------------------------------------------- |
-| couchbase_server_tune_os          | false    | Whether to tune OS with optimized settings |
+| `couchbase_server_tune_os`          | false    | Whether to tune OS with optimized settings |
 
 ## Examples
 

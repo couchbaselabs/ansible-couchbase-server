@@ -11,7 +11,7 @@
   tasks:
 
   - name: Execute cbcollect_info
-    shell: "TMPDIR={{ couchbase_server_tmpdir }} {{ couchbase_server_home_path }}/bin/cbcollect_info {{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip"
+    shell: "TMPDIR={{ couchbase_server_tmpdir }} {{ couchbase_server_bin_path }}/cbcollect_info {{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip"
 
   - name: Gather logs
     fetch: "src={{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip dest=var/cbcollect_info/{{ ansible_hostname }}.zip flat=yes"

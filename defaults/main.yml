@@ -14,13 +14,14 @@
 # couchbase_server_api_ssl_port: SSL enabled Couchbase Server CAPI port
 # couchbase_server_internal_ports: Memcached and client ports
 # couchbase_server_node_data_ports: Distributed Erlang communication ports
+# couchbase_server_home_path: Base path to Couchbase Server installation
+# couchbase_server_bin_path: Path to Couchbase Server binary utilities
 # couchbase_server_config_file: Full path to the config.dat file
 # couchbase_server_filesystem: Default filesystem for data and index volumes
 # couchbase_server_mountpoint: Logical volume mountpoint
 # couchbase_server_partition: Logical volume partition
 # couchbase_server_mount_options: Additional mount options
 # couchbase_server_data_path: Path to data files
-# couchbase_server_home_path: Base path to Couchbase Server installation
 # couchbase_server_index_path: Path to index files
 # couchbase_server_log_path: Path to log files
 # couchbase_server_cbbackup_path: Path to store output of cbbackup
@@ -41,15 +42,16 @@ couchbase_server_api_port: 8092
 couchbase_server_api_ssl_port: 8092
 couchbase_server_internal_ports: "11207:11215"
 couchbase_server_node_data_ports: "21100:21299"
-couchbase_server_config_file: "/opt/couchbase/var/lib/couchbase/config/config.dat"
+couchbase_server_home_path: "/opt/couchbase"
+couchbase_server_bin_path: "{{ couchbase_server_home_path }}/bin"
+couchbase_server_config_file: "{{ couchbase_server_home_path }}/var/lib/couchbase/config/config.dat"
 couchbase_server_filesystem: "ext4"
 couchbase_server_mountpoint: "/"
 couchbase_server_partition: "/dev/mapper/VolGroup-lv_root"
 couchbase_server_mount_options: "noatime,barrier=0,errors=remount-ro"
-couchbase_server_data_path: "/opt/couchbase/var/lib/couchbase/data"
-couchbase_server_home_path: "/opt/couchbase"
-couchbase_server_index_path: "/opt/couchbase/var/lib/couchbase/data"
-couchbase_server_log_path: "/opt/couchbase/var/lib/couchbase/logs"
+couchbase_server_data_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/data"
+couchbase_server_index_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/data"
+couchbase_server_log_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/logs"
 couchbase_server_cbbackup_path: "/opt/couchbase_backups"
 couchbase_server_cbcollect_path: "/tmp"
 couchbase_server_tmpdir: "/tmp"
