@@ -6,6 +6,10 @@
 
 - hosts: cluster_nodes
   sudo: True
+  vars:
+    couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
+  vars_files:
+    - ../defaults/main.yml
   tasks:
   - name: Create cluster grouping
     group_by: key={{ couchbase_server_node_role }}
@@ -20,10 +24,15 @@
   tasks:
 
   - name: Ensure backup target exists
-    file: "path={{ couchbase_server_cbbackup_path}} state=directory"
+    file: "path={{ couchbase_server_cbbackup_path }} state=directory"
+
+  - name: Verify bucket warmup
+    shell: "{{ couchbase_server_bin_path }}/cbstats localhost:11210 warmup | awk '/ep_warmup_state:/ {print $2}'"
+    register: couchbase_server_warmup
 
   - name: Execute cbbackup
-    shell: "{{ couchbase_server_home_path }}/bin/cbbackup -m full http://{{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}"
+    shell: "{{ couchbase_server_bin_path }}/cbbackup -m full http://{{ ansible_fqdn }}:{{ couchbase_server_admin_port }} {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}"
+    when: couchbase_server_warmup['stdout'] == "done"
 
   - name: Create backup archive
     shell: "tar zcf {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}"

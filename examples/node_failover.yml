@@ -20,7 +20,7 @@
   tasks:
 
   - name: Failover node
-    shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli failover -u {{ couchbase_server_admin }} -p {{ couchbase_server_password }} -c {{ couchbase_server_primary_node }} --server-failover={{ couchbase_server_failover_node }}"
+    shell: "{{ couchbase_server_bin_path }}/couchbase-cli failover -u {{ couchbase_server_admin }} -p {{ couchbase_server_password }} -c {{ couchbase_server_primary_node }} --server-failover={{ couchbase_server_failover_node }}"
     ignore_errors: True
 
   - debug: msg="You must supply a value for variable couchbase_server_failover_node"

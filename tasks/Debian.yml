@@ -3,37 +3,47 @@
 
 ## Couchbase Server Enterprise Edition
 
-- name: Download
-  get_url: "url={{ couchbase_server_debian_ee_url }} dest=/tmp/{{ couchbase_server_debian_ee_package }} sha256sum={{ couchbase_server_debian_ee_sha256 }} timeout=240"
-  when: couchbase_server_edition == "enterprise"
+- name: Copy package
+  copy: "src={{ couchbase_server_debian_ee_package }} dest=/tmp/{{ couchbase_server_debian_ee_package }}"
+  when: couchbase_server_edition == "enterprise" and couchbase_server_local_package == true
   tags: installation
 
-- name: Install
-  apt: "deb=/tmp/{{ couchbase_server_debian_ee_package }}"
+- name: Download package
+  get_url: "url={{ couchbase_server_debian_ee_url }} dest=/tmp/{{ couchbase_server_debian_ee_package }} sha256sum={{ couchbase_server_debian_ee_sha256 }} timeout=240"
+  when: couchbase_server_edition == "enterprise" and couchbase_server_local_package != true
+  tags: installation
+
+- name: Install package
+  apt: "deb=/tmp/{{ couchbase_server_debian_ee_package }} state=present"
   when: couchbase_server_edition == "enterprise"
   tags: installation
 
 - name: Package file cleanup
   sudo: True
-  shell: "rm -rf /tmp/{{ couchbase_server_debian_ee_package }}"
+  file: "dest=/tmp/{{ couchbase_server_debian_ee_package }} state=absent"
   when: couchbase_server_edition == "enterprise"
   tags: installation
 
 ## Couchbase Server Community Edition
 
-- name: Download
-  get_url: "url={{ couchbase_server_debian_ce_url }} dest=/tmp/{{ couchbase_server_debian_ce_package }} sha256sum={{ couchbase_server_debian_ce_sha256 }} timeout=240"
-  when: couchbase_server_edition == "community"
+- name: Copy package
+  copy: "src={{ couchbase_server_debian_ce_package }} dest=/tmp/{{ couchbase_server_debian_ce_package }}"
+  when: couchbase_server_edition == "community" and couchbase_server_local_package == true
   tags: installation
 
-- name: Install
-  apt: "deb=/tmp/{{ couchbase_server_debian_ce_package }}"
+- name: Download package
+  get_url: "url={{ couchbase_server_debian_ce_url }} dest=/tmp/{{ couchbase_server_debian_ce_package }} sha256sum={{ couchbase_server_debian_ce_sha256 }} timeout=240"
+  when: couchbase_server_edition == "community" and couchbase_server_local_package != true
+  tags: installation
+
+- name: Install package
+  apt: "deb=/tmp/{{ couchbase_server_debian_ce_package }} state=present"
   when: couchbase_server_edition == "community"
   tags: installation
 
 - name: Package file cleanup
   sudo: True
-  shell: "rm -rf /tmp/{{ couchbase_server_debian_ce_package }}"
+  file: "dest=/tmp/{{ couchbase_server_debian_ce_package }} state=absent"
   when: couchbase_server_edition == "community"
   tags: installation
 

@@ -27,7 +27,7 @@
     local_action: file name=var/ssl_certs state=directory
 
   - name: Store SSL certificate
-    shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli ssl-manage --retrieve-cert=/tmp/{{ couchbase_server_primary_node }}.pem -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} -u {{ couchbase_server_admin }} -p {{ couchbase_server_password }}"
+    shell: "{{ couchbase_server_bin_path }}/couchbase-cli ssl-manage --retrieve-cert=/tmp/{{ couchbase_server_primary_node }}.pem -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} -u {{ couchbase_server_admin }} -p {{ couchbase_server_password }}"
 
   - name: Gather SSL certificate
     fetch: "src=/tmp/{{ couchbase_server_primary_node }}.pem dest=var/ssl_certs/{{ ansible_hostname }}.pem flat=yes"
