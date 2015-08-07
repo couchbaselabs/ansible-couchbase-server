@@ -362,6 +362,36 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
  * `roles/couchbase-server/templates/etc_sysctl.d_couchbase-server.conf.j2`
  * `roles/couchbase-server/templates/iptables.j2`
 
+## Variable Notes
+
+* couchbase_server_local_package: Place the Couchbase Server package you
+  wish to install into the `files` directory and set this to true to skip
+  package download. This can greatly speed up the playbook for large clusters
+  and is useful for cluster nodes without necessary access to directlyy
+  download the package. Add this variable to `ansible.extra_vars` in your
+  `Vagrantfile` to enforce it.
+
+## Troubleshooting
+
+### SSH Error: Host key verification failed.
+
+You could experience an error like the following, sometimes when executing
+playbooks against a previously deployed cluster:
+
+```
+PLAY [primary] **************************************************************** 
+
+GATHERING FACTS *************************************************************** 
+fatal: [cb1.local] => SSH Error: Host key verification failed.
+    while connecting to 10.1.42.10:22
+It is sometimes useful to re-run the command using -vvvv, which prints SSH debug output to help diagnose the issue.
+```
+
+This is often the result of installing new Vagrant VMs but persisting the
+previous VMs host fingerprint in `.ssh/known_hosts`. You can edit the file
+and remove the offending entry (`cb1.local` in this case) from the file, and
+execute the playbook again.
+
 ## References
 
 1. http://www.couchbase.com/couchbase-server/overview

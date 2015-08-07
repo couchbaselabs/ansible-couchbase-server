@@ -328,45 +328,45 @@
 - Update supported Ansible version to 1.9.2
 - Update documentation
 
-# v1.0.30
+## v1.0.30
 
 - Update Vagrantfile
 - Update vagrant_hosts
 - Update convenience script
 
-# v1.0.31
+## v1.0.31
 
 - Fix Vagrant SSH key path issue
 - Prepare firewall rules for use
 - Update documentation
 
-# v1.0.32
+## v1.0.32
 
 - Fixed default variables issue
 
-# v1.0.33
+## v1.0.33
 
 - Fix firewall includes
 - Fix default varible issue
 - Update versions
 - Update README_VAGRANT
 
-# v1.0.34
+## v1.0.34
 
 - Include tuning variables
 
-# v1.0.35
+## v1.0.35
 
 - Update preinstall script
 - Updated Vagrantfile
 - Update Vagrant documentation
 - Update cluster init playbook
 
-# v1.0.36
+## v1.0.36
 
 - Updated documentation
 
-# v1.0.37
+## v1.0.37
 
 - Merge PR from Jordan Moore to prefer ansible_fqdn in cluster init steps
 - Updated all playbooks to use ansible_fqdn where applicable
@@ -377,3 +377,12 @@
 - Added bucket warmup verification in cluster backup playbook
 - Fixed variable issue in cluster backup playbook
 - Updated documentation
+
+## v1.1.0
+
+- New local package copy option
+- Improved cluster init playbook
+- Use file module instead of shell module for cleanup tasks
+- Updated documentation
+ - Added troubleshooting section
+- Updated supported OS versions in meta

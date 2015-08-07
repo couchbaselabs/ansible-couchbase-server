@@ -98,6 +98,15 @@ variables in detail including their default values for your reference.
 | `couchbase_server_tmpdir` | /tmp | System wide TMPDIR for cbcollect_info |
 | `couchbase_server_tune_os` | false | Whether to tune OS with optimized settings |
 | `couchbase_server_firewall` | false | Whether to use strict firewall rules |
+| `couchbase_server_local_package` | false | Whether to copy vs. download package |
+
+#### Variable Notes
+
+* couchbase_server_local_package: Place the Couchbase Server package you
+  wish to install into the `files` directory and set this to true to skip
+  package download. This can greatly speed up the playbook for large clusters
+  and is useful for cluster nodes without necessary access to directlyy
+  download the package.
 
 ### Special Variables
 

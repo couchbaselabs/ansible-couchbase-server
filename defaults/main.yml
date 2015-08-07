@@ -29,6 +29,7 @@
 # couchbase_server_tmpdir: System wide TMPDIR for cbcollect_info
 # couchbase_server_tune_os: Whether to tune OS with optimized settings
 # couchbase_server_firewall: Whether to use strict firewall rules
+# couchbase_server_local_package: Whether to copy vs. download package
 #
 #############################################################################
 
@@ -57,3 +58,4 @@ couchbase_server_cbcollect_path: "/tmp"
 couchbase_server_tmpdir: "/tmp"
 couchbase_server_tune_os: false
 couchbase_server_firewall: false
+couchbase_server_local_package: false
