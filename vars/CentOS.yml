@@ -14,8 +14,8 @@
 # A listing of available Couchbase Server Enterprise Edition packages and
 # their metadata for CentOS and RHEL
 #
-# Default installed version is currently set to:
-# Couchbase Server Enterprise Edition version 3.0.3
+# Current default installed version is:
+# Couchbase Server Enterprise Edition version 3.1.0
 #
 # Comment out the 4 variables below and uncoment variables for any older
 # version that you wish to install or pass them in as --extra-vars to the
@@ -23,10 +23,15 @@
 #
 #############################################################################
 
-couchbase_server_centos_ee_version: 3.0.3
+couchbase_server_centos_ee_version: 3.1.0
 couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
 couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
-couchbase_server_centos_ee_sha256: 1f21843bf0cc86390bc707d7c93bba6e8678dbc0eaf784bb2dc9a6718b46bd04
+couchbase_server_centos_ee_sha256: a15b743e891e317b869700f48f61762c917ffa3fabd8b8f389c84ec6dd011fbd
+
+# couchbase_server_centos_ee_version: 3.0.3
+# couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
+# couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
+# couchbase_server_centos_ee_sha256: 1f21843bf0cc86390bc707d7c93bba6e8678dbc0eaf784bb2dc9a6718b46bd04
 
 # couchbase_server_centos_ee_version: 3.0.2
 # couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
@@ -43,10 +48,16 @@ couchbase_server_centos_ee_sha256: 1f21843bf0cc86390bc707d7c93bba6e8678dbc0eaf78
 # couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
 # couchbase_server_centos_ee_sha256: a10c830dec6f749708c4836c02118526bb3afb713f87064f27f91251c64867d3
 
-# couchbase_server_centos_ee_version: 2.5.2
-# couchbase_server_centos_ee_package: couchbase-server-enterprise_{{ couchbase_server_centos_ee_version }}_x86_64.rpm
-# couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
-# couchbase_server_centos_ee_sha256: b662fedb00b7dc843732889d8f1c245e8e8c3f18dadcd3c7f9a389d4171cc17b
+#couchbase_server_centos_ee_version: 2.5.1
+#couchbase_server_centos_ee_package: couchbase-server-enterprise_centos6_x86_2.5.1-1113-rel.rpm
+#couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
+#couchbase_server_centos_ee_sha256: 8059aba49c626508f7fb94bb7824fdb099fe2d924126f3a6ccd0590d740bf4ba
+
+
+#couchbase_server_centos_ee_version: 2.5.2
+#couchbase_server_centos_ee_package: couchbase-server-enterprise_{{ couchbase_server_centos_ee_version }}_x86_64.rpm
+#couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
+#couchbase_server_centos_ee_sha256: b662fedb00b7dc843732889d8f1c245e8e8c3f18dadcd3c7f9a389d4171cc17b
 
 #############################################################################
 #
