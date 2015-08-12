@@ -79,6 +79,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         couchbase_server_ram: "1190",
         # Example variable overrides which will get passed in the same as 
         # `ansible-playbook --extra-vars`
+        # couchbase_server_local_package: true,
         # couchbase_server_debian_ee_version: "",
         # couchbase_server_debian_ee_package: "",
         # couchbase_server_debian_ee_url: "",

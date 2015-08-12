@@ -386,3 +386,8 @@
 - Updated documentation
  - Added troubleshooting section
 - Updated supported OS versions in meta
+
+## v1.2.0
+
+- Updated for Couchbase Server version 3.1.0
+- Updated documentation
