@@ -20,9 +20,10 @@
   - name: Couchbase Server Service
     service: name=couchbase-server state=started
 
+# Initialize the primary cluster node
+
 - hosts: primary
   sudo: True
-  serial: 1
   gather_facts: False
   vars_files:
     - ../defaults/main.yml
@@ -45,12 +46,13 @@
 
   - name: Initialize primary node
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
-    when: cb_major_version['stdout'] != 2
+    when: cb_major_version['stdout'] != "2"
 
+
+# Initialize additional cluster nodes
 
 - hosts: additional
   sudo: True
-  serial: 1
   gather_facts: False
   vars_files:
     - ../defaults/main.yml
@@ -71,12 +73,13 @@
 
   - name: Initialize additional node
     shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli node-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
-    when: cb_major_version['stdout'] != 2
+    when: cb_major_version['stdout'] != "2"
 
+
+# Join additional nodes to the cluster and rebalance
 
 - hosts: primary
   sudo: True
-  serial: 1
   gather_facts: False
   vars_files:
     - ../defaults/main.yml

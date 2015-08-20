@@ -25,6 +25,7 @@
     - name: Verify bucket warmup
       shell: "{{ couchbase_server_bin_path }}/cbstats localhost:11210 warmup | awk '/ep_warmup_state:/ {print $2}'"
       register: couchbase_server_warmup
+      failed_when: couchbase_server_warmup['stdout'] != "done"
 
     - name: Load bucket with sample JSON items
       shell: "{{ couchbase_server_bin_path }}/cbworkloadgen -n {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} -i {{ couchbase_server_bucket_item_count }} -s {{ couchbase_server_bucket_item_size }} -j -b {{ couchbase_server_bucket_name }} -u {{ couchbase_server_admin }} -p {{ couchbase_server_password }}"
