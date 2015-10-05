@@ -1,7 +1,7 @@
 ---
 # File: cluster_install.yml
 # Example Ansible playbook to install Couchbase Server on cluster nodes 
-# NB: This installs the Couchbase Server software only and does not
+# NB: This installs the Couchbase Server software, but does not
 # actually initialize a cluster, see cluster_init.yml for that
 
 - hosts: cluster_nodes

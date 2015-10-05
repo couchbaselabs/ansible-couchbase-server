@@ -4,12 +4,10 @@
 
 - hosts: cluster_nodes
   sudo: True
-  gather_facts: False
   tasks:
 
   - name: Create cluster grouping
     group_by: key={{ couchbase_server_node_role }}
-
 
 - hosts: cluster_nodes
   sudo: True
@@ -20,10 +18,15 @@
   - name: Couchbase Server Service
     service: name=couchbase-server state=started
 
+#############################################################################
+####              Initialize primary cluster node                        ####
+#############################################################################
+
 - hosts: primary
   sudo: True
-  serial: 1
-  gather_facts: False
+
+- hosts: primary
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   vars:
@@ -35,23 +38,25 @@
     register: cb_major_version
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=20"
-
-  - name: Wait for EPMD
-    wait_for: "port={{ couchbase_server_admin_port }} delay=20"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Configure cluster settings
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli cluster-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --cluster-init-password={{ couchbase_server_password }} --cluster-init-port={{couchbase_server_admin_port}} --cluster-init-ramsize={{ couchbase_server_ram }}"
 
   - name: Initialize primary node
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
-    when: cb_major_version['stdout'] != 2
+    when: cb_major_version['stdout'] != "2"
 
+#############################################################################
+####              Initialize additional cluster nodes                    ####
+#############################################################################
 
 - hosts: additional
   sudo: True
-  serial: 1
   gather_facts: False
+
+- hosts: additional
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   tasks:
@@ -61,23 +66,24 @@
     register: cb_major_version
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=20"
-
-  - name: Wait for EPMD
-    wait_for: "port={{ couchbase_server_admin_port }} delay=20"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Configure cluster settings
     shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli cluster-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --cluster-init-password={{ couchbase_server_password }} --cluster-init-port={{couchbase_server_admin_port}} --cluster-init-ramsize={{ couchbase_server_ram }}"
 
   - name: Initialize additional node
     shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli node-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
-    when: cb_major_version['stdout'] != 2
+    when: cb_major_version['stdout'] != "2"
 
+#############################################################################
+####           Join additional nodes to the cluster and rebalance        ####
+#############################################################################
 
 - hosts: primary
   sudo: True
-  serial: 1
-  gather_facts: False
+
+- hosts: primary
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   vars:
