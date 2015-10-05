@@ -391,3 +391,9 @@
 
 - Updated for Couchbase Server version 3.1.0
 - Updated documentation
+
+## v1.2.1
+
+- Updated playbooks to reduce some wait times
+- Fixed version checking in cluster initialization commands
+- Updated documentation
