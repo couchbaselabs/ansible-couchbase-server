@@ -394,6 +394,14 @@
 
 ## v1.2.1
 
+- Removed CentOS 2.5.1 package
+- Added comments in cluster initialization playbook
+- Fixed conditionals in cluster initialization playbook
+- Removed serial: 1 from tasks in cluster initialization playbook
+- Added failures for node warmup and health to bucket create 
+  and bucket load playbooks
+
+## v1.2.2
 - Updated playbooks to reduce some wait times
 - Fixed version checking in cluster initialization commands
 - Updated documentation

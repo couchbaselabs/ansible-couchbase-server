@@ -24,7 +24,9 @@
 
 - hosts: primary
   sudo: True
-  serial: 1
+
+- hosts: primary
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   vars:
@@ -51,7 +53,10 @@
 
 - hosts: additional
   sudo: True
-  serial: 1
+  gather_facts: False
+
+- hosts: additional
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   tasks:
@@ -76,7 +81,9 @@
 
 - hosts: primary
   sudo: True
-  serial: 1
+
+- hosts: primary
+  sudo: True
   vars_files:
     - ../defaults/main.yml
   vars:
