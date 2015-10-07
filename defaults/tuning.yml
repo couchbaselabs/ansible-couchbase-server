@@ -20,3 +20,4 @@ couchbase_server_tcp_fin_timeout: 15
 couchbase_server_tcp_keepalive_intvl: 30
 couchbase_server_dirty_bytes: 209715200
 couchbase_server_dirty_background_bytes: 104857600
+couchbase_server_disk_scheduler: noop

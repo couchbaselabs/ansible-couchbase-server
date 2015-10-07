@@ -12,6 +12,7 @@
 # couchbase_server_api_port: Couchbase Server API port
 # couchbase_server_admin_ssl_port: SSL enabled Couchbase Server REST port
 # couchbase_server_api_ssl_port: SSL enabled Couchbase Server CAPI port
+# couchbase_server_default_bucket The default bucket name
 # couchbase_server_internal_ports: Memcached and client ports
 # couchbase_server_node_data_ports: Distributed Erlang communication ports
 # couchbase_server_home_path: Base path to Couchbase Server installation
@@ -41,6 +42,7 @@ couchbase_server_admin_port: 8091
 couchbase_server_admin_ssl_port: 18091
 couchbase_server_api_port: 8092
 couchbase_server_api_ssl_port: 8092
+couchbase_server_default_bucket: default
 couchbase_server_internal_ports: "11207:11215"
 couchbase_server_node_data_ports: "21100:21299"
 couchbase_server_home_path: "/opt/couchbase"

@@ -27,11 +27,11 @@ documents with the playbooks included in the `examples` directory.
 
 This role is tested for basic functionality with the following software:
 
-* Couchbase Server (versions 2.5.2-3.1.0)
+* Couchbase Server (versions 2.5.2-4.0.0)
 * Ansible (version 1.9.2)
 * CentOS (versions 6-7)
 * Debian (version 7)
-* Ubuntu (versions 12.04-13.10)
+* Ubuntu (versions 12.04-14.04)
 
 ## Works with Ansible Galaxy
 
@@ -117,6 +117,23 @@ of the changes which are made to the operating system configuration:
 | Name                                 | Default  | Description                                    |
 | ------------------------------------ | -------- | ---------------------------------------------- |
 | `couchbase_server_tune_os`          | false    | Whether to tune OS with optimized settings |
+
+## Multi Dimensional Scaling and New Service Types
+
+This `examples/cluster_init.yml` playbook now has basic support for 
+Couchbase Server version 4.0.0 and its new service types. Specifically, a
+cluster node can now be tagged as providing the following services:
+
+* data — the standard document data service
+* index — the global secondary index (GSI) service
+* query — the N1QL query service
+
+To specify which services a node should be responsible for, simply add them
+to the `couchbase_server_node_services` variable as part of your cluster node
+host inventory definition. See the `examples/vagrant_hosts_mds` for an
+example of how this is done.
+
+See [Services architecture and multidimensional scaling](http://developer.couchbase.com/documentation/server/4.0/architecture/services-archi-multi-dimensional-scaling.html) for more information about service types.
 
 ## Examples
 
