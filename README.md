@@ -124,9 +124,9 @@ This `examples/cluster_init.yml` playbook now has basic support for
 Couchbase Server version 4.0.0 and its new service types. Specifically, a
 cluster node can now be tagged as providing the following services:
 
-* data — the standard document data service
-* index — the global secondary index (GSI) service
-* query — the N1QL query service
+* data : the standard document data service
+* index : the global secondary index (GSI) service
+* query : the N1QL query service
 
 To specify which services a node should be responsible for, simply add them
 to the `couchbase_server_node_services` variable as part of your cluster node
