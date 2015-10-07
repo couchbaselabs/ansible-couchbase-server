@@ -255,7 +255,7 @@ tag support; here is a list of available tags by role:
 
 * *network* : Network hostname
 * *system_packages* : Install any required system packages
-* *system_tuning* : Set disk scheduler specified in `linux/group_vars/all`
+* *system_tuning* : Set disk scheduler specified in `defaults/tuning.yml`
   for the data and index volumes, disable Transparent Huge Pages, and
   other system tuning
 
