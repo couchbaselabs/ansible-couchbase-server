@@ -402,6 +402,15 @@
   and bucket load playbooks
 
 ## v1.2.2
+
 - Updated playbooks to reduce some wait times
 - Fixed version checking in cluster initialization commands
+- Updated documentation
+
+## v1.3.0
+
+- Couchbase Server 4.0.0
+- Support for MDS / services
+- Maximum supported OS versions (e.g. RHEL 7, Ubuntu 14.04) by default
+- Removed all vars/* files and placed their content in defaults/* files
 - Updated documentation
