@@ -11,7 +11,7 @@
 # * Couchbase Server intracluster port range: TCP 11207-11215 
 # * Couchbase Server intracluster data port range: TCP 21100-21299
 
-
+*filter
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_sshd_port }} -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_epmd_port }} -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_admin_port }} -j ACCEPT
@@ -20,3 +20,4 @@
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_api_ssl_port }} -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_internal_ports }} -j ACCEPT
 -A INPUT -p tcp -m state --state NEW -m tcp --dport {{ couchbase_server_node_data_ports }} -j ACCEPT
+COMMIT

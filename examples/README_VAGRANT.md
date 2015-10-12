@@ -17,8 +17,8 @@
 > for experimentation.
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
-high performance NoSQL document database available in Community and Enterprise
-editions for several operating system environments.
+high performance NoSQL document database available in Community and
+Enterprise editions supported for several common operating systems.
 
 This project provides documentation and a collection of scripts to help you
 automate the deployment of Couchbase Server Enterprise Edition using
@@ -28,8 +28,8 @@ deploying a development cluster with Vagrant and VirtualBox.
 ## Vagrant Development Cluster
 
 In some situations deploying a small virtualized cluster on your local
-development machine can be handy. This document describes such a with the
-following software:
+development machine can be handy. This document describes such a deployment
+with the following software:
 
 * [Couchbase Server](http://www.couchbase.com/couchbase-server/overview)
 * [VirtualBox](https://www.virtualbox.org/)
@@ -37,23 +37,21 @@ following software:
   supporting plugin
 * [Ansible](http://www.ansibleworks.com/)
 
-Each of the virtual machines are configured with 1.5GB RAM, 2 CPU cores, and
-2 network interfaces. The first interface uses NAT and has connection via the
-host to the outside world. The second interface is a private network and is
-used for intra-cluster communication in addition to access from the host
-machine to Couchbase Server's administration and API ports.
+Each of the 3 virtual machines defined in the included `Vagrantfile` are
+configured with 1.5GB RAM, 2 CPU cores, and 2 network interfaces. The first
+interface uses NAT and has connection via the host to the outside world.
+The second interface is a private network and is used for intra-cluster
+communication in addition to access from the host machine to Couchbase
+Server's administration and API ports.
 
-The Vagrant configuration file (`Vagrantfile`) is responsible for
-configuring the virtual machines and a baseline OS installation.
-
-The Ansible playbooks then further refine OS configuration, Couchbase Server
-package download and installation, and the initialization of the 3 nodes
-into a ready to use cluster.
+The Ansible playbooks can then further refine OS configuration, perform
+Couchbase Server package download (or copy from host) and installation,
+and initialization of the 3 nodes into a ready to use cluster.
 
 ## Works with Ansible Galaxy
 
 This role is designed to be installed via the `ansible-galaxy` command
-instead of being directly run from the git repository.
+in addition to being directly run from the git repository.
 
 You should install it like this:
 
@@ -61,8 +59,8 @@ You should install it like this:
 ansible-galaxy install couchbase.couchbase-server
 ```
 
-You'll want to make sure you have write access to `/etc/ansible/roles/` since
-that is where the role will be installed by default, or define your own
+Make sure you have write access to `/etc/ansible/roles/` since
+that is the default Ansible role installation path, or define your own
 Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
 
 ```
