@@ -16,8 +16,8 @@
 > for experimentation.
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
-high performance NoSQL document database available in Community and Enterprise
-editions for several supported operating systems.
+high performance NoSQL document database available in Community and
+Enterprise editions supported for several common operating systems.
 
 This Ansible role can be used to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
@@ -36,7 +36,7 @@ This role is tested for basic functionality with the following software:
 ## Works with Ansible Galaxy
 
 This role is designed to be installed via the `ansible-galaxy` command
-instead of being directly run from the git repository.
+in addition to being directly run from the git repository.
 
 You should install it like this:
 
@@ -44,8 +44,8 @@ You should install it like this:
 ansible-galaxy install couchbase.couchbase-server
 ```
 
-You'll want to make sure you have write access to `/etc/ansible/roles/` since
-that is where the role will be installed by default, or define your own
+Make sure you have write access to `/etc/ansible/roles/` since
+that is the default Ansible role installation path, or define your own
 Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
 
 ```
@@ -102,6 +102,10 @@ variables in detail including their default values for your reference.
 
 #### Variable Notes
 
+* Other Couchbase Server versions: You can comment out the topmost / current
+  version in the `defaults/*.yml` file for your OS and uncomment a previous
+  version to have that version installed by default instead. This can also
+  be done as specific arguments in the `Vagrantfile` as well.
 * couchbase_server_local_package: Place the Couchbase Server package you
   wish to install into the `files` directory and set this to true to skip
   package download. This can greatly speed up the playbook for large clusters
@@ -130,8 +134,8 @@ cluster node can now be tagged as providing the following services:
 
 To specify which services a node should be responsible for, simply add them
 to the `couchbase_server_node_services` variable as part of your cluster node
-host inventory definition. See the `examples/vagrant_hosts_mds` for an
-example of how this is done.
+host inventory definition. Reference the *cluster_nodes_mds* section of
+`examples/example_hosts` for an example of how this is done.
 
 See [Services architecture and multidimensional scaling](http://developer.couchbase.com/documentation/server/4.0/architecture/services-archi-multi-dimensional-scaling.html) for more information about service types.
 
@@ -153,6 +157,7 @@ as follows:
 * `example_hosts` example hosts inventory in format required by this project
 * `Vagrantfile` example Vagrant development cluster definition
 * `vagrant_hosts` default Vagrant hosts inventory file
+* `vagrant_hosts_mds` example Vagrant hosts inventory file with MDS
 
 ### Create Buckets
 

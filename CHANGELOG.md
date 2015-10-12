@@ -418,3 +418,10 @@
 ## v1.3.1
 
 - Remove unicode from README so role will reimport into Galaxy again
+
+## v1.3.2
+
+- Updated iptables rules; thank you, @Hughjmp
+- Moved MDS example host inventory into example_hosts file
+- Removed vagrant_hosts_mds file
+- Updated documentation
