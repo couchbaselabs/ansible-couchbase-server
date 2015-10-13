@@ -425,3 +425,8 @@
 - Moved MDS example host inventory into example_hosts file
 - Removed vagrant_hosts_mds file
 - Updated documentation
+
+## v1.3.3
+
+- Updated iptables playbooks
+- Updated iptables ports

@@ -1,25 +1,17 @@
 ---
-# File: tasks/Debian_firewall.yml - firewall Debian tasks for ansible-couchbase-server
+# File: tasks/Debian_firewall.yml - Debian firewall tasks for 
+# ansible-couchbase-server
 
 ## Static firewall rules using iptables instead of firewalld
 
 - name: Install iptables rules
-  sudo: True
-  yum: name=iptables-services state=present
-  tags: firewall
-
-- name: Enable iptables
-  shell: systemctl enable iptables.service
-  tags: firewall
-
-- name: Start services
-  service: name=iptables state=started
-  tags: firewall
-
-- name: Install iptables rules
-  template: "src=etc_sysconfig_iptables.j2 dest=/etc/sysconfig/iptables.couchbase-server owner=couchbase group=couchbase"
+  template: "src=etc_sysconfig_iptables.j2 dest=/etc/iptables.up.rules.couchbase-server owner=couchbase group=couchbase"
   tags: firewall
 
 - name: Import iptables rules
-  shell: "/sbin/iptables-restore < /etc/sysconfig/iptables.couchbase-server"
+  shell: "/sbin/iptables-restore < /etc/iptables.up.rules.couchbase-server"
+  tags: firewall
+
+- name: Create iptables script
+  copy: src=debian-iptables dest=/etc/network/if-pre-up.d/iptables mode=0755
   tags: firewall
