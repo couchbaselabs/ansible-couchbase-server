@@ -50,8 +50,8 @@ and initialization of the 3 nodes into a ready to use cluster.
 
 ## Works with Ansible Galaxy
 
-This role is designed to be installed via the `ansible-galaxy` command
-in addition to being directly run from the git repository.
+This role was designed for installation via the `ansible-galaxy` command,
+and can also be directly run from the git repository.
 
 You should install it like this:
 
@@ -80,7 +80,7 @@ Begin from the top level directory of this project and use the following
    [Vagrant](http://downloads.vagrantup.com/), 
    [vagrant-hosts](https://github.com/adrienthebo/vagrant-hosts), 
    and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
-2. Edit `/etc/hosts` or use the included `bin/preinstall` script to add
+2. Edit `/etc/hosts` or use the included `bin/preinstall.sh` script to add
    the following entries to your development system's `/etc/hosts` file:
  * 10.1.42.10 cb1.local cb1
  * 10.1.42.20 cb2.local cb2
@@ -90,7 +90,7 @@ Begin from the top level directory of this project and use the following
 5. Access the cluster at http://cb1:8091 with username **Administrator**
    and password **couchbase**.
 
-By default, this project will install CentOS 6.5 based cluster nodes. If you
+This project will install CentOS 6.5 based cluster nodes by default. If you
 prefer, it can also install Ubuntu 12.04 based nodes by changing the command
 in step 4 to the following:
 
@@ -203,7 +203,7 @@ to these prompts.
 
 ### Debian
 
-By default, this project will install CentOS 6.5 based cluster nodes. If you
+This project will install CentOS 6.5 based cluster nodes by default. If you
 prefer, you can install Debian 7.4 based nodes by changing the
 `vagrant up` command to the following:
 

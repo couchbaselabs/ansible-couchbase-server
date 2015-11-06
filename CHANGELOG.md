@@ -430,3 +430,8 @@
 
 - Updated iptables playbooks
 - Updated iptables ports
+
+## v1.3.4
+
+- Added .sh extension to preinstall script
+- Updated documentation
