@@ -435,3 +435,8 @@
 
 - Added .sh extension to preinstall script
 - Updated documentation
+
+## v1.3.5
+
+- Updated supported versions
+- Updated documentation
