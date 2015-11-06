@@ -70,7 +70,7 @@ See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
 This role is tested for basic functionality with the following software:
 
 * Couchbase Server (versions 2.5.2-4.0.0)
-* Ansible (version 1.9.2)
+* Ansible (version 1.9.4)
 * CentOS (versions 6-7)
 * Debian (version 7)
 * Ubuntu (versions 12.04-14.04)
