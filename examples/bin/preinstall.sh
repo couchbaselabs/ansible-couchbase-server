@@ -78,8 +78,8 @@ function add_hosts {
     sudocheck
     sudo sh -c "echo '# Couchbase Server Vagrant virtual machine hosts
 10.1.42.10 cb1.local cb1
-10.1.42.20 cb2.local cb1
-10.1.42.30 cb3.local cb1
+10.1.42.20 cb2.local cb2
+10.1.42.30 cb3.local cb3
 ' >> /etc/hosts"
     logmsg success "Couchbase Server node host information added to /etc/hosts"
   fi

@@ -440,3 +440,7 @@
 
 - Updated supported versions
 - Updated documentation
+
+## v1.3.6
+
+- Fix short host names
