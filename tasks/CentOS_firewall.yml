@@ -1,5 +1,6 @@
 ---
-# File: tasks/CentOS_firewall.yml - firewall CentOS tasks for ansible-couchbase-server
+# File: tasks/CentOS_firewall.yml - CentOS firewall tasks for 
+# ansible-couchbase-server
 
 ## Static firewall rules using iptables instead of firewalld
 

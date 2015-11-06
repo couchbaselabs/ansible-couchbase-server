@@ -22,7 +22,49 @@ Enterprise editions supported for several common operating systems.
 This Ansible role can be used to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
 documents with the playbooks included in the `examples` directory.
-  
+
+## 3-Node Development Cluster Quick Start
+
+Follow these steps to deploy a CentOS based, simple 3 node development or
+evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagrant.
+
+### If You Have Previously Used Ansible Galaxy
+
+1. `ansible-galaxy install couchbase.couchbase-server`
+2. `cd <roles_path>/examples`
+3. `./bin/preinstall.sh`
+4. `vagrant up`
+
+### If You Have Not Previously Used Ansible Galaxy
+
+1. `mkdir $HOME/ansible_roles`
+2. `echo "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
+2. `ansible-galaxy install couchbase.couchbase-server`
+3. `cd $HOME/ansible_roles/couchbase.couchbase-server/examples`
+4. `./bin/preinstall.sh`
+5. `vagrant up`
+
+Note that `$ANSIBLE_ROLES_PATH` defaults to `/etc/ansible/roles` or the path
+you've specified in `~/.ansible.cfg` for *roles_path*.
+
+This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
+them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
+10.1.42.30 as defined in the `Vagrantfile`.
+
+To install Debian based nodes, change the command in step 4 to:
+
+```
+BOX_NAME=chef/debian-7.4 vagrant up
+```
+
+To install Ubuntu based nodes, change the command in step 4 to:
+
+```
+BOX_NAME=ubuntu/trusty64 vagrant up
+```
+
+See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
+
 ## Requirements
 
 This role is tested for basic functionality with the following software:
@@ -188,37 +230,6 @@ or perhaps you'd like to make a memcached based bucket? No problem:
 ansible-playbook -i vagrant_hosts create_bucket.yml \
 -e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
 ```
-
-### Quick Start for 3-Node Development Cluster
-
-Follow these steps to have a simple 3 node CentOS based development or
-evaluation cluster on a machine with >= 8GB RAM, using VirtualBox and Vagrant:
-
-1. `export ROLESPATH=$ANSIBLE_ROLES_PATH`
-2. `ansible-galaxy install couchbase.couchbase-server`
-3. `cd $ROLESPATH/couchbase.couchbase-server/examples`
-4. `vagrant up`
-
-Note that `$ANSIBLE_ROLES_PATH` defaults to `/etc/ansible/roles` or the path
-you've specified in `~/.ansible.cfg` for *roles_path*.
-
-This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
-them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
-10.1.42.30 as defined in the `Vagrantfile`.
-
-To install Debian based nodes, change the command in step 4 to:
-
-```
-BOX_NAME=chef/debian-7.4 vagrant up
-```
-
-To install Ubuntu based nodes, change the command in step 4 to:
-
-```
-BOX_NAME=ubuntu/trusty64 vagrant up
-```
-
-See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
 
 ## Dependencies
 

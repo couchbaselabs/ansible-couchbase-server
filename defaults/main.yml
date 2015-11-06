@@ -9,12 +9,14 @@
 # couchbase_server_password: Couchbase Server administrator user password
 # couchbase_server_ram: The per server RAM quota specified in megabytes
 # couchbase_server_admin_port: Administration and web console port
+# couchbase_server_epmd_port: Erlang Port Mapper Daemon (EPMD) port
 # couchbase_server_api_port: Couchbase Server API port
 # couchbase_server_admin_ssl_port: SSL enabled Couchbase Server REST port
 # couchbase_server_api_ssl_port: SSL enabled Couchbase Server CAPI port
 # couchbase_server_default_bucket The default bucket name
 # couchbase_server_internal_ports: Memcached and client ports
 # couchbase_server_node_data_ports: Distributed Erlang communication ports
+# couchbase_server_sshd_port: Default SSH port
 # couchbase_server_home_path: Base path to Couchbase Server installation
 # couchbase_server_bin_path: Path to Couchbase Server binary utilities
 # couchbase_server_config_file: Full path to the config.dat file
@@ -39,12 +41,14 @@ couchbase_server_admin: "Administrator"
 couchbase_server_password: "couchbase"
 couchbase_server_ram: 3072
 couchbase_server_admin_port: 8091
+couchbase_server_epmd_port: 4369
 couchbase_server_admin_ssl_port: 18091
 couchbase_server_api_port: 8092
-couchbase_server_api_ssl_port: 8092
+couchbase_server_api_ssl_port: 18092
 couchbase_server_default_bucket: default
 couchbase_server_internal_ports: "11207:11215"
 couchbase_server_node_data_ports: "21100:21299"
+couchbase_server_sshd_port: 22
 couchbase_server_home_path: "/opt/couchbase"
 couchbase_server_bin_path: "{{ couchbase_server_home_path }}/bin"
 couchbase_server_config_file: "{{ couchbase_server_home_path }}/var/lib/couchbase/config/config.dat"

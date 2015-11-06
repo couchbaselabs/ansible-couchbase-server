@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# File: examples/bin/preinstall - convenience script to add Couchbase Server
-# VM node host information to /etc/hosts for Vagrant
+# File: examples/bin/preinstall.sh - convenience script to add 
+# Couchbase Server VM node host information to /etc/hosts for Vagrant
 
 cb1="10\.1\.42\.10"
 txtblk='\e[0;30m' # Black - Regular

@@ -1,11 +1,12 @@
 ---
-# File: tasks/RedHat_firewall.yml - firewall Red Hat tasks for ansible-couchbase-server
+# File: tasks/RedHat_firewall.yml - RedHat firewall tasks for 
+# ansible-couchbase-server
 
 ## Static firewall rules using iptables instead of firewalld
 
 - name: Stop firewalld
   sudo: True
-  service: name=firewalld state=stopped
+  service: "name=firewalld state=stopped"
   when: ansible_distribution_major_version >= 7 
   tags: firewall
 
@@ -16,7 +17,7 @@
 
 - name: Mask firewalld
   sudo: True
-  shell: systemctl mask firewalld.service
+  shell: "systemctl mask firewalld.service"
   when: ansible_distribution_major_version >= 7 
   tags: firewall
 
