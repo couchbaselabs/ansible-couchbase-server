@@ -444,3 +444,11 @@
 ## v1.3.6
 
 - Fix short host names
+
+## v1.3.7
+
+- Add Community Edition version 4.0.0 to defaults
+- Add version 3.1.1 to defaults
+- Remove version 3.0.0
+- Remove version 2.5.2
+- Update documentation

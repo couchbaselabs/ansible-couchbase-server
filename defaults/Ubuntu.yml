@@ -25,6 +25,11 @@ couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_ser
 couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
 couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d28f352312a0a5be9edd
 
+# couchbase_server_ubuntu_ee_version: 3.1.1
+# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
+# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
+# couchbase_server_ubuntu_ee_sha256: 7c9d040107efa114a4a8c81de9f22ff3e5f33f7a8a2565a88c89887ca957c329
+
 # couchbase_server_ubuntu_ee_version: 3.1.0
 # couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
@@ -45,16 +50,6 @@ couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
 # couchbase_server_ubuntu_ee_sha256: 6914fb71d7e2fca314b7767f64a49cb45112f487f0d577239459f890a0a69b16
 
-# couchbase_server_ubuntu_ee_version: 3.0.0
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: b86db55ee57dc465eb81443f97e21064666557c275e2e699f73d24be6b51d4d4
-
-# couchbase_server_ubuntu_ee_version: 2.5.2
-# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}_x86_64.deb
-# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-# couchbase_server_ubuntu_ee_sha256: 27a79a65758023c34ed900e8ef8c54bab4a65f4c84b7c94359cba910800a4b19
-
 #############################################################################
 #
 # COUCHBASE SERVER COMMUNITY EDITION
@@ -70,6 +65,11 @@ couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d
 # ansible-playbook command.
 #
 #############################################################################
+
+couchbase_server_ubuntu_ce_version: 4.0.0
+couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_server_ubuntu_ce_version }}-ubuntu12.04_amd64.deb
+couchbase_server_ubuntu_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ce_version }}/{{ couchbase_server_ubuntu_ce_package }}
+couchbase_server_ubuntu_ce_sha256: e275717da0c22efb846b397a1ffeaf63a21ec91e4e481efe3b59de0a0d53098
 
 couchbase_server_ubuntu_ce_version: 3.0.1
 couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_server_ubuntu_ce_version }}-ubuntu12.04_amd64.deb
