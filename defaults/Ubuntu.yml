@@ -25,6 +25,11 @@ couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_ser
 couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
 couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d28f352312a0a5be9edd
 
+# couchbase_server_ubuntu_ee_version: 3.1.2
+# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
+# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
+# couchbase_server_ubuntu_ee_sha256: c22bfac46e5288b568e3af0863c1aa86e425354064a1dbcc4d3bf10e82aa4393
+
 # couchbase_server_ubuntu_ee_version: 3.1.1
 # couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
@@ -71,7 +76,7 @@ couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_serv
 couchbase_server_ubuntu_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ce_version }}/{{ couchbase_server_ubuntu_ce_package }}
 couchbase_server_ubuntu_ce_sha256: e275717da0c22efb846b397a1ffeaf63a21ec91e4e481efe3b59de0a0d53098
 
-couchbase_server_ubuntu_ce_version: 3.0.1
-couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_server_ubuntu_ce_version }}-ubuntu12.04_amd64.deb
-couchbase_server_ubuntu_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ce_version }}/{{ couchbase_server_ubuntu_ce_package }}
-couchbase_server_ubuntu_ce_sha256: 59efbd8924969f71c9a6b438afea94d974db51607464c55d7a2d527368026150
+# couchbase_server_ubuntu_ce_version: 3.0.1
+# couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_server_ubuntu_ce_version }}-ubuntu12.04_amd64.deb
+# couchbase_server_ubuntu_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ce_version }}/{{ couchbase_server_ubuntu_ce_package }}
+# couchbase_server_ubuntu_ce_sha256: 59efbd8924969f71c9a6b438afea94d974db51607464c55d7a2d527368026150

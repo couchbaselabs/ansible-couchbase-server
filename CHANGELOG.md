@@ -452,3 +452,7 @@
 - Remove version 3.0.0
 - Remove version 2.5.2
 - Update documentation
+
+## v1.4.0
+
+- Couchbase Server version 3.1.2
