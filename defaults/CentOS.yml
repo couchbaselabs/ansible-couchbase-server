@@ -29,6 +29,11 @@ couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_ser
 couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
 couchbase_server_centos_ee_sha256: 063eb23c6f796fadb0af9b03ea527ad910d3a9e03d9ef4ba6aa100db318f6f5b
 
+# couchbase_server_centos_ee_version: 3.1.2
+# couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
+# couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
+# couchbase_server_centos_ee_sha256: 96539a19f9f7cfc7418b01ae9ececf94b09af5d9f925fa531c28f41004f1bcb4
+
 # couchbase_server_centos_ee_version: 3.1.1
 # couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
 # couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
@@ -75,7 +80,7 @@ couchbase_server_centos_ce_package: couchbase-server-community-{{ couchbase_serv
 couchbase_server_centos_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ce_version }}/{{ couchbase_server_centos_ce_package }}
 couchbase_server_centos_ce_sha256: 73f048e49617095e6a0cb9a82f74578d48b1054e8142fb712eab71395d7b9ce0
 
-couchbase_server_centos_ce_version: 3.0.1
-couchbase_server_centos_ce_package: couchbase-server-community-{{ couchbase_server_centos_ce_version }}-centos6.x86_64.rpm
-couchbase_server_centos_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ce_version }}/{{ couchbase_server_centos_ce_package }}
-couchbase_server_centos_ce_sha256: 65fabf18adfbe5136dd700866c479e99f33ba839b6de9973e7878e685102bb28
+# couchbase_server_centos_ce_version: 3.0.1
+# couchbase_server_centos_ce_package: couchbase-server-community-{{ couchbase_server_centos_ce_version }}-centos6.x86_64.rpm
+# couchbase_server_centos_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ce_version }}/{{ couchbase_server_centos_ce_package }}
+# couchbase_server_centos_ce_sha256: 65fabf18adfbe5136dd700866c479e99f33ba839b6de9973e7878e685102bb28
