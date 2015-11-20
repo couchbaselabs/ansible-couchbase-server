@@ -456,3 +456,7 @@
 ## v1.4.0
 
 - Couchbase Server version 3.1.2
+
+## v1.4.1
+
+- Install CE 4.0.0 for Ubuntu 14.04 (thanks @SomeoneWeird)
