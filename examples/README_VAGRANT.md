@@ -303,8 +303,8 @@ examples, and Vagrant bits as follows:
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
 * `cluster_install.yml` prepares OS and installs Couchbase Server only
 * `create_bucket.yml` creates an example bucket
+* `failover_node.yml` manual failover of cluster node
 * `load_bucket.yml` loads sample JSON data into a bucket
-* `node_failover.yml` manual failover of cluster node
 * `retreive_ssl_cert.yml` retrieve and store node's SSL certificate
 * `site.yml` basic role inclusion example
 * `example_hosts` example hosts inventory in format required by this project
@@ -346,7 +346,7 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 
 0. This project functions with the following software versions:
   * Ansible version 1.9.4
-  * VirtualBox version 4.3.30
+  * VirtualBox version 5.0.10
   * Vagrant version 1.7.4
   * Vagrant Hosts version 2.4.0
 1. This project uses CentOS 6.5 and Ubuntu 12.04 by default as these are

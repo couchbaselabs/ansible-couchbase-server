@@ -460,3 +460,8 @@
 ## v1.4.1
 
 - Install CE 4.0.0 for Ubuntu 14.04 (thanks @SomeoneWeird)
+
+## v1.4.2
+
+- Fixed and renamed node_failover.yml
+- Updated versions
