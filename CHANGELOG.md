@@ -465,3 +465,8 @@
 
 - Fixed and renamed node_failover.yml
 - Updated versions
+
+## v1.5.0
+
+- Add Couchbase Server Enterprise Edition version 4.1.0
+- Add Couchbase Server Developer Preview version 4.1.0 (for community)

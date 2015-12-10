@@ -12,7 +12,7 @@
 # their metadata for Ubuntu
 #
 # Current default installed version is:
-# Couchbase Server Enterprise Edition version 4.0.0
+# Couchbase Server Enterprise Edition version 4.1.0
 #
 # Comment out the 4 variables below and uncoment variables for any older
 # version that you wish to install or pass them in as --extra-vars to the
@@ -20,10 +20,15 @@
 #
 #############################################################################
 
-couchbase_server_ubuntu_ee_version: 4.0.0
+couchbase_server_ubuntu_ee_version: 4.1.0
 couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu14.04_amd64.deb
 couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
-couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d28f352312a0a5be9edd
+couchbase_server_ubuntu_ee_sha256: beb4ee31b5fea2bfa47c51132d3b29a12e6e2c537b7e5e8dca5d0d50558e4c53
+
+# couchbase_server_ubuntu_ee_version: 4.0.0
+# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu14.04_amd64.deb
+# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
+# couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d28f352312a0a5be9edd
 
 # couchbase_server_ubuntu_ee_version: 3.1.2
 # couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
@@ -63,13 +68,19 @@ couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d
 # their metadata for Ubuntu
 #
 # Default installed version is currently set to:
-# Couchbase Server Community Edition version 3.0.1
+# Couchbase Server Community Edition version 4.0.0
 #
 # Comment out the 4 variables below and uncoment variables for any older
 # version that you wish to install or pass them in as --extra-vars to the
 # ansible-playbook command.
 #
 #############################################################################
+
+# 4.1.0 Developer Preview
+# couchbase_server_ubuntu_ce_version: 4.1.0
+# couchbase_server_ubuntu_ce_package: couchbase-server_{{ couchbase_server_ubuntu_ce_version }}-dp-ubuntu14.04_amd64.deb
+# couchbase_server_ubuntu_ce_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ce_version }}/{{ couchbase_server_ubuntu_ce_package }}
+# couchbase_server_ubuntu_ce_sha256: 6ed9557f1d81d70e4a5559d8235b9cb63e00b156e3173ef0a9b08aa66179ea0f
 
 couchbase_server_ubuntu_ce_version: 4.0.0
 couchbase_server_ubuntu_ce_package: couchbase-server-community_{{ couchbase_server_ubuntu_ce_version }}-ubuntu14.04_amd64.deb
