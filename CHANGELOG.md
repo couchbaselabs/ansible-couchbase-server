@@ -470,3 +470,7 @@
 
 - Add Couchbase Server Enterprise Edition version 4.1.0
 - Add Couchbase Server Developer Preview version 4.1.0 (for community)
+
+## v1.5.1
+
+- Added version 3.1.3

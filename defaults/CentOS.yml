@@ -35,6 +35,11 @@ couchbase_server_centos_ee_sha256: abafebf0821825b470dbbe9b18703646e0a9c64e2df6b
 # couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
 # couchbase_server_centos_ee_sha256: 063eb23c6f796fadb0af9b03ea527ad910d3a9e03d9ef4ba6aa100db318f6f5b
 
+# couchbase_server_centos_ee_version: 3.1.3
+# couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
+# couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
+# couchbase_server_centos_ee_sha256: 53dde4e0fc35d251be4c5006508dd679b77cd8eb685d9ffa992a53d71ab66d94
+
 # couchbase_server_centos_ee_version: 3.1.2
 # couchbase_server_centos_ee_package: couchbase-server-enterprise-{{ couchbase_server_centos_ee_version }}-centos6.x86_64.rpm
 # couchbase_server_centos_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_centos_ee_version }}/{{ couchbase_server_centos_ee_package }}
