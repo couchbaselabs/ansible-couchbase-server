@@ -477,6 +477,10 @@
 
 ## v1.5.2
 
-- Updated supported versions
-- Updated docs
-- Updated Vagrat docs
+- Updated versions
+
+## v1.5.3
+
+- Documentation fixes (thanks @zabullet)
+- Update Vagrant documentation
+- Add contributors to README
