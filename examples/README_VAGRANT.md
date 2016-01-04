@@ -347,8 +347,8 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 0. This project functions with the following software versions:
   * Ansible version 1.9.4
   * VirtualBox version 5.0.10
-  * Vagrant version 1.7.4
-  * Vagrant Hosts version 2.4.0
+  * Vagrant version 1.8.1
+  * Vagrant Hosts version 2.6.1
 1. This project uses CentOS 6.5 and Ubuntu 12.04 by default as these are
    among the supported major versions of platforms which are listed on the
    Couchbase Server package downloads page

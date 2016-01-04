@@ -242,3 +242,14 @@ Apache
 ## Author Information
 
 - Brian Shumate (brian at couchbase.com)
+
+## Contributors
+
+Thanks to these people who have contributed to the role:
+
+* [ahamidi](https://github.com/ahamidi)
+* [cricket007](https://github.com/cricket007)
+* [Jonnymcc](https://github.com/Jonnymcc)
+* [Hughjmp](https://github.com/Hughjmp)
+* [SomeoneWeird](https://github.com/SomeoneWeird)
+* [zabullet](https://github.com/zabullet)

@@ -474,3 +474,13 @@
 ## v1.5.1
 
 - Added version 3.1.3
+
+## v1.5.2
+
+- Updated versions
+
+## v1.5.3
+
+- Documentation fixes (thanks @zabullet)
+- Update Vagrant documentation
+- Add contributors to README
