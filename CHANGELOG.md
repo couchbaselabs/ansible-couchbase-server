@@ -474,9 +474,3 @@
 ## v1.5.1
 
 - Added version 3.1.3
-
-## v1.5.2
-
-- Updated supported versions
-- Updated docs
-- Updated Vagrat docs
