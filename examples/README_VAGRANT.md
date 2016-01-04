@@ -328,7 +328,7 @@ bucket with the following properties:
 
 If you'd like to create your own buckets, then use the `ansible-playbook`
 extra vars ('-e') option and specify values for the
-*b_name*, *b_type*, *b_port*, *b_ramsize*, and *b_replica* variables like so:
+*couchbase_server_bucket_name*, *couchbase_server_bucket_type_type*, *couchbase_server_bucket_port*, *couchbase_server_bucket_ram*, and *couchbase_server_bucket_replica* variables like so:
 
 ```
 ansible-playbook -i vagrant_hosts create_bucket.yml \

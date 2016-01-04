@@ -38,7 +38,7 @@ evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagr
 ### If You Have Not Previously Used Ansible Galaxy
 
 1. `mkdir $HOME/ansible_roles`
-2. `echo "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
+2. `echo -e "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
 2. `ansible-galaxy install couchbase.couchbase-server`
 3. `cd $HOME/ansible_roles/couchbase.couchbase-server/examples`
 4. `./bin/preinstall.sh`
@@ -217,18 +217,18 @@ bucket with the following properties:
 
 If you'd like to create your own buckets, then use the `ansible-playbook`
 extra vars ('-e') option and specify values for the
-*b_name*, *b_type*, *b_port*, *b_ramsize*, and *b_replica* variables like so:
+*couchbase_server_bucket_name*, *couchbase_server_bucket_type*, *couchbase_server_bucket_port*, *couchbase_server_bucket_ram*, and *couchbase_server_bucket_replica* variables like so:
 
 ```
 ansible-playbook -i vagrant_hosts create_bucket.yml \
--e "b_name=danika b_type=couchbase b_port=11223 b_ramsize=256 b_replica=2"
+-e "couchbase_server_bucket_name=danika couchbase_server_bucket_type=couchbase couchbase_server_bucket_port=11223 couchbase_server_bucket_ram=256 couchbase_server_bucket_replica=2"
 ```
 
 or perhaps you'd like to make a memcached based bucket? No problem:
 
 ```
 ansible-playbook -i vagrant_hosts create_bucket.yml \
--e "b_name=breandon b_type=memcached b_port=11224 b_ramsize=512 b_replica=0"
+-e "b_name=breandon couchbase_server_bucket_type=memcached couchbase_server_bucket_port=11224 couchbase_server_bucket_ram=512 couchbase_server_bucket_replica=0"
 ```
 
 ## Dependencies
