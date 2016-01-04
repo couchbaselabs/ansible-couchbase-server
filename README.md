@@ -38,7 +38,7 @@ evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagr
 ### If You Have Not Previously Used Ansible Galaxy
 
 1. `mkdir $HOME/ansible_roles`
-2. `echo "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
+2. `echo -e "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
 2. `ansible-galaxy install couchbase.couchbase-server`
 3. `cd $HOME/ansible_roles/couchbase.couchbase-server/examples`
 4. `./bin/preinstall.sh`
