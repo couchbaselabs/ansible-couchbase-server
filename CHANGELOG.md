@@ -484,3 +484,12 @@
 - Documentation fixes (thanks @zabullet)
 - Update Vagrant documentation
 - Add contributors to README
+
+## v1.6.0
+
+- Package file is now downloaded once to local / Ansible host and then
+  copied to each node to speed up role and avoid excessive bandwidth usage
+- Update Vagrantfile
+- Update tasks
+- Update variables
+- Update docs
