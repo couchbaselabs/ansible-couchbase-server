@@ -140,7 +140,6 @@ variables in detail including their default values for your reference.
 | `couchbase_server_tmpdir` | /tmp | System wide TMPDIR for cbcollect_info |
 | `couchbase_server_tune_os` | false | Whether to tune OS with optimized settings |
 | `couchbase_server_firewall` | false | Whether to use strict firewall rules |
-| `couchbase_server_local_package` | false | Whether to copy vs. download package |
 
 #### Variable Notes
 
