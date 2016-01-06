@@ -493,3 +493,7 @@
 - Update tasks
 - Update variables
 - Update docs
+
+## v1.6.1
+
+- Corrected tasks variables

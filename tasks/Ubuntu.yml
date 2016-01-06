@@ -35,12 +35,12 @@
   connection: local
   get_url: "url={{ couchbase_server_ubunutu_ce_url }} dest=../files/{{ couchbase_server_ubunutu_ce_package }} sha256sum={{ couchbase_server_ubunutu_ce_sha256 }} timeout=240"
   run_once: true
-  when: couchbase_server_edition == "enterprise" and couchbase_server_local_package != true
+  when: couchbase_server_edition == "community" and couchbase_server_local_package != true
   tags: installation
 
 - name: Copy package
   copy: "src={{ couchbase_server_ubunutu_ce_package }} dest=/tmp/{{ couchbase_server_ubunutu_ce_package }}"
-  when: couchbase_server_edition == "enterprise" and couchbase_server_local_package != true
+  when: couchbase_server_edition == "community" and couchbase_server_local_package != true
   tags: installation
 
 - name: Install package
