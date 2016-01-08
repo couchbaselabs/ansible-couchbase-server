@@ -497,3 +497,7 @@
 ## v1.6.1
 
 - Corrected tasks variables
+
+## v1.6.2
+
+- Consistent variable names in cluster_init
