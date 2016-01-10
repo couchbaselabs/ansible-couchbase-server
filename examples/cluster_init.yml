@@ -15,6 +15,12 @@
     - couchbase.couchbase-server
   tasks:
 
+  - name: Make sure index directory exists
+    file: path={{ couchbase_server_index_path }} state=directory
+
+  - name: Make sure data directory exists
+    file: path={{ couchbase_server_data_path }} state=directory
+
   - name: Couchbase Server Service
     service: name=couchbase-server state=started
 
@@ -51,7 +57,7 @@
     wait_for: "port={{ couchbase_server_admin_port }} delay=5"
 
   - name: Initialize primary node
-    shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
+    shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }} --node-init-data-path={{ couchbase_server_data_path }} --node-init-index-path={{ couchbase_server_index_path }}"
     when: cb_major_version['stdout'] != "2"
 
 #############################################################################
@@ -85,7 +91,7 @@
     wait_for: "port={{ couchbase_server_admin_port }} delay=5"
 
   - name: Initialize additional node
-    shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli node-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }}"
+    shell: "{{ couchbase_server_home_path }}/bin/couchbase-cli node-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }} --node-init-data-path={{ couchbase_server_data_path }} --node-init-index-path={{ couchbase_server_index_path }}"
     when: cb_major_version['stdout'] != "2"
 
 #############################################################################
