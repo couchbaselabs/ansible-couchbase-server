@@ -505,3 +505,8 @@
 ## v1.6.3
 
 - Corrected Ubuntu tasks variables
+
+## v1.6.4
+
+- cluster_init now ensures data and index paths are present and have correct
+  permissions (thanks @zabullet)
