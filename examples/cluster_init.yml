@@ -43,14 +43,14 @@
     register: cb_major_version
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=5"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Initialize primary node
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }} --node-init-data-path={{ couchbase_server_data_path }} --node-init-index-path={{ couchbase_server_index_path }}"
     when: cb_major_version['stdout'] != "2"
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=5"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Configure cluster settings
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli cluster-init -c {{ couchbase_server_primary_node }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --cluster-init-password={{ couchbase_server_password }} --cluster-init-port={{couchbase_server_admin_port}} --cluster-init-ramsize={{ couchbase_server_ram }}"
@@ -77,14 +77,14 @@
     register: cb_major_version
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=5"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Initialize additional node
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli node-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --node-init-hostname={{ ansible_fqdn }} --node-init-data-path={{ couchbase_server_data_path }} --node-init-index-path={{ couchbase_server_index_path }}"
     when: cb_major_version['stdout'] != "2"
 
   - name: Wait for Admin
-    wait_for: "port={{ couchbase_server_admin_port }} delay=5"
+    wait_for: "port={{ couchbase_server_admin_port }} delay=2"
 
   - name: Configure cluster settings
     shell: "{{ couchbase_server_bin_path }}/couchbase-cli cluster-init -c {{ ansible_fqdn }}:{{ couchbase_server_admin_port }} --user={{ couchbase_server_admin }} --password={{ couchbase_server_password }} --cluster-init-username={{ couchbase_server_admin }} --cluster-init-password={{ couchbase_server_password }} --cluster-init-port={{couchbase_server_admin_port}} --cluster-init-ramsize={{ couchbase_server_ram }}"

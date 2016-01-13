@@ -18,7 +18,7 @@
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and
-Enterprise editions supported for several common operating systems.
+Enterprise editions supported for common operating systems.
 
 This project provides documentation and a collection of scripts to help you
 automate the deployment of Couchbase Server Enterprise Edition using
@@ -40,9 +40,10 @@ with the following software:
 Each of the 3 virtual machines defined in the included `Vagrantfile` are
 configured with 1.5GB RAM, 2 CPU cores, and 2 network interfaces. The first
 interface uses NAT and has connection via the host to the outside world.
-The second interface is a private network and is used for intra-cluster
-communication in addition to access from the host machine to Couchbase
-Server's administration and API ports.
+
+The second interface is a private network and is for intra-cluster
+communication and to access from the host machine to Couchbase Server's
+administration and API ports.
 
 The Ansible playbooks can then further refine OS configuration, perform
 Couchbase Server package download (or copy from host) and installation,
@@ -50,8 +51,8 @@ and initialization of the 3 nodes into a ready to use cluster.
 
 ## Works with Ansible Galaxy
 
-This role was designed for installation via the `ansible-galaxy` command,
-and can also be directly run from the git repository.
+You can install this role with the `ansible-galaxy` command, and can run it
+directly from the git repository.
 
 You should install it like this:
 
@@ -68,7 +69,7 @@ Ansible role path by creating a `$HOME/.ansible.cfg` file with these contents:
 roles_path = PATH_TO_ROLES
 ```
 
-Change `PATH_TO_ROLES` to a directory that you 
+Change `PATH_TO_ROLES` to a directory that you
 have write access to.
 
 ## Quick Start
@@ -76,9 +77,9 @@ have write access to.
 Begin from the top level directory of this project and use the following
 5 steps to get up and running:
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads), 
-   [Vagrant](http://downloads.vagrantup.com/), 
-   [vagrant-hosts](https://github.com/adrienthebo/vagrant-hosts), 
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads),
+   [Vagrant](http://downloads.vagrantup.com/),
+   [vagrant-hosts](https://github.com/adrienthebo/vagrant-hosts),
    and [Ansible](http://www.ansibleworks.com/docs/intro_installation.html#latest-releases-via-pip).
 2. Edit `/etc/hosts` or use the included `bin/preinstall.sh` script to add
    the following entries to your development system's `/etc/hosts` file:
@@ -90,15 +91,15 @@ Begin from the top level directory of this project and use the following
 5. Access the cluster at http://cb1:8091 with username **Administrator**
    and password **couchbase**.
 
-This project will install CentOS 6.5 based cluster nodes by default. If you
-prefer, it can also install Ubuntu 12.04 based nodes by changing the command
+This project will install CentOS 7 based cluster nodes by default. If you
+prefer, it can also install Ubuntu 14.04 based nodes by changing the command
 in step 4 to the following:
 
 ```
-BOX_NAME="ubuntu/precise64" vagrant up
+BOX_NAME="ubuntu/trusty64" vagrant up
 ```
 
-If you'd like to follow a more detailed installation process with additional
+If you'd like to follow a more detailed installation process with more
 explanation of the steps and technologies, see the following sections of
 this guide.
 
@@ -110,13 +111,12 @@ the following prerequisites configured and installed.
 ### Networking
 
 Ensure that your host machine can access the internet so that the required
-software can be downloaded as needed. This includes both downloading the
-prerequisite software, the VirtualBox operating system image, and Couchbase
-Server itself.
+software downloads as needed. This includes both downloading the prerequisite
+software, the VirtualBox operating system image, and Couchbase Server itself.
 
 You'll also need to resolve the node VM host names to their default IP
-addresses. This can be most easily done by adding the following lines to
-the `/etc/hosts` file on the host machine:
+addresses. One way to do so is by adding the following lines to the 
+`/etc/hosts` file on the host machine:
 
 ```
 10.1.42.10 cb1.local cb1
@@ -124,8 +124,8 @@ the `/etc/hosts` file on the host machine:
 10.1.42.30 cb3.local cb3
 ```
 
-A convenience script, `bin/preinstall` is provided to automate this step
-and some other steps for you.
+A convenience script, `bin/preinstall` automates this step and some other 
+steps for you.
 
 ### VirtualBox
 
@@ -145,11 +145,11 @@ This guide uses Vagrant along with a supporting plugin to automate the
 creation of the VirtualBox machines which we will be using for the
 Couchbase Server nodes.
 
-The plugin used in this project is 
-[Vagrant hosts](https://github.com/adrienthebo/vagrant-hosts), which is used
-for adding hostname information to the `/etc/hosts` file on each virtual 
-machine. This is required prior to the execution of Ansible playbooks so 
-that Ansible will function properly over SSH.
+The plugin used in this project is
+[Vagrant hosts](https://github.com/adrienthebo/vagrant-hosts), which adds
+hostname information to the `/etc/hosts` file on each virtual machine. This
+should happen before the execution of Ansible playbooks so that Ansible will
+function properly over SSH.
 
 Visit the Vagrant [downloads page](http://downloads.vagrantup.com/) to get the
 appropriate version, and proceed with installation of the package. After you
@@ -160,8 +160,8 @@ commands to install the supporting plugins:
 vagrant plugin install vagrant-hosts
 ```
 
-These commands should return success messages; provided that the commands are
-successful, you can continue with the rest of the steps in this guide.
+These commands should return success messages; if the commands are successful,
+you can continue with the rest of the steps in this guide.
 
 ### Ansible
 
@@ -203,22 +203,22 @@ to these prompts.
 
 ### Debian
 
-This project will install CentOS 6.5 based cluster nodes by default. If you
-prefer, you can install Debian 7.4 based nodes by changing the
+This project will install CentOS 7 based cluster nodes by default. If you
+prefer, you can install Debian 7 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="chef/debian-7.4" vagrant up
+BOX_NAME="debian/wheezy64" vagrant up
 ```
 
 ### Ubuntu
 
-By default, this project will install CentOS 6.5 based cluster nodes. If you
-prefer, you can install Ubuntu 12.04 based nodes by changing the
+By default, this project will install CentOS 7 based cluster nodes. If you
+prefer, you can install Ubuntu 14.04 based nodes by changing the
 `vagrant up` command to the following:
 
 ```
-BOX_NAME="ubuntu/precise64" vagrant up
+BOX_NAME="ubuntu/trusty64" vagrant up
 ```
 
 ## Give it a Try
@@ -243,25 +243,24 @@ cluster.
 ### Other Operations
 
 While the basic instructions for getting started do a fair bit of work, you
-can also run the `cluster_init.yml` playbook to only perform the cluster
-initialization.
+can run the `cluster_init.yml` playbook to perform full cluster initialization.
 
-You can also run a subset of the tasks independently through Ansible's
-tag support; here is a list of available tags by role:
+You can also run a subset of the tasks independently through Ansible's tag
+support; here is a list of available tags by role:
 
 **bootstrap**
 
 * *network* : Network hostname
 * *system_packages* : Install any required system packages
 * *system_tuning* : Set disk scheduler specified in `defaults/tuning.yml`
-  for the data and index volumes, disable Transparent Huge Pages, and
+  for the data and index volumes, disable Transparent Huge Pages (THP), and
   other system tuning
 
 **couchbase-server**
 
 * *installation* : Download and install the Couchbase Server package
 * *network* : Couchbase Server specific firewall settings
-* *service* : Ensure that the Couchbase Server service is started
+* *service* : Ensure that the starting of Couchbase Server service
 
 Here are some examples of tag usage:
 
@@ -272,8 +271,7 @@ ansible-playbook -i vagrant_hosts cluster_install.yml --tags "system_packages"
 ```
 
 Set the disk scheduler specified in `linux/group_vars/all` for the data
-and index volumes, disable Transparent Huge Pages, and perform other system
-tuning:
+and index volumes, disable THP, and perform other system tuning:
 
 ```
 ansible-playbook -i vagrant_hosts cluster_install.yml --tags "system_tuning"
@@ -286,8 +284,8 @@ Download and install the version of Couchbase Server specified in either
 ansible-playbook -i vagrant_hosts cluster_install.yml --tags "installation"
 ```
 
-You can also combine multiple tags, as in the following example, which will
-perform the system tuning and installation tasks:
+You can also combine tags, as in the following example, which will perform 
+the system tuning and installation tasks:
 
 ```
 ansible-playbook -i vagrant_hosts cluster_install.yml \
@@ -301,22 +299,21 @@ examples, and Vagrant bits as follows:
 * `cluster_backup.yml` full backup of cluster and retrieval of backup tarball
 * `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
-* `cluster_install.yml` prepares OS and installs Couchbase Server only
+* `cluster_install.yml` prepares OS and installs Couchbase Server
 * `create_bucket.yml` creates an example bucket
+* `example_hosts` an example hosts inventory file
 * `failover_node.yml` manual failover of cluster node
 * `load_bucket.yml` loads sample JSON data into a bucket
 * `retreive_ssl_cert.yml` retrieve and store node's SSL certificate
 * `site.yml` basic role inclusion example
-* `example_hosts` example hosts inventory in format required by this project
-* `Vagrantfile` example Vagrant development cluster definition
 * `vagrant_hosts` default Vagrant hosts inventory file
+* `Vagrantfile` example Vagrant development cluster definition
 
 ### Create Bucket
 
-The example playbook `create_bucket.yml` for bucket creation can be used
-as follows:
+The example playbook `create_bucket.yml` for bucket creation works as follows:
 
-Upon first execution without specifying variable arguments via the 
+Upon first execution without specifying variable arguments via the
 `ansible-playbook` extra vars ('-e') option, the playbook will generate a
 bucket with the following properties:
 
@@ -345,12 +342,12 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 ## Notes
 
 0. This project functions with the following software versions:
-  * Ansible version 1.9.4
+  * Ansible version 2.0.0.1
   * VirtualBox version 5.0.10
   * Vagrant version 1.8.1
   * Vagrant Hosts version 2.6.1
-1. This project uses CentOS 6.5 and Ubuntu 12.04 by default as these are
-   among the supported major versions of platforms which are listed on the
+1. This project uses CentOS 7 and Ubuntu 14.04 by default as these are
+   among the supported major versions of platforms which listed on the
    Couchbase Server package downloads page
 2. The `bin/preinstall` shell script performs the following actions for you:
  * Adds each node's host information to the host machine's `/etc/hosts`
@@ -373,13 +370,13 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 
 ### SSH Error: Host key verification failed.
 
-You could experience an error like the following, sometimes when executing
-playbooks against a previously deployed cluster:
+You could experience an error like the following, when executing playbooks
+against an already deployed cluster:
 
 ```
-PLAY [primary] **************************************************************** 
+PLAY [primary] ****************************************************************
 
-GATHERING FACTS *************************************************************** 
+GATHERING FACTS ***************************************************************
 fatal: [cb1.local] => SSH Error: Host key verification failed.
     while connecting to 10.1.42.10:22
 It is sometimes useful to re-run the command using -vvvv, which prints SSH debug output to help diagnose the issue.
