@@ -497,3 +497,16 @@
 ## v1.6.1
 
 - Corrected tasks variables
+
+## v1.6.2
+
+- Consistent variable names in cluster_init
+
+## v1.6.3
+
+- Corrected Ubuntu tasks variables
+
+## v1.6.4
+
+- cluster_init now ensures data and index paths are present and have correct
+  permissions (thanks @zabullet)
