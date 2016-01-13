@@ -69,11 +69,15 @@ See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
 
 This role is tested for basic functionality with the following software:
 
-* Couchbase Server (versions 3.0.1-4.0.0)
+* Couchbase Server (versions 3.0.1-4.1.0)
 * Ansible (version 1.9.4)
 * CentOS (versions 6-7)
 * Debian (version 7)
 * Ubuntu (versions 12.04-14.04)
+
+This role has been tested and fails with the following software:
+
+* RHEL 7.2 (Bug in Centos causes Couchbase service to not install see, https://bugs.centos.org/view.php?id=9906)
 
 ## Works with Ansible Galaxy
 
