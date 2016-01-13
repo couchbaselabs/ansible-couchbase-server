@@ -510,3 +510,10 @@
 
 - cluster_init now ensures data and index paths are present and have correct
   permissions (thanks @zabullet)
+
+## v1.6.5
+
+- Update playbooks
+- Update main tasks
+- Update supported software versions
+- Update docs

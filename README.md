@@ -11,15 +11,14 @@
 
 > **NOTE: This role is experimental and not intended for production use**.
 > Feel free to use the role for evaluation, development, or testing, and
-> definitely borrow the ideas contained within for your own production role
-> or playbooks. As with other Couchbase Labs projects, this is primarily
-> for experimentation.
+> borrow the ideas contained within for your own production role or playbooks.
+> As with other Couchbase Labs projects, this is primarily for experimentation.
 
 [Couchbase Server](http://www.couchbase.com/couchbase-server/overview) is a
 high performance NoSQL document database available in Community and
-Enterprise editions supported for several common operating systems.
+Enterprise editions supported for common operating systems.
 
-This Ansible role can be used to install Couchbase Server on cluster nodes,
+you can use this Ansible role to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
 documents with the playbooks included in the `examples` directory.
 
@@ -67,7 +66,7 @@ See `examples/README_VAGRANT.md` for more Vagrant cluster based details.
 
 ## Requirements
 
-This role is tested for basic functionality with the following software:
+This role functions with the following software:
 
 * Couchbase Server (versions 3.0.1-4.1.0)
 * Ansible (version 1.9.4)
@@ -75,14 +74,14 @@ This role is tested for basic functionality with the following software:
 * Debian (version 7)
 * Ubuntu (versions 12.04-14.04)
 
-This role has been tested and fails with the following software:
+This role does not function with the following software:
 
-* RHEL 7.2 (Bug in Centos causes Couchbase service to not install see, https://bugs.centos.org/view.php?id=9906)
+* CentOS 7.2 — [Bug in CentOS prevents operation of Couchbase Server service])https://bugs.centos.org/view.php?id=9906)
 
 ## Works with Ansible Galaxy
 
-This role is designed to be installed via the `ansible-galaxy` command
-in addition to being directly run from the git repository.
+You can install this role with the `ansible-galaxy` command, and can run it
+directly from the git repository.
 
 You should install it like this:
 
@@ -109,11 +108,11 @@ for more details.
 
 In cases where you want simple clusters for development or other
 non-production use, the values for Couchbase Server role's default variables
-can be left as-is.
+are good as-is.
 
-However, should you need specific performance or otherwise wish to tweak them
-for your particular purpose, this section describes all of the role's
-variables in detail including their default values for your reference.
+Should you need specific performance or otherwise wish to tweak them
+for your particular purpose, this section describes all the role variables
+for your reference in detail, including their default values.
 
 ### Default Variables
 
@@ -149,8 +148,8 @@ variables in detail including their default values for your reference.
 
 * Other Couchbase Server versions: You can comment out the topmost / current
   version in the `defaults/*.yml` file for your OS and uncomment a previous
-  version to have that version installed by default instead. This can also
-  be done as specific arguments in the `Vagrantfile` as well.
+  version to have that version installed by default instead. This is also
+  possible with specific arguments in the `Vagrantfile` as well.
 * couchbase_server_local_package: Place the Couchbase Server package you
   wish to install into the `files` directory and set this to true to skip
   package download. This can greatly speed up the playbook for large clusters
@@ -159,9 +158,9 @@ variables in detail including their default values for your reference.
 
 ### Special Variables
 
-*The following variables should be set with caution* as they have potential
-negative performance implications; they should not be used without knowledge
-of the changes which are made to the operating system configuration:
+*Configure the following variables with caution* as they have potential
+negative performance implications; you should not use them without knowledge
+of the changes they make to the operating system configuration:
 
 | Name                                 | Default  | Description                                    |
 | ------------------------------------ | -------- | ---------------------------------------------- |
@@ -169,18 +168,20 @@ of the changes which are made to the operating system configuration:
 
 ## Multi Dimensional Scaling and New Service Types
 
-This `examples/cluster_init.yml` playbook now has basic support for 
-Couchbase Server version 4.0.0 and its new service types. Specifically, a
-cluster node can now be tagged as providing the following services:
+This `examples/cluster_init.yml` playbook now has basic support for
+Couchbase Server version 4.x and its new service types. Specifically, you can
+now tag a cluster node as providing the following services:
 
 * data : the standard document data service
 * index : the global secondary index (GSI) service
 * query : the N1QL query service
 
-To specify which services a node should be responsible for, simply add them
+To specify which services a node should be responsible for, add them
 to the `couchbase_server_node_services` variable as part of your cluster node
-host inventory definition. Reference the *cluster_nodes_mds* section of
-`examples/example_hosts` for an example of how this is done.
+host inventory definition.
+
+Reference the *cluster_nodes_mds* section of `examples/example_hosts` for 
+an example of service specification.
 
 See [Services architecture and multidimensional scaling](http://developer.couchbase.com/documentation/server/4.0/architecture/services-archi-multi-dimensional-scaling.html) for more information about service types.
 
@@ -193,7 +194,7 @@ as follows:
 * `cluster_backup.yml` full backup of cluster and retrieval of backup tarball
 * `cluster_collect_info.yml` gathers cluster logs with `cbcollect_info`
 * `cluster_init.yml` installs Couchbase Server and initializes the cluster
-* `cluster_install.yml` prepares OS and installs Couchbase Server only
+* `cluster_install.yml` prepares OS and installs Couchbase Server
 * `create_bucket.yml` creates an example bucket
 * `load_bucket.yml` loads sample JSON data into a bucket
 * `node_failover.yml` manual failover of cluster node
@@ -206,8 +207,7 @@ as follows:
 
 ### Create Buckets
 
-The example playbook `create_bucket.yml` for bucket creation can be used
-as follows:
+The example playbook `create_bucket.yml` for bucket creation works as follows:
 
 Upon first execution without specifying variable arguments via the `ansible-playbook` extra vars ('-e') option, the playbook will generate a
 bucket with the following properties:
