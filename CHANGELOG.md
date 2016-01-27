@@ -517,3 +517,8 @@
 - Update main tasks
 - Update supported software versions
 - Update docs
+
+## v1.6.6
+
+- Include rc.local with THP disable
+- Fix disable THP task

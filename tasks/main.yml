@@ -46,8 +46,6 @@
 
 - name: Disable THP
   sudo: True
-  shell: "echo 'for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done' >> /etc/rc.local && echo 'for i in /sys/kernel/mm/*transparent_hugepage/defrag; do echo never > $i; done' >> /etc/rc.local && for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done"
-  #shell: echo 'for i in /sys/kernel/mm/*transparent_hugepage/defrag; do echo never > $i; done' >> /etc/rc.local
-  #shell: for i in /sys/kernel/mm/*transparent_hugepage/enabled; do echo never > $i; done
+  copy: src=rc.local dest=/etc/rc.local owner=root group=root mode=0644
   when: ansible_distribution_version != "12.04"
   notify: Source local settings
