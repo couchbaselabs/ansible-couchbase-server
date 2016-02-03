@@ -526,3 +526,7 @@
 ## v1.6.7
 
 - Use file module for removal in playbooks
+
+## v1.6.8
+
+- Correct Galaxy meta

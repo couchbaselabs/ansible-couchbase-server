@@ -111,7 +111,7 @@ best performing NoSQL database'
   #- packaging
   #- system
   #- web
-#dependencies:
+  dependencies: []
   #- { role: brianshumate.couchbase-server-common, tags: ['couchbase-server-common'] }
   # List your role dependencies here, one per line. Only
   # dependencies available via galaxy should be listed here.
