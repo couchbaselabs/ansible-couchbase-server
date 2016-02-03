@@ -539,3 +539,7 @@
 ## v1.7.0
 
 - Khanify dependencies, YAML, etc.
+
+## v1.7.1
+
+- YAML... how it does it?
