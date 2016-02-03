@@ -535,3 +535,7 @@
 
 - Rename role to match GitHub repository name
 - Update documentation
+
+## v1.7.0
+
+- Khanify dependencies, YAML, etc.
