@@ -522,3 +522,7 @@
 
 - Include rc.local with THP disable
 - Fix disable THP task
+
+## v1.6.7
+
+- Use file module for removal in playbooks

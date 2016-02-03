@@ -17,4 +17,4 @@
     fetch: "src={{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip dest=var/cbcollect_info/{{ ansible_hostname }}.zip flat=yes"
 
   - name: Cleanup
-    shell: "rm -rf {{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip"
+    file: "path={{ couchbase_server_cbcollect_path }}/{{ ansible_hostname }}.zip state=absent"

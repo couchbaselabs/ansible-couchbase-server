@@ -33,4 +33,4 @@
     fetch: "src=/tmp/{{ couchbase_server_primary_node }}.pem dest=var/ssl_certs/{{ ansible_hostname }}.pem flat=yes"
 
   - name: Cleanup
-    shell: "rm -rf /tmp/{{ couchbase_server_primary_node }}.pem"
+    file: "path=/tmp/{{ couchbase_server_primary_node }}.pem state=absent"

@@ -41,4 +41,4 @@
     fetch: "src={{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz dest=var/couchbase_backups/{{ ansible_hostname }}.tgz flat=yes fail_on_missing=yes validate_checksum=yes"
 
   - name: Cleanup
-    shell: "rm -rf {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }} {{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }}.tgz"
+    file: "path={{ couchbase_server_cbbackup_path }}/{{ ansible_hostname }} state=absent"
