@@ -530,3 +530,8 @@
 ## v1.6.8
 
 - Correct Galaxy meta
+
+## v1.6.9
+
+- Rename role to match GitHub repository name
+- Update documentation

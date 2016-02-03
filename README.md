@@ -29,7 +29,7 @@ evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagr
 
 ### If You Have Previously Used Ansible Galaxy
 
-1. `ansible-galaxy install couchbase.couchbase-server`
+1. `ansible-galaxy install couchbaselabs.couchbase-server`
 2. `cd <roles_path>/examples`
 3. `./bin/preinstall.sh`
 4. `vagrant up`
@@ -38,8 +38,8 @@ evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagr
 
 1. `mkdir $HOME/ansible_roles`
 2. `echo -e "[defaults]\n\nroles_path = $HOME/ansible_roles" > $HOME/.ansible.cfg`
-2. `ansible-galaxy install couchbase.couchbase-server`
-3. `cd $HOME/ansible_roles/couchbase.couchbase-server/examples`
+2. `ansible-galaxy install couchbaselabs.couchbase-server`
+3. `cd $HOME/ansible_roles/couchbaselabs.couchbase-server/examples`
 4. `./bin/preinstall.sh`
 5. `vagrant up`
 
@@ -86,7 +86,7 @@ directly from the git repository.
 You should install it like this:
 
 ```
-ansible-galaxy install couchbase.couchbase-server
+ansible-galaxy install couchbaselabs.couchbase-server
 ```
 
 Make sure you have write access to `/etc/ansible/roles/` since

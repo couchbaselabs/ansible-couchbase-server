@@ -12,7 +12,7 @@
 - hosts: cluster_nodes
   sudo: True
   roles:
-    - couchbase.couchbase-server
+    - couchbaselabs.couchbase-server
   tasks:
 
   - name: Make sure index directory exists

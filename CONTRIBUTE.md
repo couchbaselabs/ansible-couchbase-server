@@ -18,7 +18,7 @@ get `ansible`.
 Once you're ready to go, install this role with:
 
 ```
-ansible-galaxy install couchbase.couchbase-server
+ansible-galaxy install couchbaselabs.couchbase-server
 ```
 
 There is more information available on using Ansible roles in the 

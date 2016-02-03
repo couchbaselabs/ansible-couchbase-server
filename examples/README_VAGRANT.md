@@ -57,7 +57,7 @@ directly from the git repository.
 You should install it like this:
 
 ```
-ansible-galaxy install couchbase.couchbase-server
+ansible-galaxy install couchbaselabs.couchbase-server
 ```
 
 Make sure you have write access to `/etc/ansible/roles/` since
@@ -86,7 +86,7 @@ Begin from the top level directory of this project and use the following
  * 10.1.42.10 cb1.local cb1
  * 10.1.42.20 cb2.local cb2
  * 10.1.42.30 cb3.local cb3
-3. `cd $PATH_TO_ROLES/couchbase.couchbase-server/examples`
+3. `cd $PATH_TO_ROLES/couchbaselabs.couchbase-server/examples`
 4. `vagrant up`
 5. Access the cluster at http://cb1:8091 with username **Administrator**
    and password **couchbase**.
@@ -189,7 +189,7 @@ Open a terminal, change into the *examples* subdirectory of this role's
 root directory and execute the Ansible playbook:
 
 ```
-cd $ROLESPATH/couchbase.couchbase-server/examples
+cd $ROLESPATH/couchbaselabs.couchbase-server/examples
 vagrant up
 ```
 

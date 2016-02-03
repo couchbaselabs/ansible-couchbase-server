@@ -8,7 +8,7 @@
 - hosts: cluster_nodes
   sudo: True
   roles:
-    - couchbase.couchbase-server
+    - couchbaselabs.couchbase-server
   tasks:
   - name: Couchbase Server Service
     service: name=couchbase-server state=started
