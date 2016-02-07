@@ -543,3 +543,8 @@
 ## v1.7.1
 
 - YAML... how it does it?
+
+## v1.7.2
+
+- Use role_path to help with inclusion of role into other roles
+  (thanks @franklefebvre)
