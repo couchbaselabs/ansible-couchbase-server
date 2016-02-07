@@ -10,7 +10,7 @@
 # Couchbase Server Enterprise Edition
 
 - name: Download package locally
-  sudo: False
+  become: no
   connection: local
   get_url: "url={{ couchbase_server_centos_ee_url }} dest={{ role_path }}/files/{{ couchbase_server_centos_ee_package }} sha256sum={{ couchbase_server_centos_ee_sha256 }} timeout=240"
   run_once: true
@@ -23,13 +23,15 @@
   tags: installation
 
 - name: Install package
-  sudo: True
+  become: yes
+  become_user: root
   yum: "name=/tmp/{{ couchbase_server_centos_ee_package }} state=present"
   when: couchbase_server_edition == "enterprise"
   tags: installation
 
 - name: Package file cleanup
-  sudo: True
+  become: yes
+  become_user: root
   file: "dest=/tmp/{{ couchbase_server_centos_ee_package }} state=absent"
   when: couchbase_server_edition == "enterprise"
   tags: installation
@@ -37,7 +39,8 @@
 # Couchbase Server Community Edition
 
 - name: Download package locally
-  sudo: False
+  become: yes
+  become_user: root
   connection: local
   get_url: "url={{ couchbase_server_centos_ce_url }} dest={{ role_path }}/files/{{ couchbase_server_centos_ce_package }} sha256sum={{ couchbase_server_centos_ce_sha256 }} timeout=240"
   run_once: true
@@ -50,13 +53,15 @@
   tags: installation
 
 - name: Install package
-  sudo: True
+  become: yes
+  become_user: root
   yum: "name=/tmp/{{ couchbase_server_centos_ce_package }} state=present"
   when: couchbase_server_edition == "community"
   tags: installation
 
 - name: Package file cleanup
-  sudo: True
+  become: yes
+  become_user: root
   file: "dest=/tmp/{{ couchbase_server_centos_ce_package }} state=absent"
   when: couchbase_server_edition == "community"
   tags: installation

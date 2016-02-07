@@ -3,14 +3,13 @@
 # Example Ansible playbook to create a new Couchbase Server bucket
 
 - hosts: cluster_nodes
-  sudo: False
   gather_facts: False
   tasks:
   - name: Create cluster grouping
     group_by: key={{ couchbase_server_node_role }}
 
 - hosts: primary
-  sudo: False
+  become: no
   vars_files:
     - ../defaults/main.yml
   vars:

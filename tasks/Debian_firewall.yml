@@ -5,13 +5,19 @@
 ## Static firewall rules using iptables instead of firewalld
 
 - name: Install iptables rules
+  become: yes
+  become_user: root
   template: "src=etc_sysconfig_iptables.j2 dest=/etc/iptables.up.rules.couchbase-server owner=couchbase group=couchbase"
   tags: firewall
 
 - name: Import iptables rules
+  become: yes
+  become_user: root
   shell: "/sbin/iptables-restore < /etc/iptables.up.rules.couchbase-server"
   tags: firewall
 
 - name: Create iptables script
+  become: yes
+  become_user: root
   copy: src=debian-iptables dest=/etc/network/if-pre-up.d/iptables mode=0755
   tags: firewall

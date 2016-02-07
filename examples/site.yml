@@ -3,6 +3,7 @@
 
 - name: Couchbase Server
   hosts: cluster_nodes
-  sudo: True
+  become: yes
+  become_user: root
   roles:
     - { role: couchbaselabs.couchbase-server }

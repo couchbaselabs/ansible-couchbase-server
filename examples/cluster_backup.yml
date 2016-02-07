@@ -5,7 +5,8 @@
 # $PWD/var/couchbase_backups/
 
 - hosts: cluster_nodes
-  sudo: True
+  become: yes
+  become_user: root
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
   vars_files:
@@ -16,7 +17,8 @@
 
 - hosts: primary
   gather_facts: False
-  sudo: True
+  become: yes
+  become_user: root
   vars:
     couchbase_server_primary_node: "{{hostvars[groups['primary'][0]]['inventory_hostname']}}"
   vars_files:

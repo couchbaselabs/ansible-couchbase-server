@@ -24,28 +24,35 @@
   when: ansible_distribution  == "Ubuntu"
 
 - name: Update user limits
-  sudo: True
+  become: yes
+  become_user: root
   copy: src=etc_security_limits.d_couchbase-server.conf dest=/etc/security/limits.d/couchbase-server.conf owner=root group=root mode=0644
 
 - name: Install profile.d script
-  sudo: True
+  become: yes
+  become_user: root
   template: src=profile_couchbase-server.sh.j2 dest=/etc/profile.d/couchbase-server.sh
 
 - name: Optimized settings for Couchbase Server data and index volumes
-  sudo: True
+  become: yes
+  become_user: root
   mount: name={{ couchbase_server_mountpoint }} src={{ couchbase_server_partition }} opts={{ couchbase_server_mount_options }} fstype={{ couchbase_server_filesystem }} state=mounted
   when: couchbase_server_tune_os
 
 - name: Kernel settings dir
+  become: yes
+  become_user: root
   file: dest=/etc/sysctl.d state=directory
 
 - name: Kernel settings config
-  sudo: True
+  become: yes
+  become_user: root
   template: src=etc_sysctl.d_couchbase-server.conf.j2 dest=/etc/sysctl.d/couchbase-server.conf owner=root group=root mode=0644
   notify: Update kernel settings
 
 - name: Disable THP
-  sudo: True
+  become: yes
+  become_user: root
   copy: src=rc.local dest=/etc/rc.local owner=root group=root mode=0644
   when: ansible_distribution_version != "12.04"
   notify: Source local settings

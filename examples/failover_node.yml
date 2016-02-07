@@ -3,14 +3,12 @@
 # Ansible playbook to perform manual failover on a target cluster node
 
 - hosts: cluster_nodes
-  sudo: True
   gather_facts: False
   tasks:
   - name: Create cluster grouping
     group_by: key={{ couchbase_server_node_role }}
 
 - hosts: primary
-  sudo: True
   gather_facts: False
   vars_files:
     - ../defaults/main.yml

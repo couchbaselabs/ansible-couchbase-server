@@ -6,7 +6,8 @@
 # actually initialize a cluster, see cluster_init.yml for that
 
 - hosts: cluster_nodes
-  sudo: True
+  become: yes
+  become_user: root
   roles:
     - couchbaselabs.couchbase-server
   tasks:

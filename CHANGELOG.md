@@ -548,3 +548,9 @@
 
 - Use role_path to help with inclusion of role into other roles
   (thanks @franklefebvre)
+
+### v1.7.3
+
+- Use become instead of sudo
+- Update minimum Ansible version in meta
+- Update supported versions
