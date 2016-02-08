@@ -342,8 +342,8 @@ ansible-playbook -i vagrant_hosts create_bucket.yml \
 ## Notes
 
 0. This project functions with the following software versions:
-  * Ansible version 2.0.0.2
-  * VirtualBox version 5.0.14
+  * Ansible version 2.0.0.1
+  * VirtualBox version 5.0.10
   * Vagrant version 1.8.1
   * Vagrant Hosts version 2.6.1
 1. This project uses CentOS 7 and Ubuntu 14.04 by default as these are

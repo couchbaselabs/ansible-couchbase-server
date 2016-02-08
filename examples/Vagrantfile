@@ -6,7 +6,7 @@
 
 ANSIBLE_PLAYBOOK = ENV['ANSIBLE_PLAYBOOK'] || "cluster_init.yml"
 VAGRANTFILE_API_VERSION = "2"
-BOX_MEM = ENV['BOX_MEM'] || "1536"
+BOX_MEM = ENV['BOX_MEM'] || "2048"
 BOX_NAME =  ENV['BOX_NAME'] || "centos/7"
 CLUSTER_HOSTS = ENV['CLUSTER_HOSTS'] || "vagrant_hosts"
 

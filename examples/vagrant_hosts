@@ -1,9 +1,13 @@
 # File: vagrant_hosts
-# Couchbase Server cluster node hosts configuration for Vagrant
+# Example Couchbase Server hosts inventory for Vagrant based cluster nodes
 #
-# NB: Replace the hosts below with your preferred node hostnames and continue
-#     the 'nodeN' pattern for additional nodes past 'node3'
-#     Do not modify the labels (text appearing between []), however
+# Edit this and change cb1.local ... cb3.local to match your actual node
+# hostnames. Use 'couchbase_server_node_role=primary' variable to specify a
+# primary node and 'couchbase_server_node_role=additional' to specify all
+# additional nodes which will join the primary node to form a cluster
+#
+# Specify Multi Dimensional Scaling (MDS) services such as 'index' and 'query'
+# as a comma separated list in the 'couchbase_server_node_services' variable
 
 [cluster_nodes]
 cb1.local couchbase_server_node_role=primary couchbase_server_node_services="data" ansible_ssh_user=vagrant ansible_ssh_private_key_file=./.vagrant/machines/cb1/virtualbox/private_key

@@ -549,8 +549,15 @@
 - Use role_path to help with inclusion of role into other roles
   (thanks @franklefebvre)
 
-### v1.7.3
+## v1.7.3
 
 - Use become instead of sudo
 - Update minimum Ansible version in meta
 - Update supported versions
+
+## v1.7.4
+
+- Ensure MDS services are set via host inventory
+- Update Vagrant nodes to 2GB RAM
+- Update playbook notes
+- Update documentation

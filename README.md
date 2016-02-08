@@ -22,7 +22,7 @@ you can use this Ansible role to install Couchbase Server on cluster nodes,
 initialize working clusters, create buckets, and load buckets with test
 documents with the playbooks included in the `examples` directory.
 
-## 3-Node Development Cluster Quick Start
+## 3-Node Development Cluster Quick Start with Vagrant
 
 Follow these steps to deploy a CentOS based, simple 3 node development or
 evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagrant.
@@ -46,7 +46,7 @@ evaluation cluster on a physical host with >= 8GB RAM, using VirtualBox and Vagr
 Note that `$ANSIBLE_ROLES_PATH` defaults to `/etc/ansible/roles` or the path
 you've specified in `~/.ansible.cfg` for *roles_path*.
 
-This will install three (3) CentOS 6.5 nodes with 1.5GB RAM each and cluster
+This will install three (3) CentOS 6.5 nodes with 2GB RAM each and cluster
 them together. The nodes will be available at 10.1.42.10, 10.1.42.20, and
 10.1.42.30 as defined in the `Vagrantfile`.
 

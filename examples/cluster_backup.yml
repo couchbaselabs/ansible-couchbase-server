@@ -1,7 +1,7 @@
 ---
 # File: cluster_backup.yml
 # Ansible playbook to grab a full cluster backup from the specified
-# Couchbase Server cluster with cbbackup and save as a tarball in 
+# Couchbase Server cluster with cbbackup and save as a tarball in
 # $PWD/var/couchbase_backups/
 
 - hosts: cluster_nodes
