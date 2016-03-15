@@ -30,6 +30,11 @@ couchbase_server_ubuntu_ee_sha256: beb4ee31b5fea2bfa47c51132d3b29a12e6e2c537b7e5
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
 # couchbase_server_ubuntu_ee_sha256: c4fad00fe6006a31a82aa4879e7ae502cb9d397339e6d28f352312a0a5be9edd
 
+# couchbase_server_ubuntu_ee_version: 3.1.4
+# couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
+# couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}
+# couchbase_server_ubuntu_ee_sha256: 6461e70f86821ba750e1753ede4299fbb8179c3cb575098b3aba29681d4bddba
+
 # couchbase_server_ubuntu_ee_version: 3.1.3
 # couchbase_server_ubuntu_ee_package: couchbase-server-enterprise_{{ couchbase_server_ubuntu_ee_version }}-ubuntu12.04_amd64.deb
 # couchbase_server_ubuntu_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_ubuntu_ee_version }}/{{ couchbase_server_ubuntu_ee_package }}

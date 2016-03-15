@@ -561,3 +561,8 @@
 - Update Vagrant nodes to 2GB RAM
 - Update playbook notes
 - Update documentation
+
+## v1.7.5
+
+- Added Couchbase Server Enterprise Edition 3.1.4
+- Updated documentation

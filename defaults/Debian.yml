@@ -33,6 +33,11 @@ couchbase_server_debian_ee_sha256: 5cd0aa79739ee303bed79b5caa971b9ff71eca7603bbe
 # couchbase_server_debian_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_debian_ee_version }}/{{ couchbase_server_debian_ee_package }}
 # couchbase_server_debian_ee_sha256: 7663881917182712d9d5ed64698e2e568148e5a5ca986af36babed7b6d55725e
 
+# couchbase_server_debian_ee_version: 3.1.4
+# couchbase_server_debian_ee_package: couchbase-server-enterprise_{{ couchbase_server_debian_ee_version }}-debian7_amd64.deb
+# couchbase_server_debian_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_debian_ee_version }}/{{ couchbase_server_debian_ee_package }}
+# couchbase_server_debian_ee_sha256: 8faf7aa829c63e6dd87d5385d0a1007f3dcc1e9107cf1065a3e97eea9fe1fdab
+
 # couchbase_server_debian_ee_version: 3.1.3
 # couchbase_server_debian_ee_package: couchbase-server-enterprise_{{ couchbase_server_debian_ee_version }}-debian7_amd64.deb
 # couchbase_server_debian_ee_url: http://packages.couchbase.com/releases/{{ couchbase_server_debian_ee_version }}/{{ couchbase_server_debian_ee_package }}
