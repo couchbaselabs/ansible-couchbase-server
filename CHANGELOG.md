@@ -566,3 +566,7 @@
 
 - Added Couchbase Server Enterprise Edition 3.1.4
 - Updated documentation
+
+## v1.7.6
+
+- Added Couchbase Server Enterprise Edition 4.1.1
