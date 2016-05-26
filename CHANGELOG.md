@@ -570,3 +570,8 @@
 ## v1.7.6
 
 - Added Couchbase Server Enterprise Edition 4.1.1
+
+## v1.7.7
+
+- Fix incorrect SHA sum on Ubuntu version (thanks @gsempe)
+- Update contributors
