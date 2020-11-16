@@ -1,0 +1,23 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-query.html
+- name: Set the Couchbase Query Settings
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-query \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --pipeline-batch {{ couchbase_query_settings.pipeline_batch | default(16) | int }} \
+        --pipeline-cap {{ couchbase_query_settings.pipeline_cap | default(512) | int }} \
+        --scan-cap {{ couchbase_query_settings.scan_cap | default(512) | int }} \
+        --timeout {{ couchbase_query_settings.timeout | default(0) | int }} \
+        --prepared-limit {{ couchbase_query_settings.pipeline_cap | default(16384) | int }} \
+        --completed-limit {{ couchbase_query_settings.completed_limit | default(4000) | int }} \
+        --completed-threshold {{ couchbase_query_settings.completed_threshold | default(1000) | int }} \
+        --log-level {{ couchbase_query_settings.log_level | default('info') }} \
+        --max-parallelism {{ couchbase_query_settings.max_parallelism | default(1) | int }} \
+        --set
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_query_settings

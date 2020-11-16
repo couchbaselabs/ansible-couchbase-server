@@ -1,0 +1,219 @@
+couchbase_nodes:
+  - hostname: host1.example.com
+    group: AZA
+    services:
+      - data
+  - hostname: host2.example.com
+    group: AZA
+    services:
+      - data
+  - hostname: host3.example.com
+    group: AZB
+    services:
+      - data
+  - hostname: host4.example.com
+    group: AZB
+    services:
+      - data
+  - hostname: host5.example.com
+    group: AZA
+    services:
+      - index
+  - hostname: host6.example.com
+    group: AZB
+    services:
+      - index
+  - hostname: host7.example.com
+    group: AZA
+    services:
+      - query
+  - hostname: host8.example.com
+    group: AZB
+    services:
+      - query
+
+couchbase_cluster:
+  name: Demo
+  protocol: http
+  port: 8091
+  notifications: true
+  index_storage: default
+  default_services:
+    - data
+    - index
+    - query
+
+couchbase_security:
+  admin_user: Administrator
+  admin_password: password
+  disable_http_ui: false
+  disable_www_authenticate: false
+  cluster_encryption_level: control
+  tls_min_version: tlsv1
+  tls_honor_cipher_order: true
+
+couchbase_memory_quotas:
+  analytics: 1024
+  data: 4100
+  eventing: 256
+  fts: 512
+  index: 512
+
+couchbase_paths:
+  data: /opt/couchbase/var/lib/couchbase/data
+  index: /opt/couchbase/var/lib/couchbase/index
+  analytics: /opt/couchbase/var/lib/couchbase/analytics
+  eventing: /opt/couchbase/var/lib/couchbase/eventing
+
+couchbase_rebalance_settings:
+  rebalance_retry: false
+  wait_for: 300
+  max_attempts: 1
+  moves_per_node: 4
+
+couchbase_audit:
+  enabled: true
+  log_path: /opt/couchbase/var/lib/couchbase/logs
+  log_rotate_interval: 86400
+  log_rotate_size: 20971520
+
+couchbase_password_policy:
+  min_length: 6
+  uppercase: false
+  lowercase: false
+  digit: false
+  special_char: false
+
+couchbase_query_settings:
+  pipeline_batch: 16
+  pipeline_cap: 512
+  scan_cap: 512
+  timeout: 0
+  prepared_limit: 16384
+  completed_limit: 4000
+  completed_threshold: 1000
+  log_level: info
+  max_parallelism: 1
+
+couchbase_index_settings:
+  max_rollback_points: 2
+  stable_snapshot_interval: 5000
+  memory_snapshot_interval: 200
+  threads: 0
+  log_level: info
+
+couchbase_autofailover:
+  enabled: true
+  failover_timeout: 120
+  max_failovers: 1
+  failover_of_server_groups: false
+  failover_on_data_disk_issues: true
+  failover_data_disk_period: 120
+  can_abort_rebalance: true
+
+couchbase_email_alerts:
+  enabled: true
+  host: localhost
+  port: 25
+  encrypt: false
+  sender: couchbase@localhost
+  recipients:
+    - couchbase-admin@example.com
+  alerts:
+    - alert-auto-failover-node
+    - alert-auto-failover-max-reached
+    - alert-auto-failover-node-down
+    - alert-auto-failover-cluster-small
+    - alert-auto-failover-disable
+    - alert-ip-changed
+    - alert-disk-space
+    - alert-meta-overhead
+    - alert-meta-oom
+    - alert-write-failed
+    - alert-audit-msg-dropped
+    - alert-indexer-max-ram
+    - alert-timestamp-drift-exceeded
+    - alert-communication-issue
+
+couchbase_ldap:
+  hosts:
+    - ldap.example.com
+  port: 389
+  encryption: none
+  server_cert_validation: false
+  bind_dn: uid=admin,ou=People,dc=example,dc=com
+  bind_password: password
+  authentication_enabled: true
+  user_dn_query: ou=People,dc=example,dc=com??one?(uid=%u)
+  authorization_enabled: true
+  group_query: ou=People,dc=example,dc=com?(gidNumber=5000)?one
+  max_parallel_connections: 100
+  max_cache_size: 10000
+  cache_value_lifetime: 300000
+  enable_nested_groups: true
+  enable_nested_groups: true
+  nested_groups_max_depth: 10
+
+couchbase_sample_buckets:
+  - travel-sample
+
+couchbase_buckets:
+  - name: baseball
+    type: couchbase
+    ram_size: 400
+    replicas: 1
+    compression_mode: active
+  - name: social
+    type: couchbase
+    ram_size: 800
+    replicas: 1
+    compression_mode: active
+  - name: ecommerce
+    type: couchbase
+    ram_size: 700
+    replicas: 1
+    compression_mode: active
+
+couchbase_user_groups:
+  - name: Demo
+    description: test
+    roles:
+      - security_admin
+      - replication_admin
+  - name: Test
+    description: test
+    roles:
+      - replication_admin
+  - name: admins
+    description: test
+    roles:
+      - cluster_admin
+      - replication_admin
+
+couchbase_users:
+  - username: johnd
+    name: John Doe
+    roles:
+      - admin
+      - cluster_admin
+    groups:
+      - Demo
+    auth_domain: external
+  - username: tims
+    password: password
+    name: Tim Smith
+    roles:
+      - admin
+      - cluster_admin
+    groups:
+      - Demo
+      - Test
+    auth_domain: local
+
+couchbase_indexes:
+  - bucket: ecommerce
+    definition: CREATE INDEX idx_username ON ecommerce (username)
+    replicas: 1
+  - bucket: ecommerce
+    definition: CREATE INDEX idx_email ON ecommerce (email)
+    replicas: 1

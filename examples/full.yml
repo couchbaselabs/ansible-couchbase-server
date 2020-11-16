@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  vars_files:
+    - ./full-vars.yml
+  roles:
+    - couchbaselabs.couchbase-server

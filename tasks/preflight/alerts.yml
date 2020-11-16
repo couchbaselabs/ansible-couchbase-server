@@ -1,0 +1,19 @@
+---
+- name: Check couchbase_email_alerts variable types
+  assert:
+    that:
+      - ( couchbase_email_alerts is defined ) and ( couchbase_email_alerts is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_alerts
+
+- name: Fail when the couchbase_email_alerts properties are not defined or are not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_email_alerts.{{ item }} shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_email_alerts[item] is defined and couchbase_email_alerts[item] is string )
+  with_items:
+    - enabled
+    - encrypt
+  tags:
+    - couchbase_configure
+    - couchbase_alerts

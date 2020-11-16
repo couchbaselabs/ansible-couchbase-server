@@ -1,0 +1,20 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-node-init.html
+- name: Initialize the Node
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli host-list --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' | grep -q '{{ item.hostname }}'; then
+          echo "The node already exists in the cluster"
+      else
+        /opt/couchbase/bin/couchbase-cli node-init \
+          --cluster {{ item.hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --node-init-hostname '{{ item.hostname }}' \
+          --node-init-data-path '{{ couchbase_paths.data }}' \
+          --node-init-index-path '{{ couchbase_paths.index }}' \
+          --node-init-analytics-path '{{ couchbase_paths.analytics }}' \
+          --node-init-eventing-path '{{ couchbase_paths.eventing }}'
+      fi
+  with_items: "{{ couchbase_nodes }}"
+  when: couchbase_master is defined

@@ -1,0 +1,13 @@
+---
+- name: "Wait for Couchbase on all hosts in cluster to come up"
+  uri:
+    url: "http://{{ item.hostname }}:8091/pools"
+    method: GET
+    user: "{{ couchbase_security.admin_user }}"
+    password: "{{ couchbase_security.admin_password }}"
+  register: _result
+  until: _result.status == 200
+  retries: 60
+  delay: 1
+  with_items: "{{ couchbase_nodes }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname

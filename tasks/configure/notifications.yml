@@ -1,0 +1,14 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-notification.html
+- name: Set the Couchbase Notifications
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-notification \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --enable-notifications {{ couchbase_cluster.notifications | default(true) | int }}
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_notifications

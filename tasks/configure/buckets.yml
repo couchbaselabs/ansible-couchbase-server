@@ -1,0 +1,31 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-bucket-create.html
+- name: Create Buckets
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli bucket-list --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item.name }}'; then
+          echo "The bucket already exists"
+      else
+        /opt/couchbase/bin/couchbase-cli bucket-create \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --bucket {{ item.name | default('default') }} \
+          --bucket-type {{ item.type | default('couchbase') }} \
+          --bucket-ramsize {{ item.ram_size | default(100) }} \
+          --bucket-replica {{ item.replicas | default(0) }} \
+          --bucket-priority {{ item.priority | default('low') }} \
+          --bucket-eviction-policy {{ item.eviction_policy | default('valueOnly') }} \
+          --conflict-resolution {{ item.conflict_resolution | default('sequence') }} \
+          --enable-flush {{ item.flush | default(false) | int }} \
+          --durability-min-level {{ item.durability_min_level | default('none') }} \
+          --compression-mode {{ item.compression_mode | default('passive') }} \
+          --max-ttl {{ item.max_ttl | default(0) }} \
+          --enable-index-replica {{ item.enable_index_replica | default(false) | int }} \
+          --wait
+        fi
+  with_items: "{{ couchbase_buckets }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_buckets

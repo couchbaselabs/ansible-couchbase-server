@@ -1,0 +1,59 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-user-manage.html
+- name: Create User Groups
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli user-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list-groups | grep -q '{{ item.name }}'; then
+          echo "The group already exists"
+      else
+        /opt/couchbase/bin/couchbase-cli user-manage \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --group-name '{{ item.name }}' \
+          {% if item.description is defined and item.description is string %}
+            --group-description '{{ item.description }}' \
+          {% endif %}
+          {% if item.ldap_ref is defined and item.ldap_ref is string %}
+            --ldap-ref '{{ item.ldap_ref }}' \
+          {% endif %}
+          {% if item.roles is defined %}
+            --roles '{{ item.roles | join(',') }}' \
+          {% endif %}
+          --set-group
+      fi
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  loop: "{{ couchbase_user_groups }}"
+  tags:
+    - couchbase_configure
+    - couchbase_user_groups
+
+- name: Create Users
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli user-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item.username }}'; then
+          echo "The user already exists"
+      else
+        /opt/couchbase/bin/couchbase-cli user-manage \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --rbac-username '{{ item.username }}' \
+          {% if item.password is defined and item.password is string %}
+            --rbac-password '{{ item.password }}' \
+          {% endif %}
+          --rbac-name '{{ item.name | default("") }}' \
+          {% if item.roles is defined %}
+            --roles '{{ item.roles | join(',') }}' \
+          {% endif %}
+          {% if item.groups is defined %}
+            --user-groups '{{ item.groups | join(',') }}' \
+          {% endif %}
+          --auth-domain {{ item.auth_domain | default('local') }} \
+          --set
+      fi
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  loop: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users

@@ -1,0 +1,20 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-rebalance.html
+- name: Set the Couchbase Rebalance Settings
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-rebalance \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --enable {{ couchbase_rebalance_settings.rebalance_retry | default(false) | int }} \
+        {% if couchbase_rebalance_settings.rebalance_retry | default(false) == true %}
+          --wait-for {{ couchbase_rebalance_settings.wait_for | default(300) | int }} \
+          --max-attempts {{ couchbase_rebalance_settings.max_attempts | default(1) | int }} \
+          --moves-per-node {{ couchbase_rebalance_settings.moves_per_node | default(4) | int }} \
+        {% endif %}
+        --set
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_rebalance_settings

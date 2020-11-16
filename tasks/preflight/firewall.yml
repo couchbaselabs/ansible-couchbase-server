@@ -1,0 +1,5 @@
+---
+- name: Fail when the firewalld variable is not defined or is not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_firewalld shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_firewalld is defined and couchbase_firewalld is string )

@@ -1,0 +1,44 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-ldap.html
+- name: Configure LDAP
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-ldap \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --hosts '{{ couchbase_ldap.hosts | join(',') }}' \
+        --port {{ couchbase_ldap.port | default(389) }} \
+        --encryption {{ couchbase_ldap.encryption | default('none') }} \
+        {% if couchbase_ldap.cacert is defined and couchbase_ldap.cacert | length > 0 %}
+          --ldap-cacert '{{ couchbase_ldap.cacert }}' \
+        {% endif %}
+        --server-cert-validation {{ couchbase_ldap.server_cert_validation | default(false) | int }} \
+        {% if couchbase_ldap.bind_dn is defined and couchbase_ldap.bind_dn is string and couchbase_ldap.bind_dn | length > 0 and couchbase_ldap.bind_password is defined and couchbase_ldap.bind_password is string and couchbase_ldap.bind_password | length > 0 %}
+          --bind-dn '{{ couchbase_ldap.bind_dn }}' \
+          --bind-password '{{ couchbase_ldap.bind_password }}' \
+        {% endif %}
+        {% if couchbase_ldap.client_cert is defined and couchbase_ldap.client_cert is string and couchbase_ldap.client_cert | length > 0 and couchbase_ldap.client_key is defined and couchbase_ldap.client_key is string and couchbase_ldap.client_key | length > 0 %}
+          --client-cert '{{ couchbase_ldap.client_cert }}' \
+          --client-key '{{ couchbase_ldap.client_key }}' \
+        {% endif %}
+        --authentication-enabled {{ couchbase_ldap.authentication_enabled | default(false) | int }} \
+        {% if couchbase_ldap.authentication_enabled | default(false) == true %}
+          --user-dn-query '{{ couchbase_ldap.user_dn_query }}' \
+        {% endif %}
+        --authorization-enabled {{ couchbase_ldap.authorization_enabled | default(false) | int }} \
+        {% if couchbase_ldap.authorization_enabled | default(false) == true %}
+          --group-query '{{ couchbase_ldap.group_query }}' \
+          --max-parallel {{ couchbase_ldap.max_parallel_connections | default(100) }} \
+          --max-cache-size {{ couchbase_ldap.max_cache_size | default(10000) }} \
+          --cache-value-lifetime {{ couchbase_ldap.cache_value_lifetime | default(300000) }} \
+          --enable-nested-groups {{ couchbase_ldap.enable_nested_groups | default(false) | int }} \
+          {% if couchbase_ldap.nested_groups_enabled | default(false) == true %}
+            --nested-group-max-depth {{ couchbase_ldap.nested_groups_max_depth | default(10) }} \
+          {% endif %}
+        {% endif %}
+        --request-timeout {{ couchbase_ldap.request_timeout | default(1000) }}
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and couchbase_ldap.hosts | length > 0
+  tags:
+    - couchbase_configure
+    - couchbase_ldap

@@ -1,0 +1,34 @@
+couchbase_tunings:
+  vm:
+    swappiness: 1
+    overcommit_memory: 0
+    dirty_bytes: 209715200
+    dirty_background_bytes: 104857600
+  fs:
+    file_max: 524288
+  net:
+    ipv4:
+      tcp_workaround_signed_windows: 1
+      tcp_max_syn_backlog: 40000
+      tcp_rfc1337: 1
+      tcp_sack: 1
+      tcp_fack: 1
+      mtu_probing: 1
+      tcp_moderate_rcvbuf: 1
+      tcp_congestion_control: htcp
+      tcp_window_scaling: 1
+      tcp_fin_timeout: 15
+      tcp_keepalive_intvl: 30
+      tcp_keepalive_time: 600
+      tcp_keepalive_probes: 20
+      tcp_retries2: 8
+    core:
+      netdev_max_backlog: 300000
+      somaxconn: 40000
+
+
+
+
+
+
+#disk_scheduler: noop

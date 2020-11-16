@@ -1,0 +1,87 @@
+---
+- name: Get all of the nodes in the cluster
+  uri:
+    url: "http://{{ inventory_hostname }}:{{ couchbase_cluster.port | default(8091) }}/pools/nodes"
+    url_username: "{{ couchbase_security.admin_user | default('Administrator') }}"
+    url_password: "{{ couchbase_security.admin_password | default('password') }}"
+    method: GET
+  register: nodes_result
+  when: couchbase_master is defined and couchbase_indexes is defined and couchbase_indexes | length > 0
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Get the Query Nodes in the Cluster
+  set_fact:
+    query_nodes: "{{ nodes_result.json.nodes | selectattr('services', 'search', 'n1ql') | map(attribute='hostname') | list | map('regex_replace', ':[0-9]+$', '') }}"
+  when: couchbase_master is defined and couchbase_indexes is defined and couchbase_indexes | length > 0
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Create Indexes
+  uri:
+    url: "http://{{ query_nodes | random }}:8093/query/service"
+    url_username: "{{ couchbase_security.admin_user | default('Administrator') }}"
+    url_password: "{{ couchbase_security.admin_password | default('password') }}"
+    method: POST
+    force_basic_auth: true
+    body_format: json
+    body:
+      statement: |
+        {{ item.definition }} WITH {
+          {% if item.num_replicas is defined and item.num_replicas is number %}
+            "num_replicas": {{ item.num_replicas }},
+          {% endif %}
+          {% if item.num_partitions is defined and item.num_partitions is number %}
+            "num_partitions": {{ item.num_partitions }},
+          {% endif %}
+          {% if item.nodes is defined and item.nodes | type_debug == "list" %}
+            "nodes": {{ item.nodes | to_json }},
+          {% endif %}
+          {% if item.sec_key_size is defined and item.sec_key_size is number %}
+            "secKeySize": {{ item.sec_key_size }},
+          {% endif %}
+          {% if item.doc_key_size is defined and item.doc_key_size is number %}
+            "docKeySize": {{ item.doc_key_size }},
+          {% endif %}
+          {% if item.arr_size is defined and item.arr_size is number %}
+            "arrSize": {{ item.arr_size }},
+          {% endif %}
+          {% if item.num_doc is defined and item.num_doc is number %}
+            "numDoc": {{ item.num_doc }},
+          {% endif %}
+          {% if item.resident_ratio is defined and item.resident_ratio is number %}
+            "residentRatio": {{ item.resident_ratio }},
+          {% endif %}
+          "defer_build": true
+        }
+  with_items: "{{ couchbase_indexes }}"
+  when: couchbase_master is defined and query_nodes | length > 0
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Build the indexes on each of the buckets
+  uri:
+    url: "http://{{ query_nodes | random }}:8093/query/service"
+    url_username: "{{ couchbase_security.admin_user | default('Administrator') }}"
+    url_password: "{{ couchbase_security.admin_password | default('password') }}"
+    method: POST
+    force_basic_auth: true
+    body_format: json
+    body:
+      statement: |
+        BUILD INDEX ON `{{ item }}`(
+          (
+            SELECT RAW name
+            FROM system:indexes
+            WHERE keyspace_id = '{{ item }}'
+              AND state = 'deferred'
+          )
+        )
+  loop: "{{ couchbase_indexes | selectattr('bucket', 'defined') | map(attribute='bucket') | list | unique }}"
+  when: couchbase_master is defined and query_nodes | length > 0
+  tags:
+    - couchbase_configure
+    - couchbase_indexes

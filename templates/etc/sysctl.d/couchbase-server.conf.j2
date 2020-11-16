@@ -1,0 +1,130 @@
+# File: templates/etc_sysctl.d/couchbase-server.conf.j2
+# Kernel tunables for Couchbase Server set by Ansbile
+
+###
+### STANDARD TUNING
+###
+
+{% if couchbase_tunings.vm.swapiness is defined %}
+# Instructs the kernel to swap only as a last resort
+vm.swappiness = {{ couchbase_tunings.vm.swapiness }}
+{% endif %}
+
+{% if couchbase_tunings.vm.overcommit_memory is defined %}
+# By default, the kernel performs heuristic memory overcommit handling by estimating
+# the amount of memory available and failing requests that are too large. However,
+# since memory is allocated using a heuristic rather than a precise algorithm,
+# overloading memory is possible with this setting
+vm.overcommit_memory = 0
+{% endif %}
+
+{% if couchbase_tunings.fs.file_max is defined %}
+# Increase OS filesystem limit for open files
+fs.file-max = {{ couchbase_tunings.fs.file_max }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_max_syn_backlog is defined %}
+# Increases maximum number of remembered connection requests which
+# did not receive  an acknowledgment from connecting client
+# Must be less than or equal to somaxconn or it will be truncated
+net.ipv4.tcp_max_syn_backlog = {{ couchbase_tunings.net.ipv4.tcp_max_syn_backlog }}
+{% endif %}
+
+###
+### ADDITIONAL EXPERIMENTAL TUNING
+### Uncomment to activate
+###
+
+{% if couchbase_tunings.net.ipv4.tcp_workaround_signed_windows is defined %}
+# Remote buggy TCP workaround / no effect on the local network
+# net.ipv4.tcp_workaround_signed_windows = {{ couchbase_tunings.net.ipv4.tcp_workaround_signed_windows }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_rfc1337 is defined %}
+# RFC 1337 / time-wait assasination hazards fix
+# net.ipv4.tcp_rfc1337 = {{ couchbase_tunings.net.ipv4.tcp_rfc1337 }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_sack is defined %}
+# Reduce retransmit bandwidth with selective ACK
+# net.ipv4.tcp_sack = {{ couchbase_tunings.net.ipv4.tcp_sack }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_fack is defined %}
+# Forward Acknowledgement System works with SACK
+# to improve packet loss recovery
+# net.ipv4.tcp_fack = {{ couchbase_tunings.net.ipv4.tcp_fack }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_mtu_probing is defined %}
+# Disables MTU probing unless ICMP black hole detected
+# net.ipv4.tcp_mtu_probing = {{ couchbase_tunings.net.ipv4.tcp_mtu_probing }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_moderate_rcvbuf is defined %}
+# Per connection receive buffer and TCP window size auto tuning
+# net.ipv4.tcp_moderate_rcvbuf = {{ couchbase_tunings.net.ipv4.tcp_moderate_rcvbuf }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_congestion_control is defined %}
+# Better performance over high bandwidth networks than [New] Reno
+# Also generally regarded as safer than cubic
+# net.ipv4.tcp_congestion_control = {{ couchbase_tunings.net.ipv4.tcp_congestion_control }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_window_scaling is defined %}
+# Reduce bandwidth loss on fast networks by allowing for very large windows
+# Larger windows are good for high bandwidth*delay
+# net.ipv4.tcp_window_scaling = {{ couchbase_tunings.net.ipv4.tcp_window_scaling }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_fin_timeout is defined %}
+# Decreases amount of time connections remain in FIN-WAIT-2 state
+# Cleans up broken connections faster
+# net.ipv4.tcp_fin_timeout = {{ couchbase_tunings.net.ipv4.tcp_fin_timeout }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_keepalive_intvl is defined %}
+# Increase the frequency of keepalive probes
+# Helps to quickly identify and time out dead connections
+# net.ipv4.tcp_keepalive_intvl = {{ couchbase_tunings.net.ipv4.tcp_keepalive_intvl }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_keepalive_time is defined %}
+# The keepalive routines wait initially for 10 minutes (600 secs)
+# before sending the first keepalive probe
+# net.ipv4.tcp_keepalive_time = {{ couchbase_tunings.net.ipv4.tcp_keepalive_time }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_keepalive_probes is defined %}
+# If no ACK response is received for 20 consecutive times,
+# the connection is marked as broken
+# net.ipv4.tcp_keepalive_probes = {{ couchbase_tunings.net.ipv4.tcp_keepalive_probes }}
+{% endif %}
+
+{% if couchbase_tunings.net.ipv4.tcp_retries2 is defined %}
+# If no ACK response is received for 20 consecutive times,
+# the connection is marked as broken
+# net.ipv4.tcp_retries2 = {{ couchbase_tunings.net.ipv4.tcp_retries2 }}
+{% endif %}
+
+{% if couchbase_tunings.net.core.netdev_max_backlog is defined %}
+# Increase processor input queue length
+# net.core.netdev_max_backlog = {{ couchbase_tunings.net.core.netdev_max_backlog }}
+{% endif %}
+
+{% if couchbase_tunings.net.core.somaxconn is defined %}
+# Increases socket listen backlog to support request bursts
+# net.core.somaxconn = {{ couchbase_tunings.net.core.somaxconn }}
+{% endif %}
+
+{% if couchbase_tunings.vm.dirty_bytes is defined %}
+# Limits the maximum memory used to 200MB before pdflush
+# The default value can overwhelm the storage system once flushed.
+# vm.dirty_bytes = {{ couchbase_tunings.vm.dirty_bytes }}
+{% endif %}
+
+{% if couchbase_tunings.vm.dirty_background_bytes is defined %}
+# The lower threshold for vm.dirty_bytes
+# vm.dirty_background_bytes = {{ couchbase_tunings.vm.dirty_background_bytes }}
+{% endif %}

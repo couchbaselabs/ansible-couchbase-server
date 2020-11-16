@@ -1,0 +1,126 @@
+---
+- name: Check couchbase_buckets variable types
+  assert:
+    that:
+      - ( couchbase_buckets is defined ) and ( couchbase_buckets | type_debug == "list" )
+      - ( couchbase_sample_buckets is defined ) and ( couchbase_sample_buckets | type_debug == "list" )
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] does not have a name property
+  fail:
+    msg: "The buckets[*] 'name' property must be set"
+  when: ( item.name is not defined )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a ram_size property but it is not numeric
+  fail:
+    msg: "The buckets[*] 'ram_size' property must be numeric"
+  when: ( item.ram_size is defined and item.ram_size is not number )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a type property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'type' property must be: couchbase, ephemeral, memcached"
+  when: ( item.type is defined and item.type not in ['couchbase','couchstore','ephemeral','memcached'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a priority property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'priority' property must be: high, low"
+  when: ( item.priority is defined and item.priority not in ['high','low'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a eviction_policy property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'eviction_policy' property must be: valueOnly or fullEviction for couchbase buckets or noEviction or nruEviction for ephemeral buckets"
+  when: ( item.eviction_policy is defined and item.eviction_policy not in ['valueOnly', 'fullEviction','noEviction','nruEviction'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a conflict_resolution property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'conflict_resolution' property must be: sequence or timestamp"
+  when: ( item.eviction_policy is defined and item.eviction_policy not in ['sequence', 'timestamp'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a compression_mode property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'compression_mode' property must be: off, passive, active"
+  when: ( item.eviction_policy is defined and item.eviction_policy not in ['off', 'passive', 'active'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a max_ttl property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'max_ttl' property must be numeric"
+  when: ( couchbase_server_edition == 'enterprise' and item.max_ttl is defined and item.max_ttl not in number )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a durability_level property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'durability_min_level' property must be: none or majority for ephemeral buckets or none, majority, majorityAndPersistActive or persistToMajority for couchbase buckets"
+  when: ( item.durability_level is defined and item.durability_level not in ['none','majority','majorityAndPersistActive','persistToMajority'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a flush property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'flush' property must be a boolean true or false "
+  when: ( item.flush is defined and item.flush is string )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the buckets[*] has a enable_index_replica property has been set but is invalid
+  fail:
+    msg: "The buckets[*] 'enable_index_replica' property must be a boolean true or false "
+  when: ( item.enable_index_replica is defined and item.flush is string )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the bucket settings for flush are a string
+  fail:
+    msg: "Boolean variables in couchbase_buckets shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( item.flush is defined and item.flush is string )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
+- name: Fail when the an invalid sample bucket is used
+  fail:
+    msg: "The couchbase_cluster.index_storage can only be 'default' or 'memopt'"
+  when: item not in ['beer-sample', 'travel-sample', 'gamesim-sample']
+  with_items: "{{ couchbase_sample_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets

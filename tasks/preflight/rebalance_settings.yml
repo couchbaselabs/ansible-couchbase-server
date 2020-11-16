@@ -1,0 +1,27 @@
+---
+- name: Check couchbase_rebalance_settings variable types
+  assert:
+    that:
+      - ( couchbase_rebalance_settings is defined ) and ( couchbase_rebalance_settings is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_rebalance_settings
+- name: Fail when the couchbase_rebalance_settings.rebalance_retry property is not defined or is not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_rebalance_settings.rebalance_retry shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_rebalance_settings.rebalance_retry is defined and couchbase_rebalance_settings.rebalance_retry is string )
+  tags:
+    - couchbase_configure
+    - couchbase_rebalance_settings
+
+- name: Fail when the couchbase_rebalance_settings properties are not numeric
+  fail:
+    msg: "The couchbase_rebalance_settings.{{ item }} can only contain numeric values."
+  when: couchbase_rebalance_settings[item] is not number
+  with_items:
+    - wait_for
+    - max_attempts
+    - moves_per_node
+  tags:
+    - couchbase_configure
+    - couchbase_rebalance_settings

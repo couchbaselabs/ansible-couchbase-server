@@ -1,9 +1,0 @@
----
-# File: site.yml - Example Couchbase Server site playbook
-
-- name: Couchbase Server
-  hosts: cluster_nodes
-  become: yes
-  become_user: root
-  roles:
-    - { role: couchbaselabs.couchbase-server }

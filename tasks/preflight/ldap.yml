@@ -1,0 +1,61 @@
+---
+- name: Check couchbase_ldap variable types
+  assert:
+    that:
+      - ( couchbase_ldap is defined ) and ( couchbase_ldap is mapping )
+      - ( couchbase_ldap.hosts is defined ) and ( couchbase_ldap.hosts | type_debug == "list" )
+  tags:
+    - couchbase_configure
+    - couchbase_ldap
+
+- name: Fail when the couchbase_ldap properties are not defined or are not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_ldap.{{ item }} shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap[item] is defined and couchbase_ldap[item] is string
+  with_items:
+    - server_cert_validation
+    - authentication_enabled
+    - authorization_enabled
+    - enable_nested_groups
+  tags:
+    - couchbase_configure
+    - couchbase_ldap
+
+- name: Fail when the couchbase_ldap properties are not numeric
+  fail:
+    msg: "The couchbase_ldap.{{ item }} can only contain numeric values."
+  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap[item] is defined and couchbase_ldap[item] is not number
+  with_items:
+    - port
+    - request_timeout
+    - max_parallel_connections
+    - max_cache_size
+    - cache_value_lifetime
+    - nested_groups_max_depth
+  tags:
+    - couchbase_configure
+    - couchbase_ldap
+
+- name: Fail when the couchbase_ldap.encryption is set but not a valid value
+  fail:
+    msg: "The couchbase_ldap.encryption can only be set to: tls, startTLS or none"
+  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap.encryption is defined and couchbase_ldap.encryption not in ['tls','startTLS','none']
+  tags:
+    - couchbase_configure
+    - couchbase_ldap
+
+- name: Fail when couchbase_ldap.authentication_enabled is true but couchbase_ldap.user_dn_query is not defined
+  fail:
+    msg: When authentication is enabled the property 'user_dn_query' must be specified
+  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap.authentication_enabled is defined and couchbase_ldap.authentication_enabled == true and couchbase_ldap.user_dn_query is not defined
+  tags:
+    - couchbase_configure
+    - couchbase_ldap
+
+- name: Fail when couchbase_ldap.authorization_enabled is true but couchbase_ldap.group_query is not defined
+  fail:
+    msg: When authentication is enabled the property 'user_dn_query' must be specified
+  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap.authorization_enabled is defined and couchbase_ldap.authorization_enabled == true and couchbase_ldap.group_query is not defined
+  tags:
+    - couchbase_configure
+    - couchbase_ldap

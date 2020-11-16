@@ -1,0 +1,46 @@
+---
+- name: Download and install the meta package
+  apt:
+    deb: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-amd64.deb
+    state: present
+  tags:
+    - couchbase_install
+
+- name: Reload the local package database
+  apt:
+    update_cache: yes
+  tags:
+    - couchbase_install
+
+- name: Get the Latest Couchbase Package Version
+  shell: |
+    apt list -a couchbase-server | \
+      grep 'couchbase-server' | \
+      head -n 1 | \
+      sed -E 's/^couchbase-server[^ ]+\s+|\s+.+//g'
+  register: couchbase_latest_version
+  become: true
+  when: couchbase_server_version == 'latest'
+  tags:
+    - couchbase_install
+
+- name: Set the Couchbase Package Version
+  set_fact:
+    couchbase_server_version: "{{ couchbase_latest_version.stdout }}"
+  when: couchbase_server_version == 'latest'
+  tags:
+    - couchbase_install
+
+- name: Output the Build Version
+  debug:
+    msg: "Using Couchbase Version: {{ couchbase_server_version }}"
+  tags:
+    - couchbase_install
+    - couchbase_debug
+
+- name: Install Couchbase Server package
+  apt:
+    name: "couchbase-server={{ couchbase_server_version }}"
+    state: present
+  tags:
+    - couchbase_install

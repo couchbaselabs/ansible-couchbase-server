@@ -1,66 +1,170 @@
----
-# File: defaults/main.yml - Default ansible-couchbase-server variables
+couchbase_server_edition: enterprise
+couchbase_server_version: latest
 
-#############################################################################
-# Couchbase Server default variables
-#
-# couchbase_server_edition: Couchbase Server edition: Community or Enterprise
-# couchbase_server_admin: Couchbase Server administrator user name
-# couchbase_server_password: Couchbase Server administrator user password
-# couchbase_server_ram: The per server RAM quota specified in megabytes
-# couchbase_server_admin_port: Administration and web console port
-# couchbase_server_epmd_port: Erlang Port Mapper Daemon (EPMD) port
-# couchbase_server_api_port: Couchbase Server API port
-# couchbase_server_admin_ssl_port: SSL enabled Couchbase Server REST port
-# couchbase_server_api_ssl_port: SSL enabled Couchbase Server CAPI port
-# couchbase_server_default_bucket The default bucket name
-# couchbase_server_internal_ports: Memcached and client ports
-# couchbase_server_node_data_ports: Distributed Erlang communication ports
-# couchbase_server_sshd_port: Default SSH port
-# couchbase_server_home_path: Base path to Couchbase Server installation
-# couchbase_server_bin_path: Path to Couchbase Server binary utilities
-# couchbase_server_config_file: Full path to the config.dat file
-# couchbase_server_filesystem: Default filesystem for data and index volumes
-# couchbase_server_mountpoint: Logical volume mountpoint
-# couchbase_server_partition: Logical volume partition
-# couchbase_server_mount_options: Additional mount options
-# couchbase_server_data_path: Path to data files
-# couchbase_server_index_path: Path to index files
-# couchbase_server_log_path: Path to log files
-# couchbase_server_cbbackup_path: Path to store output of cbbackup
-# couchbase_server_cbcollect_path: Path to cbcollect_info output
-# couchbase_server_tmpdir: System wide TMPDIR for cbcollect_info
-# couchbase_server_tune_os: Whether to tune OS with optimized settings
-# couchbase_server_firewall: Whether to use strict firewall rules
-#
-#############################################################################
+# OS Tunings / Configuration
+couchbase_os:
+  firewalld: false
+  disable_thp: true
+  common_tools: false
+  kernel_tunings: true
+  user_limits: true
 
-couchbase_server_edition: "enterprise"
-couchbase_server_admin: "Administrator"
-couchbase_server_password: "couchbase"
-couchbase_server_ram: 3072
-couchbase_server_admin_port: 8091
-couchbase_server_epmd_port: 4369
-couchbase_server_admin_ssl_port: 18091
-couchbase_server_api_port: 8092
-couchbase_server_api_ssl_port: 18092
-couchbase_server_default_bucket: default
-couchbase_server_internal_ports: "11207:11215"
-couchbase_server_node_data_ports: "21100:21299"
-couchbase_server_sshd_port: 22
-couchbase_server_home_path: "/opt/couchbase"
-couchbase_server_bin_path: "{{ couchbase_server_home_path }}/bin"
-couchbase_server_config_file: "{{ couchbase_server_home_path }}/var/lib/couchbase/config/config.dat"
-couchbase_server_filesystem: "ext4"
-couchbase_server_mountpoint: "/"
-couchbase_server_partition: "/dev/mapper/VolGroup-lv_root"
-couchbase_server_mount_options: "noatime,barrier=0,errors=remount-ro"
-couchbase_server_data_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/data"
-couchbase_server_index_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/data"
-couchbase_server_log_path: "{{ couchbase_server_home_path }}/var/lib/couchbase/logs"
-couchbase_server_cbbackup_path: "/opt/couchbase_backups"
-couchbase_server_cbcollect_path: "/tmp"
-couchbase_server_tmpdir: "/tmp"
-couchbase_server_tune_os: false
-couchbase_server_firewall: false
-couchbase_server_local_package: false
+# Couchbase Cluster Settings
+couchbase_cluster:
+  name: My Cluster
+  rest_protocol: http
+  port: 8091
+  notifications: true
+  index_storage: default
+  default_services:
+    - data
+    - index
+    - query
+
+# Couchbase Server Memory Quotas
+couchbase_memory_quotas:
+  analytics: 1024
+  data: 4098
+  eventing: 256
+  fts: 512
+  index: 512
+
+# Security Settings
+couchbase_security:
+  admin_user: Administrator
+  admin_password: password
+  disable_http_ui: false
+  disable_www_authenticate: false
+  cluster_encryption_level: control
+  tls_min_version: tlsv1
+  tls_honor_cipher_order: true
+
+# The disk paths to use
+couchbase_paths:
+  data: /opt/couchbase/var/lib/couchbase/data
+  index: /opt/couchbase/var/lib/couchbase/data
+  analytics: /opt/couchbase/var/lib/couchbase/data
+  eventing: /opt/couchbase/var/lib/couchbase/data
+
+# Rebalance Settings
+couchbase_rebalance_settings:
+  rebalance_retry: false
+  wait_for: 300
+  max_attempts: 1
+  moves_per_node: 4
+
+# Audit Settings
+couchbase_audit:
+  enabled: true
+  log_path: /opt/couchbase/var/lib/couchbase/logs
+  log_rotate_interval: 86400
+  log_rotate_size: 20971520
+
+# Password Policy
+couchbase_password_policy:
+  min_length: 6
+  uppercase: false
+  lowercase: false
+  digit: false
+  special_char: false
+
+# Query Settings
+couchbase_query_settings:
+  pipeline_batch: 16
+  pipeline_cap: 512
+  scan_cap: 512
+  timeout: 0
+  prepared_limit: 16384
+  completed_limit: 4000
+  completed_threshold: 1000
+  log_level: info
+  max_parallelism: 1
+
+# Index Settings
+couchbase_index_settings:
+  max_rollback_points: 2
+  stable_snapshot_interval: 5000
+  memory_snapshot_interval: 200
+  threads: 0
+  log_level: info
+
+# Autofailover Settings
+couchbase_autofailover:
+  enabled: true
+  failover_timeout: 120
+  max_failovers: 1
+  failover_of_server_groups: false
+  failover_on_data_disk_issues: true
+  failover_data_disk_period: 120
+  can_abort_rebalance: true
+
+# Couchbase Email Alerts
+couchbase_email_alerts:
+  enabled: false
+  username: ""
+  password: ""
+  host: localhost
+  port: 25
+  encrypt: false
+  sender: couchbase@localhost
+  recipients: []
+  alerts:
+    - alert-auto-failover-node
+    - alert-auto-failover-max-reached
+    - alert-auto-failover-node-down
+    - alert-auto-failover-cluster-small
+    - alert-auto-failover-disable
+    - alert-ip-changed
+    - alert-disk-space
+    - alert-meta-overhead
+    - alert-meta-oom
+    - alert-write-failed
+    - alert-audit-msg-dropped
+    - alert-indexer-max-ram
+    - alert-timestamp-drift-exceeded
+    - alert-communication-issue
+
+# list of nodes
+couchbase_nodes: []
+
+# list of buckets to create
+couchbase_buckets: []
+
+# list of sample buckets to load
+couchbase_sample_buckets: []
+
+# XDCR Remotes
+couchbase_xdcr_remotes: []
+
+# XDCR Replications
+couchbase_xdcr_replications: []
+
+couchbase_ldap:
+  hosts: []
+  port: 389
+  encryption: none
+  ldap_cacert:
+  server_cert_validation: false
+  request_timeout: 1000
+  bind_dn:
+  bind_password:
+  client_cert:
+  client_key:
+  authentication_enabled: false
+  user_dn_query:
+  authorization_enabled: false
+  group_query:
+  max_parallel_connections: 100
+  max_cache_size: 10000
+  cache_value_lifetime: 300000
+  enable_nested_groups: false
+  nested_groups_max_depth: 10
+
+# list of couchbase user groups
+couchbase_user_groups: []
+
+# list of couchbase users
+couchbase_users: []
+
+# list of couchbase indexes
+couchbase_indexes: []
