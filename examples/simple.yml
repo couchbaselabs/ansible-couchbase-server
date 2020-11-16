@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  become_user: root
+  vars:
+    couchbase_os:
+      firewalld: true
+      disable_thp: true
+      common_tools: true
+      kernel_tunings: true
+      user_limits: true
+    couchbase_cluster:
+      name: Testing Cluster
+    couchbase_nodes:
+      - hostname: host1.example.com
+      - hostname: host2.example.com
+      - hostname: host3.example.com
+  roles:
+    - couchbaselabs.couchbase-server
