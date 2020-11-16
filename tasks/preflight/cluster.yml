@@ -1,0 +1,52 @@
+---
+- name: Check couchbase_cluster, couchbase_security and couchbase_memory_quotas variable types
+  assert:
+    that:
+      - ( couchbase_cluster is defined ) and ( couchbase_cluster is mapping )
+      - ( couchbase_security is defined ) and ( couchbase_security is mapping )
+      - ( couchbase_memory_quotas is defined ) and ( couchbase_memory_quotas is mapping )
+  tags:
+    - couchbase_configure
+
+- name: Fail when couchbase admin user isn't set
+  fail:
+    msg: "Please specify couchbase admin user (couchbase_security.admin_user)"
+  when: couchbase_security.admin_user is not defined or couchbase_security.admin_user == ''
+  tags:
+    - couchbase_configure
+
+- name: Fail when couchbase admin password isn't set
+  fail:
+    msg: "Please specify couchbase admin password (couchbase_security.admin_password)"
+  when: couchbase_security.admin_password is not defined or couchbase_security.admin_password == ''
+  tags:
+    - couchbase_configure
+
+- name: Fail when the couchbase_memory_quota properties are not numeric
+  fail:
+    msg: "The couchbase_memory_quotas can only contain numeric properties."
+  when: couchbase_memory_quotas[item] is not number
+  with_items: "{{ couchbase_memory_quotas }}"
+  tags:
+    - couchbase_configure
+
+- name: Fail when the index storage mode is not default or memopt
+  fail:
+    msg: "The couchbase_cluster.index_storage can only be 'default' or 'memopt'"
+  when: couchbase_cluster.index_storage is defined and couchbase_cluster.index_storage not in ['default', 'memopt']
+  tags:
+    - couchbase_configure
+
+- name: Fail when the couchbase_cluster.port is not numeric
+  fail:
+    msg: "The couchbase_cluster.port can only contain numeric values."
+  when: couchbase_cluster.port is defined and couchbase_cluster.port is not number
+  tags:
+    - couchbase_configure
+
+- name: Fail when notifications is a string
+  fail:
+    msg: "Boolean variables in couchbase_notifications shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_cluster.notifications is defined and couchbase_cluster.notifications is string )
+  tags:
+    - couchbase_configure

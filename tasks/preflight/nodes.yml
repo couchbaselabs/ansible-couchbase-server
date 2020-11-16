@@ -1,0 +1,22 @@
+---
+- name: Check couchbase_nodes variable types
+  assert:
+    that:
+      - ( couchbase_nodes is defined ) and ( couchbase_nodes | type_debug == "list" )
+  tags:
+    - couchbase_configure
+
+- name: Fail when no nodes are configured
+  fail:
+    msg: "You need to specify at least 1 node to configure"
+  when: couchbase_nodes | length == 0
+  tags:
+    - couchbase_configure
+
+- name: Fail when the nodes[*] does not have a hostname property
+  fail:
+    msg: "The nodes[*] 'hostname' property must be set"
+  when: ( item.hostname is not defined )
+  with_items: "{{ couchbase_nodes }}"
+  tags:
+    - couchbase_configure

@@ -1,0 +1,28 @@
+---
+- name: Check couchbase_security variable types
+  assert:
+    that:
+      - ( couchbase_security is defined ) and ( couchbase_security is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_security_settings
+
+- name: Fail when the couchbase_security properties are not defined or are not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_security.{{ item }} shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_security[item] is defined and couchbase_security[item] is string )
+  with_items:
+    - disable_http_ui
+    - disable_www_authenticate
+    - tls_honor_cipher_order
+  tags:
+    - couchbase_configure
+    - couchbase_security_settings
+
+- name: Fail when the couchbase_security.tls_min_version is set but is invalid
+  fail:
+    msg: "Boolean variables in couchbase_security.{{ item }} shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: couchbase_security.tls_min_version and couchbase_security.tls_min_version not in ['tlsv1', 'tlsv1.1', 'tlsv1.2']
+  tags:
+    - couchbase_configure
+    - couchbase_security_settings

@@ -1,0 +1,38 @@
+---
+- name: Check if the disable-thp script has been installed already
+  stat:
+    path: /etc/init.d/disable-thp
+  register: disable_thp
+  tags:
+    - couchbase_os
+    - couchbase_thp
+
+- name: Install Disable THP Script
+  template:
+    src: etc/init.d/disable-thp.j2
+    dest: /etc/init.d/disable-thp
+    mode: "755"
+  when: disable_thp.stat.exists == False
+  tags:
+    - couchbase_os
+    - couchbase_thp
+
+- name: Register the Disable THP Script (Redhat/CentOS/Amazon)
+  shell:
+    cmd: chkconfig --add disable-thp
+  become: true
+  become_user: root
+  when: (ansible_distribution | lower in ['amazon', 'redhat', 'el']) and disable_thp.stat.exists == False
+  tags:
+    - couchbase_os
+    - couchbase_thp
+
+- name: Register the Disable THP Script (Ubuntu/Debian)
+  shell:
+    cmd: update-rc.d disable-thp defaults
+  become: true
+  become_user: root
+  when: (ansible_distribution | lower in ['ubuntu','debian']) and disable_thp.stat.exists == False
+  tags:
+    - couchbase_os
+    - couchbase_thp

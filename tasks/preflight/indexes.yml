@@ -1,0 +1,98 @@
+---
+- name: Check couchbase_indexes variable types
+  assert:
+    that:
+      - ( couchbase_indexes is defined ) and ( couchbase_indexes | type_debug == "list" )
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] does not have a bucket property
+  fail:
+    msg: "The indexes[*] 'bucket' property must be set"
+  when: ( item.bucket is not defined )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] does not have a definition property
+  fail:
+    msg: "The indexes[*] 'definition' property must be set"
+  when: ( item.definition is not defined )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] num_replicas property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'num_replicas' property must be numeric"
+  when: ( item.num_replicas is defined and item.num_replicas is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] num_partitions property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'num_partitions' property must be numeric"
+  when: ( item.num_partitions is defined and item.num_partitions is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] nodes property is set but it is not a list
+  fail:
+    msg: "The indexes[*] 'num_partitions' property must be numeric"
+  when: ( item.nodes is defined and ( item.nodes | type_debug != "list" ) )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] sec_key_size property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'sec_key_size' property must be numeric"
+  when: ( item.sec_key_size is defined and item.sec_key_size is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] doc_key_size property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'doc_key_size' property must be numeric"
+  when: ( item.doc_key_size is defined and item.doc_key_size is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] arr_size property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'arr_size' property must be numeric"
+  when: ( item.arr_size is defined and item.arr_size is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] num_doc property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'num_doc' property must be numeric"
+  when: ( item.num_doc is defined and item.num_doc is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes
+
+- name: Fail when the indexes[*] resident_ratio property is set but it is not numeric
+  fail:
+    msg: "The indexes[*] 'resident_ratio' property must be numeric"
+  when: ( item.resident_ratio is defined and item.resident_ratio is not number )
+  with_items: "{{ couchbase_indexes }}"
+  tags:
+    - couchbase_configure
+    - couchbase_indexes

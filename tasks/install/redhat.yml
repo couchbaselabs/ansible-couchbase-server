@@ -1,0 +1,56 @@
+---
+- name: Install the latest source
+  yum:
+    name: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
+    state: present
+    disable_gpg_check: true
+
+# - name: Download file from a file path
+#   get_url:
+#     url: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
+#     dest: /tmp/couchbase-release-1.0-x86_64.rpm
+#
+# - name: Install the package source and the Couchbase public keys
+#   shell:
+#     cmd: |
+#       if ! rpm -qa | grep -qw couchbase-release; then
+#         rpm -i /tmp/couchbase-release-1.0-x86_64.rpm
+#       fi
+#     warn: false
+#   become: true
+#   become_user: root
+#   - name: Cleanup Couchbase Install
+#     shell: |
+#       rm -rf /tmp/couchbase-release-1.0-x86_64.rpm
+
+- name: Get the Latest Couchbase Package Version
+  shell: |
+    yum list --showduplicates couchbase-server \
+      | tail -1 \
+      | sed -E 's/^couchbase-server[^ ]+\s+|\s+couchbase-server\s*$//g'
+  register: couchbase_latest_version
+  become: true
+  when: couchbase_server_version == 'latest'
+  tags:
+    - couchbase_install
+
+- name: Set the Couchbase Package Version
+  set_fact:
+    couchbase_server_version: "{{ couchbase_latest_version.stdout }}"
+  when: couchbase_server_version == 'latest'
+  tags:
+    - couchbase_install
+
+- name: Output the Build Version
+  debug:
+    msg: "Using Couchbase Version: {{ couchbase_server_version }}"
+  tags:
+    - couchbase_install
+    - couchbase_debug
+
+- name: Install Couchbase Server package
+  yum:
+    name: "couchbase-server-{{ couchbase_server_version }}"
+    state: present
+  tags:
+    - couchbase_install

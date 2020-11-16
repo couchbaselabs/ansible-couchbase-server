@@ -1,0 +1,73 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-xdcr-setup.html
+- name: "Wait for Couchbase Remotes to come up"
+  uri:
+    url: "http://{{ item.hostname }}:8091/pools"
+    method: GET
+    user: "{{ item.username }}"
+    password: "{{ item.password }}"
+  register: _result
+  until: _result.status == 200
+  retries: 60
+  delay: 1
+  with_items: "{{ couchbase_xdcr_remotes }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_xdcr
+
+- name: Create XDCR Remotes
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli xdcr-setup --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item.name }}'; then
+          echo "The remote cluster already exists"
+      else
+        /opt/couchbase/bin/couchbase-cli xdcr-setup \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --xdcr-cluster-name '{{ item.name }}' \
+          --xdcr-hostname '{{ item.hostname }}' \
+          --xdcr-username '{{ item.username }}' \
+          --xdcr-password '{{ item.password }}' \
+          --create
+      fi
+  with_items: "{{ couchbase_xdcr_remotes }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_xdcr
+
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-xdcr-replicate.html
+- name: Create XDCR Replications
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli xdcr-replicate \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --xdcr-from-bucket {{ item.from_bucket }} \
+        --xdcr-to-bucket {{ item.to_bucket }} \
+        --xdcr-cluster-name '{{ item.cluster_name }}' \
+        --filter-expression '{{ item.filter_expression | default("") }}' \
+        --checkpoint-interval {{ item.checkpoint_interval | default(600) }} \
+        --worker-batch-size {{ item.worker_batch_size | default(500) }} \
+        --doc-batch-size {{ item.doc_batch_size | default(2048) }} \
+        --failure-restart-interval {{ item.failure_restart_interval | default(10) }} \
+        --optimistic-replication-threshold {{ item.optimistic_replication_threshold | default(256) }} \
+        --source-nozzle-per-node {{ item.source_nozzle_per_node | default(2) }} \
+        --target-nozzle-per-node {{ item.target_nozzle_per_node | default(2) }} \
+        --bandwidth-usage-limit {{ item.bandwidth_usage_limit | default(0) }} \
+        --enable-compression {{ item.enable_compression | default(1) | int }} \
+        --log-level {{ item.log_level | default('Info') }} \
+        --stats-interval {{ item.stats_interval | default(1000) }} \
+        --priority {{ item.priority | default('High') }} \
+        --reset-expiry {{ item.reset_expiry | default(false) | int }} \
+        --filter-deletion {{ item.filter_deletion | default(false) | int }} \
+        --filter-expiration {{ item.filter_expiration | default(false) | int }} \
+        --create
+  with_items: "{{ couchbase_xdcr_replications }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_xdcr

@@ -1,0 +1,33 @@
+---
+- name: Check couchbase_autofailover variable types
+  assert:
+    that:
+      - ( couchbase_autofailover is defined ) and ( couchbase_autofailover is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_autofailover
+
+- name: Fail when the couchbase_autofailover properties are not defined or are not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_autofailover.{{ item }} shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_autofailover[item] is defined and couchbase_autofailover[item] is string )
+  with_items:
+    - enabled
+    - failover_of_server_groups
+    - failover_on_data_disk_issues
+    - can_abort_rebalance
+  tags:
+    - couchbase_configure
+    - couchbase_autofailover
+
+- name: Fail when the couchbase_autofailover properties are not numeric
+  fail:
+    msg: "The couchbase_autofailover.{{ item }} can only contain numeric values."
+  when: couchbase_autofailover[item] is not number
+  with_items:
+    - failover_timeout
+    - max_failovers
+    - failover_data_disk_period
+  tags:
+    - couchbase_configure
+    - couchbase_autofailover

@@ -1,0 +1,18 @@
+---
+- name: Check couchbase_xdcr_remotes and couchbase_xdcr_replications variable types
+  assert:
+    that:
+      - ( couchbase_xdcr_remotes is defined ) and ( couchbase_xdcr_remotes | type_debug == "list" )
+      - ( couchbase_xdcr_replications is defined ) and ( couchbase_xdcr_replications | type_debug == "list" )
+
+- name: Fail when the couchbase_xdcr_remotes properties are not specified
+  fail:
+    msg: "The each couchbase_xdcr_remotes element must contain the properties: name, hostname, username, password"
+  when: ( item.name is not defined or item.hostname is not defined or item.username is not defined or item.password is not defined)
+  with_items: "{{ couchbase_xdcr_remotes }}"
+
+- name: Fail when the couchbase_xdcr_replications properties are not specified
+  fail:
+    msg: "The each couchbase_xdcr_replications element must contain the properties: from_bucket, to_bucket, and cluster_name"
+  when: ( item.from_bucket is not defined or item.to_bucket is not defined or item.cluster_name is not defined)
+  with_items: "{{ couchbase_xdcr_replications }}"

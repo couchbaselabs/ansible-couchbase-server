@@ -1,0 +1,18 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-security.html
+- name: Set the Couchbase Security Settings
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-security \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --disable-http-ui {{ couchbase_security.disable_http_ui | default(false) | int }} \
+        --disable-www-authenticate {{ couchbase_security.disable_www_authenticate | default(false) | int }} \
+        --tls-min-version {{ couchbase_security.tls_min_version | default('tlsv1') }} \
+        --tls-honor-cipher-order {{ couchbase_security.tls_honor_cipher_order | default(true) | int }} \
+        --set
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_security_settings

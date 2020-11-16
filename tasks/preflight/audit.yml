@@ -1,0 +1,32 @@
+---
+- name: Check couchbase_audit variable types
+  assert:
+    that:
+      - ( couchbase_audit is defined ) and ( couchbase_audit is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_audit
+
+- name: Fail when the couchbase_audit.enabled variable is not defined or is not a boolean
+  fail:
+    msg: "Boolean variables in couchbase_audit.enabled shouldn't be passed as strings. Please remove unneeded apostrophes."
+  when: ( couchbase_audit.enabled is defined and couchbase_audit.enabled is string )
+  tags:
+    - couchbase_configure
+    - couchbase_audit
+
+- name: Fail when the couchbase_audit.log_rotate_interval is not numeric
+  fail:
+    msg: "The couchbase_audit.log_rotate_interval can only contain numeric values."
+  when: couchbase_audit.log_rotate_interval is defined and couchbase_audit.log_rotate_interval is not number
+  tags:
+    - couchbase_configure
+    - couchbase_audit
+
+- name: Fail when the couchbase_audit.log_rotate_size is not numeric
+  fail:
+    msg: "The couchbase_audit.log_rotate_size can only contain numeric values."
+  when: couchbase_audit.log_rotate_size is defined and couchbase_audit.log_rotate_size is not number
+  tags:
+    - couchbase_configure
+    - couchbase_audit

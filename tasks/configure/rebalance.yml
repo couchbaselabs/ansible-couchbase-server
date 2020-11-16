@@ -1,0 +1,11 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-rebalance.html
+- name: Rebalance Cluster
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli rebalance \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --no-progress-bar
+  when: couchbase_master is defined and couchbase_master == inventory_hostname

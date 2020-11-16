@@ -1,0 +1,25 @@
+---
+- name: Check couchbase_query_settings variable types
+  assert:
+    that:
+      - ( couchbase_query_settings is defined ) and ( couchbase_query_settings is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_query_settings
+
+- name: Fail when the couchbase_query_settings properties are not numeric
+  fail:
+    msg: "The couchbase_query_settings.{{ item }} can only contain numeric values."
+  when: couchbase_query_settings[item] is not number
+  with_items:
+    - pipeline_batch
+    - pipeline_cap
+    - scan_cap
+    - timeout
+    - prepared_limit
+    - completed_limit
+    - completed_threshold
+    - max_parallelism
+  tags:
+    - couchbase_configure
+    - couchbase_query_settings

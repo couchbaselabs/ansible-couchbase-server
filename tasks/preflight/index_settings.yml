@@ -1,0 +1,21 @@
+---
+- name: Check couchbase_index_settings variable types
+  assert:
+    that:
+      - ( couchbase_index_settings is defined ) and ( couchbase_index_settings is mapping )
+  tags:
+    - couchbase_configure
+    - couchbase_index_settings
+
+- name: Fail when the couchbase_index_settings properties are not numeric
+  fail:
+    msg: "The couchbase_index_settings.{{ item }} can only contain numeric values."
+  when: couchbase_index_settings[item] is not number
+  with_items:
+    - max_rollback_points
+    - stable_snapshot_interval
+    - memory_snapshot_interval
+    - threads
+  tags:
+    - couchbase_configure
+    - couchbase_index_settings

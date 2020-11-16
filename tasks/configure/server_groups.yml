@@ -1,0 +1,52 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-group-manage.html
+- name: Create Server Groups
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli group-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item }}'; then
+          echo "The group already exists"
+      else
+        /opt/couchbase/bin/couchbase-cli group-manage \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --group-name '{{ item }}' \
+          --create
+      fi
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  loop: "{{ couchbase_nodes | selectattr('group', 'defined') | map(attribute='group') | list | unique }}"
+  tags:
+    - couchbase_configure
+    - couchbase_server_groups
+
+- name: Assign Nodes to Groups
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli group-manage \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --move-servers '{{ item.hostname }}' \
+        --from-group 'Group 1' \
+        --to-group '{{ item.group }}'
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  loop: "{{ couchbase_nodes | selectattr('group', 'defined') | list }}"
+  tags:
+    - couchbase_configure
+    - couchbase_server_groups
+
+- name: Remove Default Group ('Group 1') if not used
+  shell:
+    cmd: |
+      if /opt/couchbase/bin/couchbase-cli group-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q 'Group 1'; then
+        /opt/couchbase/bin/couchbase-cli group-manage \
+          --cluster {{ inventory_hostname }} \
+          --username {{ couchbase_security.admin_user | default('Administrator') }} \
+          --password '{{ couchbase_security.admin_password | default('password') }}' \
+          --group-name 'Group 1' \
+          --delete
+      fi
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and (couchbase_nodes | selectattr('group', 'defined') | list | count > 0) and (couchbase_nodes | selectattr('group', 'defined') | selectattr('group', 'match', 'Group 1') | list | count == 0)
+  tags:
+    - couchbase_configure
+    - couchbase_server_groups

@@ -1,0 +1,22 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-autofailover.html
+- name: Set the Couchbase Autofailover Configuration
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-autofailover \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        {% if couchbase_autofailover.enabled | default(false) == true %}
+          --auto-failover-timeout {{ couchbase_autofailover.failover_timeout | default(120) | int }} \
+          --enable-failover-of-server-groups {{ couchbase_autofailover.failover_of_server_groups | default(false) | int }} \
+          --enable-failover-on-data-disk-issues {{ couchbase_autofailover.failover_on_data_disk_issues | default(falfse) | int }} \
+          --failover-data-disk-period {{ couchbase_autofailover.failover_data_disk_period | default(120) | int }} \
+          --max-failovers {{ couchbase_autofailover.max_failovers | default(1) | int }} \
+          --can-abort-rebalance {{ couchbase_autofailover.can_abort_rebalance | default(true) | int }} \
+        {% endif %}
+        --enable-auto-failover {{ couchbase_autofailover.enabled | default(false) | int }}
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and couchbase_server_edition == 'enterprise'
+  tags:
+    - couchbase_configure
+    - couchbase_autofailover

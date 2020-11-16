@@ -1,0 +1,17 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbdocloader-tool.html
+- name: Create Sample Buckets Buckets
+  shell:
+    cmd: |
+      /opt/couchbase/bin/cbdocloader \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --bucket "{{ item }}" \
+        --bucket-quota 100 \
+        --dataset "/opt/couchbase/samples/{{ item }}.zip"
+  with_items: "{{ couchbase_sample_buckets }}"
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_sample_buckets

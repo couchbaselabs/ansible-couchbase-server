@@ -1,0 +1,72 @@
+---
+- name: Check couchbase_users and couchbase_user_groups variable types
+  assert:
+    that:
+      - ( couchbase_users is defined ) and ( couchbase_users | type_debug == "list" )
+      - ( couchbase_user_groups is defined ) and ( couchbase_user_groups | type_debug == "list" )
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_users[*] does not have a username property
+  fail:
+    msg: "The couchbase_users[*] 'username' property must be set"
+  when: ( item.username is not defined )
+  with_items: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_users[*] does not have a password property set for auth_domain == 'local'
+  fail:
+    msg: "The couchbase_users[*] 'password' property must be set when using auth_domain == 'local'"
+  when: ( item.auth_domain | default('local') == 'local' and item.password is not defined )
+  with_items: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_users[*] has a roles property defined but it is not a list
+  fail:
+    msg: "The couchbase_users[*] 'roles' property must be a list"
+  when: ( item.roles is defined and item.roles | type_debug != "list" )
+  with_items: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_users[*] has a groups property defined but it is not a list
+  fail:
+    msg: "The couchbase_users[*] 'groups' property must be a list"
+  when: ( item.groups is defined and item.groups | type_debug != "list" )
+  with_items: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_users[*] has a auth_domain property defined but is invalid
+  fail:
+    msg: "The couchbase_users[*] 'auth_domain' property must be a list"
+  when: ( item.auth_domain is defined and item.auth_domain not in ['local','external'] )
+  with_items: "{{ couchbase_users }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_user_groups[*] does not have a name property
+  fail:
+    msg: "The couchbase_user_groups[*] 'name' property must be a list"
+  when: ( item.name is not defined )
+  with_items: "{{ couchbase_user_groups }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users
+
+- name: Fail when the couchbase_user_groups[*] has a roles property defined but it is not a list
+  fail:
+    msg: "The couchbase_users[*] 'roles' property must be a list"
+  when: ( item.roles is defined and item.roles | type_debug != "list" )
+  with_items: "{{ couchbase_user_groups }}"
+  tags:
+    - couchbase_configure
+    - couchbase_users

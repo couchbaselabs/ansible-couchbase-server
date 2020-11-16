@@ -1,0 +1,18 @@
+---
+# Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-index.html
+- name: Set the Couchbase Index Settings
+  shell:
+    cmd: |
+      /opt/couchbase/bin/couchbase-cli setting-index \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --index-max-rollback-points {{ couchbase_index_settings.max_rollback_points | default(2) | int }} \
+        --index-stable-snapshot-interval {{ couchbase_index_settings.stable_snapshot_interval | default(5000) | int }} \
+        --index-memory-snapshot-interval {{ couchbase_index_settings.memory_snapshot_interval | default(200) | int }} \
+        --index-threads {{ couchbase_index_settings.threads | default(0) | int }} \
+        --index-log-level {{ couchbase_index_settings.log_level | default('info') }}
+  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  tags:
+    - couchbase_configure
+    - couchbase_index_settings
