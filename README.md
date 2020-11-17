@@ -54,6 +54,18 @@ Should you need specific performance or otherwise wish to tweak them
 for your particular purpose, this section describes all the role variables
 for your reference in detail, including their default values.
 
+### couchbase_server_edition
+
+The version of Couchbase Server, this can be `enterprise` or `community`.  The default value is `enterprise`
+
+### couchbase_server_version
+
+The version and build that you want to install, by default the value is `latest`.  If you want to use a specific version, you would would specify `6.6.0-7909`.  To find the available versions run the command:
+
+```bash
+yum list --showduplicates couchbase-server
+```
+
 ### couchbase_os
 
 All of the properties in the `couchbase_os` variable are optional, and will be assigned to the default value listed if not specified.
