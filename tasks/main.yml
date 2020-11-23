@@ -121,28 +121,6 @@
   tags:
     - couchbase_firewalld
 
-- name: Reboot
-  shell: "sleep 5 && reboot"
-  async: 1
-  poll: 0
-  tags:
-    - couchbase_os
-
-- name: Restart Pause/Sleep
-  pause:
-    seconds: 10
-  tags:
-    - couchbase_os
-
-- name: Reboot Wait
-  wait_for_connection:
-    connect_timeout: 20
-    sleep: 5
-    delay: 5
-    timeout: 60
-  tags:
-    - couchbase_os
-
 - name: Register a variable to set the master/configuration node
   set_fact:
     couchbase_master: "{{ inventory_hostname }}"
