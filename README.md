@@ -26,7 +26,7 @@ directly from the git repository.
 You should install it like this:
 
 ```
-ansible-galaxy install couchbaselabs.couchbase-server
+ansible-galaxy install couchbaselabs.couchbase_server
 ```
 
 Make sure you have write access to `/etc/ansible/roles/` since
