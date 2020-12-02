@@ -7,7 +7,7 @@
         --cluster {{ inventory_hostname }} \
         --username {{ couchbase_security.admin_user | default('Administrator') }} \
         --password '{{ couchbase_security.admin_password | default('password') }}' \
-        {% if couchbase_autofailover.enabled | default(false) == true %}
+        {% if couchbase_autofailover.enabled | default(false) %}
           --auto-failover-timeout {{ couchbase_autofailover.failover_timeout | default(120) | int }} \
           --enable-failover-of-server-groups {{ couchbase_autofailover.failover_of_server_groups | default(false) | int }} \
           --enable-failover-on-data-disk-issues {{ couchbase_autofailover.failover_on_data_disk_issues | default(falfse) | int }} \

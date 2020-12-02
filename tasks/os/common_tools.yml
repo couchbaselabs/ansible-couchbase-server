@@ -2,7 +2,7 @@
 - name: Install Epel from Amazon Linux Extras
   shell: |
     amazon-linux-extras install epel -y
-  when: couchbase_os.common_tools | default(false) == true and ansible_distribution | lower == "amazon"
+  when: couchbase_os.common_tools | default(false) and ansible_distribution | lower == "amazon"
   tags:
     - couchbase_os
     - couchbase_common_tools
@@ -23,7 +23,7 @@
       - dstat
       - nmon
     state: present
-  when: couchbase_os.common_tools | default(false) == true
+  when: couchbase_os.common_tools | default(false)
   tags:
     - couchbase_os
     - couchbase_common_tools

@@ -82,7 +82,8 @@
 
 - name: Fail when the buckets[*] has a durability_level property has been set but is invalid
   fail:
-    msg: "The buckets[*] 'durability_min_level' property must be: none or majority for ephemeral buckets or none, majority, majorityAndPersistActive or persistToMajority for couchbase buckets"
+    msg: "The buckets[*] 'durability_min_level' property must be: none or majority for ephemeral buckets or none,
+      majority, majorityAndPersistActive or persistToMajority for couchbase buckets"
   when: ( item.durability_level is defined and item.durability_level not in ['none','majority','majorityAndPersistActive','persistToMajority'] )
   with_items: "{{ couchbase_buckets }}"
   tags:

@@ -14,7 +14,7 @@
 
 - name: Get the Latest Couchbase Package Version
   shell: |
-    apt list -a couchbase-server | \
+    set -o pipefail && apt list -a couchbase-server | \
       grep 'couchbase-server' | \
       head -n 1 | \
       sed -E 's/^couchbase-server[^ ]+\s+|\s+.+//g'

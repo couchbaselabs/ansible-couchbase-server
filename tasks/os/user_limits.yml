@@ -13,7 +13,10 @@
   file:
     dest: /etc/security/limits.d
     state: directory
-  when: check_limits.stat.exists == False
+    owner: root
+    group: root
+    mode: 0644
+  when: not check_limits.stat.exists
   tags:
     - couchbase_os
     - couchbase_user_limits
@@ -27,7 +30,7 @@
     owner: root
     group: root
     mode: 0644
-  when: check_limits.stat.exists == False
+  when: not check_limits.stat.exists
   tags:
     - couchbase_os
     - couchbase_user_limits

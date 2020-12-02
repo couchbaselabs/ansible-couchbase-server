@@ -3,7 +3,11 @@
 - name: Initialize the Cluster
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli setting-cluster --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' | grep -q 'ERROR: Cluster is not initialized'; then
+      if /opt/couchbase/bin/couchbase-cli setting-cluster \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' | \
+        grep -q 'ERROR: Cluster is not initialized'; then
         /opt/couchbase/bin/couchbase-cli cluster-init \
           --cluster {{ inventory_hostname }} \
           --cluster-username {{ couchbase_security.admin_user | default('Administrator') }} \
@@ -16,7 +20,10 @@
           --cluster-analytics-ramsize {{ couchbase_memory_quotas.analytics | default(1024) }} \
           --cluster-name '{{ couchbase_cluster.name | default('My Cluster') }}' \
           --index-storage-setting {{ couchbase_cluster.index_storage | default('default') }} \
-          --services '{{ item.services is defined | ternary(item.services, couchbase_cluster.default_services | default(['data','index','query'])) | join(',') }}'
+          --services '{{ item.services is defined |
+            ternary(item.services, couchbase_cluster.default_services |
+            default(['data','index','query'])) |
+            join(',') }}'
       else
         echo "Already initialized"
       fi

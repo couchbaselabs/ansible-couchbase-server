@@ -11,14 +11,14 @@
 - name: Fail when couchbase admin user isn't set
   fail:
     msg: "Please specify couchbase admin user (couchbase_security.admin_user)"
-  when: couchbase_security.admin_user is not defined or couchbase_security.admin_user == ''
+  when: couchbase_security.admin_user is not defined or couchbase_security.admin_user | length == 0
   tags:
     - couchbase_configure
 
 - name: Fail when couchbase admin password isn't set
   fail:
     msg: "Please specify couchbase admin password (couchbase_security.admin_password)"
-  when: couchbase_security.admin_password is not defined or couchbase_security.admin_password == ''
+  when: couchbase_security.admin_password is not defined or couchbase_security.admin_password | length == 0
   tags:
     - couchbase_configure
 

@@ -3,7 +3,11 @@
 - name: Create User Groups
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli user-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list-groups | grep -q '{{ item.name }}'; then
+      if /opt/couchbase/bin/couchbase-cli user-manage \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --list-groups | grep -q '{{ item.name }}'; then
           echo "The group already exists"
       else
         /opt/couchbase/bin/couchbase-cli user-manage \
@@ -31,7 +35,12 @@
 - name: Create Users
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli user-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item.username }}'; then
+      if /opt/couchbase/bin/couchbase-cli user-manage \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --list | \
+        grep -q '{{ item.username }}'; then
           echo "The user already exists"
       else
         /opt/couchbase/bin/couchbase-cli user-manage \

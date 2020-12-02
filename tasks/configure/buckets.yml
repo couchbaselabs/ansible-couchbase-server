@@ -3,7 +3,11 @@
 - name: Create Buckets
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli bucket-list --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' | grep -q '{{ item.name }}'; then
+      if /opt/couchbase/bin/couchbase-cli bucket-list \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' | \
+        grep -q '{{ item.name }}'; then
           echo "The bucket already exists"
       else
         /opt/couchbase/bin/couchbase-cli bucket-create \

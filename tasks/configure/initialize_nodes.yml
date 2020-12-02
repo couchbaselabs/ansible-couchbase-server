@@ -3,7 +3,11 @@
 - name: Initialize the Node
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli host-list --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' | grep -q '{{ item.hostname }}'; then
+      if /opt/couchbase/bin/couchbase-cli host-list \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' | \
+        grep -q '{{ item.hostname }}'; then
           echo "The node already exists in the cluster"
       else
         /opt/couchbase/bin/couchbase-cli node-init \

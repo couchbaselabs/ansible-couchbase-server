@@ -7,9 +7,9 @@
   tags:
     - couchbase_install
 
-- name: Get the Latest Couchbase Package Version
+- name: Get the Latest Couchbase Package Version # noqa 303
   shell: |
-    yum list --showduplicates couchbase-server \
+    set -o pipefail && yum list --showduplicates couchbase-server \
       | tail -1 \
       | sed -E 's/^couchbase-server[^ ]+\s+|\s+couchbase-server\s*$//g'
   register: couchbase_latest_version

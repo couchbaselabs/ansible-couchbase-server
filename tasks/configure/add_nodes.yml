@@ -3,7 +3,11 @@
 - name: Add Nodes
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli host-list --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' | grep -q '{{ item.hostname }}'; then
+      if /opt/couchbase/bin/couchbase-cli host-list \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' | \
+        grep -q '{{ item.hostname }}'; then
           echo "The node already exists in the cluster"
       else
         /opt/couchbase/bin/couchbase-cli server-add \
@@ -13,7 +17,11 @@
           --server-add-username {{ couchbase_security.admin_user | default('Administrator') }} \
           --server-add-password '{{ couchbase_security.admin_password | default('password') }}' \
           --server-add {{ item.hostname }} \
-          --services '{{ item.services is defined | ternary(item.services, couchbase_cluster.default_services | default(['data','index','query'])) | join(',') }}'
+          --services '{{
+            item.services is defined |
+            ternary(item.services, couchbase_cluster.default_services |
+            default(['data','index','query'])) |
+            join(',') }}'
         fi
   with_items: "{{ couchbase_nodes }}"
   when: couchbase_master is defined and item.hostname != couchbase_master

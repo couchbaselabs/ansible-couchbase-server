@@ -12,27 +12,16 @@
     src: etc/init.d/disable-thp.j2
     dest: /etc/init.d/disable-thp
     mode: "755"
-  when: disable_thp.stat.exists == False
+  when: not disable_thp.stat.exists
   tags:
     - couchbase_os
     - couchbase_thp
 
-- name: Register the Disable THP Script (Redhat/CentOS/Amazon)
-  shell:
-    cmd: chkconfig --add disable-thp
-  become: true
-  become_user: root
-  when: (ansible_distribution | lower in ['amazon', 'redhat', 'el']) and disable_thp.stat.exists == False
-  tags:
-    - couchbase_os
-    - couchbase_thp
-
-- name: Register the Disable THP Script (Ubuntu/Debian)
-  shell:
-    cmd: update-rc.d disable-thp defaults
-  become: true
-  become_user: root
-  when: (ansible_distribution | lower in ['ubuntu','debian']) and disable_thp.stat.exists == False
+- name: Register the Disable THP Script as a Service
+  service:
+    name: disable-thp
+    enabled: yes
+    state: started
   tags:
     - couchbase_os
     - couchbase_thp

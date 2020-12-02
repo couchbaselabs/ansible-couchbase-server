@@ -5,27 +5,9 @@
     state: present
     disable_gpg_check: true
 
-# - name: Download file from a file path
-#   get_url:
-#     url: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
-#     dest: /tmp/couchbase-release-1.0-x86_64.rpm
-#
-# - name: Install the package source and the Couchbase public keys
-#   shell:
-#     cmd: |
-#       if ! rpm -qa | grep -qw couchbase-release; then
-#         rpm -i /tmp/couchbase-release-1.0-x86_64.rpm
-#       fi
-#     warn: false
-#   become: true
-#   become_user: root
-#   - name: Cleanup Couchbase Install
-#     shell: |
-#       rm -rf /tmp/couchbase-release-1.0-x86_64.rpm
-
-- name: Get the Latest Couchbase Package Version
+- name: Get the Latest Couchbase Package Version #noqa 303
   shell: |
-    yum list --showduplicates couchbase-server \
+    set -o pipefail && yum list --showduplicates couchbase-server \
       | tail -1 \
       | sed -E 's/^couchbase-server[^ ]+\s+|\s+couchbase-server\s*$//g'
   register: couchbase_latest_version

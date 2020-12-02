@@ -13,7 +13,11 @@
 
 - name: Get the Query Nodes in the Cluster
   set_fact:
-    query_nodes: "{{ nodes_result.json.nodes | selectattr('services', 'search', 'n1ql') | map(attribute='hostname') | list | map('regex_replace', ':[0-9]+$', '') }}"
+    query_nodes: "{{ nodes_result.json.nodes |
+      selectattr('services', 'search', 'n1ql') |
+      map(attribute='hostname') |
+      list |
+      map('regex_replace', ':[0-9]+$', '') }}"
   when: couchbase_master is defined and couchbase_indexes is defined and couchbase_indexes | length > 0
   tags:
     - couchbase_configure

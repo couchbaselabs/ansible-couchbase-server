@@ -7,7 +7,7 @@
         --cluster {{ inventory_hostname }} \
         --username {{ couchbase_security.admin_user | default('Administrator') }} \
         --password '{{ couchbase_security.admin_password | default('password') }}' \
-        {% if couchbase_email_alerts.enabled | default(false) == true %}
+        {% if couchbase_email_alerts.enabled | default(false) %}
           --email-recipients {{ couchbase_email_alerts.recipients | join(',') }} \
           --email-sender {{ couchbase_email_alerts.sender | default('couchbase@localhost') }} \
           {% if couchbase_email_alerts.username is defined and couchbase_email_alerts.username | length > 0 %}
@@ -18,7 +18,13 @@
           {% endif %}
           --email-host {{ couchbase_email_alerts.host | default('localhost') }} \
           --email-port {{ couchbase_email_alerts.port | default(25) | int }} \
-          {% for item in couchbase_email_alerts.alerts | default(["alert-auto-failover-node","alert-auto-failover-max-reached","alert-auto-failover-node-down","alert-auto-failover-cluster-small","alert-auto-failover-disable","alert-ip-changed","alert-disk-space","alert-meta-overhead","alert-meta-oom","alert-write-failed","alert-audit-msg-dropped","alert-indexer-max-ram","alert-timestamp-drift-exceeded","alert-communication-issue"]) %}
+          {% for item in couchbase_email_alerts.alerts | default([
+            "alert-auto-failover-node","alert-auto-failover-max-reached","alert-auto-failover-node-down",
+            "alert-auto-failover-cluster-small","alert-auto-failover-disable","alert-ip-changed",
+            "alert-disk-space","alert-meta-overhead","alert-meta-oom","alert-write-failed",
+            "alert-audit-msg-dropped","alert-indexer-max-ram","alert-timestamp-drift-exceeded",
+            "alert-communication-issue"])
+          %}
             --{{ item }} \
           {% endfor %}
           --enable-email-encrypt {{ couchbase_email_alerts.encrypt | default(false) | int }} \
