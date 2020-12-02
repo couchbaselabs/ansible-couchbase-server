@@ -3,24 +3,27 @@
   stat:
     path: /etc/sysctl.d/couchbase-server.conf
   register: check_sysctl
-  when: couchbase_os.kernel_tunings | default(false) == true
+  when: couchbase_os.kernel_tunings | default(false)
   tags:
     - couchbase_os
     - couchbase_kernel_tunings
 
 - name: Make sure the Kernel settings directory exists
-  become: yes
+  become: true
   become_user: root
   file:
     dest: /etc/sysctl.d
     state: directory
-  when: couchbase_os.kernel_tunings | default(false) == true and check_sysctl.stat.exists == False
+    owner: root
+    group: root
+    mode: 0644
+  when: couchbase_os.kernel_tunings | default(false) and not check_sysctl.stat.exists
   tags:
     - couchbase_os
     - couchbase_kernel_tunings
 
 - name: Kernel settings config
-  become: yes
+  become: true
   become_user: root
   template:
     src: etc/sysctl.d/couchbase-server.conf.j2
@@ -28,14 +31,14 @@
     owner: root
     group: root
     mode: 0644
-  when: couchbase_os.kernel_tunings | default(false) == true and check_sysctl.stat.exists == False
+  when: couchbase_os.kernel_tunings | default(false) and not check_sysctl.stat.exists
   tags:
     - couchbase_os
     - couchbase_kernel_tunings
 
 - name: Update kernel settings
   command: sysctl -e -p /etc/sysctl.d/couchbase-server.conf
-  when: couchbase_os.kernel_tunings | default(false) == true
+  when: couchbase_os.kernel_tunings | default(false)
   tags:
     - couchbase_os
     - couchbase_kernel_tunings

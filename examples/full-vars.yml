@@ -1,3 +1,4 @@
+---
 couchbase_nodes:
   - hostname: host1.example.com
     group: AZA
@@ -150,7 +151,6 @@ couchbase_ldap:
   max_parallel_connections: 100
   max_cache_size: 10000
   cache_value_lifetime: 300000
-  enable_nested_groups: true
   enable_nested_groups: true
   nested_groups_max_depth: 10
 

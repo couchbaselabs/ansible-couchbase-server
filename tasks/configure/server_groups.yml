@@ -3,7 +3,12 @@
 - name: Create Server Groups
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli group-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q '{{ item }}'; then
+      if /opt/couchbase/bin/couchbase-cli group-manage \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --list | \
+        grep -q '{{ item }}'; then
           echo "The group already exists"
       else
         /opt/couchbase/bin/couchbase-cli group-manage \
@@ -38,7 +43,12 @@
 - name: Remove Default Group ('Group 1') if not used
   shell:
     cmd: |
-      if /opt/couchbase/bin/couchbase-cli group-manage --cluster {{ inventory_hostname }} --username {{ couchbase_security.admin_user | default('Administrator') }} --password '{{ couchbase_security.admin_password | default('password') }}' --list | grep -q 'Group 1'; then
+      if /opt/couchbase/bin/couchbase-cli group-manage \
+        --cluster {{ inventory_hostname }} \
+        --username {{ couchbase_security.admin_user | default('Administrator') }} \
+        --password '{{ couchbase_security.admin_password | default('password') }}' \
+        --list | \
+        grep -q 'Group 1'; then
         /opt/couchbase/bin/couchbase-cli group-manage \
           --cluster {{ inventory_hostname }} \
           --username {{ couchbase_security.admin_user | default('Administrator') }} \
@@ -46,7 +56,10 @@
           --group-name 'Group 1' \
           --delete
       fi
-  when: couchbase_master is defined and couchbase_master == inventory_hostname and (couchbase_nodes | selectattr('group', 'defined') | list | count > 0) and (couchbase_nodes | selectattr('group', 'defined') | selectattr('group', 'match', 'Group 1') | list | count == 0)
+  when: couchbase_master is defined and
+    couchbase_master == inventory_hostname and
+    (couchbase_nodes | selectattr('group', 'defined') | list | count > 0) and
+    (couchbase_nodes | selectattr('group', 'defined') | selectattr('group', 'match', 'Group 1') | list | count == 0)
   tags:
     - couchbase_configure
     - couchbase_server_groups

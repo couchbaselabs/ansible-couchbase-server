@@ -85,12 +85,19 @@
   service:
     name: couchbase-server
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - couchbase_install
     - couchbase_configure
 
+- include: os/disable_thp.yml
+  when: couchbase_os.disable_thp | default(false)
+  tags:
+    - couchbase_os
+    - couchbase_disable_thp
+
 - name: Tuning variables
+  when: couchbase_os.kernel_tunings | default(false)
   include_vars: ../defaults/tunings.yml
   tags:
     - couchbase_os
@@ -98,26 +105,20 @@
     - couchbase_tunings
     - couchbase_user_limits
 
-- include: os/disable_thp.yml
-  when: couchbase_os.disable_thp | default(false) == true
-  tags:
-    - couchbase_os
-    - couchbase_disable_thp
-
 - include: os/tunings.yml
-  when: couchbase_os.kernel_tunings | default(false) == true
+  when: couchbase_os.kernel_tunings | default(false)
   tags:
     - couchbase_os
     - couchbase_kernel_tunings
 
 - include: os/user_limits.yml
-  when: couchbase_os.user_limits | default(false) == true
+  when: couchbase_os.user_limits | default(false)
   tags:
     - couchbase_os
     - couchbase_user_limits
 
 - include: os/firewalld.yml
-  when: couchbase_os.firewalld | default(false) == true
+  when: couchbase_os.firewalld | default(false)
   tags:
     - couchbase_firewalld
 

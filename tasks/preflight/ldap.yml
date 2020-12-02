@@ -47,7 +47,10 @@
 - name: Fail when couchbase_ldap.authentication_enabled is true but couchbase_ldap.user_dn_query is not defined
   fail:
     msg: When authentication is enabled the property 'user_dn_query' must be specified
-  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap.authentication_enabled is defined and couchbase_ldap.authentication_enabled == true and couchbase_ldap.user_dn_query is not defined
+  when: couchbase_ldap.hosts | length > 0 and
+    couchbase_ldap.authentication_enabled is defined and
+    couchbase_ldap.authentication_enabled and
+    couchbase_ldap.user_dn_query is not defined
   tags:
     - couchbase_configure
     - couchbase_ldap
@@ -55,7 +58,10 @@
 - name: Fail when couchbase_ldap.authorization_enabled is true but couchbase_ldap.group_query is not defined
   fail:
     msg: When authentication is enabled the property 'user_dn_query' must be specified
-  when: couchbase_ldap.hosts | length > 0 and couchbase_ldap.authorization_enabled is defined and couchbase_ldap.authorization_enabled == true and couchbase_ldap.group_query is not defined
+  when: couchbase_ldap.hosts | length > 0 and
+    couchbase_ldap.authorization_enabled is defined and
+    couchbase_ldap.authorization_enabled and
+    couchbase_ldap.group_query is not defined
   tags:
     - couchbase_configure
     - couchbase_ldap
