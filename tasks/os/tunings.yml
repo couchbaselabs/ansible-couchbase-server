@@ -9,7 +9,7 @@
     - couchbase_kernel_tunings
 
 - name: Make sure the Kernel settings directory exists
-  become: yes
+  become: true
   become_user: root
   file:
     dest: /etc/sysctl.d
@@ -23,7 +23,7 @@
     - couchbase_kernel_tunings
 
 - name: Kernel settings config
-  become: yes
+  become: true
   become_user: root
   template:
     src: etc/sysctl.d/couchbase-server.conf.j2

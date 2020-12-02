@@ -8,7 +8,7 @@
     - couchbase_user_limits
 
 - name: Make sure the limits directory exists
-  become: yes
+  become: true
   become_user: root
   file:
     dest: /etc/security/limits.d
@@ -22,7 +22,7 @@
     - couchbase_user_limits
 
 - name: User limits config
-  become: yes
+  become: true
   become_user: root
   template:
     src: etc/security/limits.d/couchbase-server.conf.j2

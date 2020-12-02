@@ -7,7 +7,7 @@
   tags:
     - couchbase_install
 
-- name: Get the Latest Couchbase Package Version # noqa 303
+- name: Get the Latest Couchbase Package Version  # noqa 303
   shell: |
     set -o pipefail && yum list --showduplicates couchbase-server \
       | tail -1 \

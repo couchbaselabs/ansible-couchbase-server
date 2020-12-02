@@ -8,7 +8,7 @@
 
 - name: Reload the local package database
   apt:
-    update_cache: yes
+    update_cache: true
   tags:
     - couchbase_install
 

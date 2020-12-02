@@ -85,7 +85,7 @@
   service:
     name: couchbase-server
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - couchbase_install
     - couchbase_configure

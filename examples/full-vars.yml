@@ -1,3 +1,4 @@
+---
 couchbase_nodes:
   - hostname: host1.example.com
     group: AZA

@@ -20,7 +20,7 @@
 - name: Register the Disable THP Script as a Service
   service:
     name: disable-thp
-    enabled: yes
+    enabled: true
     state: started
   tags:
     - couchbase_os
