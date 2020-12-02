@@ -3,7 +3,7 @@ galaxy_info:
   description: Installs, initializes and configures Couchbase Server clusters
   company: Couchbase
   license: Apache
-  role_name: couchbase-server
+  role_name: couchbase_server
   min_ansible_version: 1.9
   platforms:
   - name: EL
