@@ -5,4 +5,4 @@
   vars_files:
     - ./full-vars.yml
   roles:
-    - couchbaselabs.couchbase-server
+    - couchbaselabs.couchbase_server
