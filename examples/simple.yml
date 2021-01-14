@@ -16,4 +16,4 @@
       - hostname: host2.example.com
       - hostname: host3.example.com
   roles:
-    - couchbaselabs.couchbase-server
+    - couchbaselabs.couchbase_server
