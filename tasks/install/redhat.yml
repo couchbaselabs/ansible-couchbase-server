@@ -1,9 +1,22 @@
 ---
+- name: Install from Download URL if provided
+  yum:
+    name: "{{ couchbase_server_download_url }}"
+    state: present
+    disable_gpg_check: true
+  become: true
+  when: couchbase_server_download_url is defined and (couchbase_server_download_url|length > 0)
+  tags:
+    - couchbase_install
+
 - name: Install the latest source
   yum:
     name: https://packages.couchbase.com/releases/couchbase-release/couchbase-release-1.0-x86_64.rpm
     state: present
     disable_gpg_check: true
+  when: couchbase_server_download_url is not defined or (couchbase_server_download_url|length == 0)
+  tags:
+    - couchbase_install
 
 - name: Get the Latest Couchbase Package Version  # noqa 303
   shell: |
@@ -12,20 +25,21 @@
       | sed -E 's/^couchbase-server[^ ]+\s+|\s+couchbase-server\s*$//g'
   register: couchbase_latest_version
   become: true
-  when: couchbase_server_version == 'latest'
+  when: (couchbase_server_download_url is not defined or (couchbase_server_download_url|length == 0)) and couchbase_server_version == 'latest'
   tags:
     - couchbase_install
 
 - name: Set the Couchbase Package Version
   set_fact:
     couchbase_server_version: "{{ couchbase_latest_version.stdout }}"
-  when: couchbase_server_version == 'latest'
+  when: (couchbase_server_download_url is not defined or (couchbase_server_download_url|length == 0)) and couchbase_server_version == 'latest'
   tags:
     - couchbase_install
 
 - name: Output the Build Version
   debug:
     msg: "Using Couchbase Version: {{ couchbase_server_version }}"
+  when: couchbase_server_download_url is not defined or (couchbase_server_download_url|length == 0)
   tags:
     - couchbase_install
     - couchbase_debug
@@ -34,5 +48,6 @@
   yum:
     name: "couchbase-server-{{ couchbase_server_version }}"
     state: present
+  when: couchbase_server_download_url is not defined or (couchbase_server_download_url|length == 0)
   tags:
     - couchbase_install

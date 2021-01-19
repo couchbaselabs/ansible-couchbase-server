@@ -65,6 +65,9 @@ The version and build that you want to install, by default the value is `latest`
 ```bash
 yum list --showduplicates couchbase-server
 ```
+### couchbase_server_download_url
+
+A fully qualified URL to an `*.rpm` or `*.deb` file that you wish to install Couchbase Server from.
 
 ### couchbase_os
 
