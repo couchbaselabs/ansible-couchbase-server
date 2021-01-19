@@ -1,6 +1,7 @@
 ---
 couchbase_server_edition: enterprise
 couchbase_server_version: latest
+couchbase_server_download_url: 
 
 # OS Tunings / Configuration
 couchbase_os:
