@@ -30,6 +30,8 @@
       sed -E 's/^couchbase-server[^ ]+\s+|\s+.+//g'
   register: couchbase_latest_version
   become: true
+  args:
+    executable: /bin/bash
   when: ((couchbase_server_download_url is defined) and (couchbase_server_download_url | length == 0)) and couchbase_server_version == 'latest'
   tags:
     - couchbase_install

@@ -17,7 +17,7 @@
         --log-level {{ couchbase_query_settings.log_level | default('info') }} \
         --max-parallelism {{ couchbase_query_settings.max_parallelism | default(1) | int }} \
         --set
-  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and couchbase_server_version is version_compare('6.5', '>=')
   tags:
     - couchbase_configure
     - couchbase_query_settings

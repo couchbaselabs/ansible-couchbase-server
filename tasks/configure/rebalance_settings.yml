@@ -14,7 +14,7 @@
           --moves-per-node {{ couchbase_rebalance_settings.moves_per_node | default(4) | int }} \
         {% endif %}
         --set
-  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and couchbase_server_version is version_compare('6.5', '>=')
   tags:
     - couchbase_configure
     - couchbase_rebalance_settings

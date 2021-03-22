@@ -21,8 +21,9 @@
           --bucket-priority {{ item.priority | default('low') }} \
           --bucket-eviction-policy {{ item.eviction_policy | default('valueOnly') }} \
           --conflict-resolution {{ item.conflict_resolution | default('sequence') }} \
-          --enable-flush {{ item.flush | default(false) | int }} \
+          --enable-flush {{ item.flush | default(false) | int }}{% if couchbase_server_version is version_compare('6.6', '>=') %}\
           --durability-min-level {{ item.durability_min_level | default('none') }} \
+          {% endif %}
           --compression-mode {{ item.compression_mode | default('passive') }} \
           --max-ttl {{ item.max_ttl | default(0) }} \
           --enable-index-replica {{ item.enable_index_replica | default(false) | int }} \
