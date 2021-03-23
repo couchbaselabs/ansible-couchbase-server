@@ -7,11 +7,11 @@
         --cluster {{ inventory_hostname }} \
         --username {{ couchbase_security.admin_user | default('Administrator') }} \
         --password '{{ couchbase_security.admin_password | default('password') }}' \
-        --disable-http-ui {{ couchbase_security.disable_http_ui | default(false) | int }} \
+        --disable-http-ui {{ couchbase_security.disable_http_ui | default(false) | int }}{% if couchbase_server_version is version_compare('6.5', '>=') %}\
         --disable-www-authenticate {{ couchbase_security.disable_www_authenticate | default(false) | int }} \
         --tls-min-version {{ couchbase_security.tls_min_version | default('tlsv1') }} \
         --tls-honor-cipher-order {{ couchbase_security.tls_honor_cipher_order | default(true) | int }} \
-        --set
+        --set{% endif %}
   when: couchbase_master is defined and couchbase_master == inventory_hostname
   tags:
     - couchbase_configure

@@ -1,4 +1,12 @@
 ---
+- name: Make sure required dirs exist
+  file:
+    path: "{{ item.value }}"
+    state: directory
+    owner: couchbase
+    group: couchbase
+  loop: "{{ couchbase_paths | dict2items }}"
+
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-node-init.html
 - name: Initialize the Node
   shell:
@@ -17,8 +25,8 @@
           --node-init-hostname '{{ item.hostname }}' \
           --node-init-data-path '{{ couchbase_paths.data }}' \
           --node-init-index-path '{{ couchbase_paths.index }}' \
-          --node-init-analytics-path '{{ couchbase_paths.analytics }}' \
-          --node-init-eventing-path '{{ couchbase_paths.eventing }}'
+          {% if couchbase_server_version is version_compare('6.5', '>=') %}--node-init-eventing-path '{{ couchbase_paths.eventing }}'{% endif %} \
+          --node-init-analytics-path '{{ couchbase_paths.analytics }}'
       fi
   with_items: "{{ couchbase_nodes }}"
   when: couchbase_master is defined
