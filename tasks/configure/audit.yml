@@ -12,7 +12,7 @@
         --audit-log-rotate-size {{ couchbase_audit.log_rotate_size | default(20971520) | int }} \
         --audit-log-path '{{ couchbase_audit.log_path | default('/opt/couchbase/var/lib/couchbase/logs') }}' \
         --set
-  when: couchbase_master is defined and couchbase_master == inventory_hostname
+  when: couchbase_master is defined and couchbase_master == inventory_hostname and couchbase_server_edition == "enterprise"
   tags:
     - couchbase_configure
     - couchbase_audit
