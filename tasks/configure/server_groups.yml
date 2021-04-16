@@ -39,6 +39,10 @@
   tags:
     - couchbase_configure
     - couchbase_server_groups
+  register: result
+  failed_when:
+    - result.rc == 1
+    - '"not found" not in result.stdout'
 
 - name: Remove Default Group ('Group 1') if not used
   shell:
