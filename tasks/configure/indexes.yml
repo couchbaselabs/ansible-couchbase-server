@@ -35,7 +35,7 @@
       statement: |
         {{ item.definition }} WITH {
           {% if item.num_replicas is defined and item.num_replicas is number %}
-            "num_replicas": {{ item.num_replicas }},
+            "num_replica": {{ item.num_replicas }},
           {% endif %}
           {% if item.num_partitions is defined and item.num_partitions is number %}
             "num_partitions": {{ item.num_partitions }},
@@ -58,13 +58,17 @@
           {% if item.resident_ratio is defined and item.resident_ratio is number %}
             "residentRatio": {{ item.resident_ratio }},
           {% endif %}
-          "defer_build": true
+          "defer_build": {% if couchbase_server_version is version_compare('6.5', '>=') %} true {% else %} false {% endif %}
         }
   with_items: "{{ couchbase_indexes }}"
   when: couchbase_master is defined and query_nodes | length > 0
   tags:
     - couchbase_configure
     - couchbase_indexes
+  register: result
+  failed_when:
+    - result.status != 200
+    - '"already exists" not in result.json.errors[0].msg'
 
 - name: Build the indexes on each of the buckets
   uri:
@@ -85,7 +89,7 @@
           )
         )
   loop: "{{ couchbase_indexes | selectattr('bucket', 'defined') | map(attribute='bucket') | list | unique }}"
-  when: couchbase_master is defined and query_nodes | length > 0
+  when: couchbase_master is defined and couchbase_server_version is version_compare('6.5', '>=') and query_nodes | length > 0
   tags:
     - couchbase_configure
     - couchbase_indexes
