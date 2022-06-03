@@ -35,6 +35,15 @@
     - couchbase_configure
     - couchbase_buckets
 
+- name: Fail when the buckets[*] has a storage_backend property set but is invalid
+  fail:
+    msg: "The buckets[*] 'storage_backend' property must be: couchstore of magma"
+  when: ( item.storage_backend is defined and item.storage_backend not in ['couchstore','magma'] )
+  with_items: "{{ couchbase_buckets }}"
+  tags:
+    - couchbase_configure
+    - couchbase_buckets
+
 - name: Fail when the buckets[*] has a priority property has been set but is invalid
   fail:
     msg: "The buckets[*] 'priority' property must be: high, low"

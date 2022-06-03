@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-xdcr-setup.html
-- name: "Wait for Couchbase Remotes to come up"
+- name: Wait for Couchbase Remotes to come up
+  no_log: true
   uri:
     url: "http://{{ item.hostname }}:8091/pools"
     method: GET
@@ -17,6 +18,7 @@
     - couchbase_xdcr
 
 - name: Create XDCR Remotes
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli xdcr-setup \
@@ -45,6 +47,7 @@
 
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-xdcr-replicate.html
 - name: Create XDCR Replications
+  no_log: true
   shell:
     cmd: |
       /opt/couchbase/bin/couchbase-cli xdcr-replicate \

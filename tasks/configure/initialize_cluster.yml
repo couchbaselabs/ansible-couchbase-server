@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-cluster-init.html
 - name: Initialize the Cluster
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli setting-cluster \

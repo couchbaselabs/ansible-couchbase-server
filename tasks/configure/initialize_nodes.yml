@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-node-init.html
 - name: Initialize the Node
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli host-list \

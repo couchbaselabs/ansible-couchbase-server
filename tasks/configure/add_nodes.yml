@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-server-add.html
 - name: Add Nodes
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli host-list \

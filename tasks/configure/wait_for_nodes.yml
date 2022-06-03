@@ -1,5 +1,6 @@
 ---
-- name: "Wait for Couchbase on all hosts in cluster to come up"
+- name: Wait for Couchbase on all hosts in cluster to come up
+  no_log: true
   uri:
     url: "http://{{ item.hostname }}:8091/pools"
     method: GET
