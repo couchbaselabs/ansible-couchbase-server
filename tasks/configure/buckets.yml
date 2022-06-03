@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-bucket-create.html
 - name: Create Buckets
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli bucket-list \
@@ -25,6 +26,9 @@
           --durability-min-level {{ item.durability_min_level | default('none') }} \
           --compression-mode {{ item.compression_mode | default('passive') }} \
           --max-ttl {{ item.max_ttl | default(0) }} \
+          {% if couchbase_server_edition == "enterprise" and couchbase_server_version is version_compare('7.1', '>=') and item.type | default('couchbase') == 'couchbase' %}
+            --storage-backend {{ item.storage_backend | default('couchstore') }} \
+          {% endif %}
           --enable-index-replica {{ item.enable_index_replica | default(false) | int }} \
           --wait
         fi

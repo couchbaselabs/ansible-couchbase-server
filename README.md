@@ -1,20 +1,20 @@
 # Couchbase Server Ansible Role
 
 ```
-                              #####################                             
-                           ###########################                          
-                         ###############################                        
-                       ###################################                      
-                      #####################################                     
-                     ######       #############       ######                    
-                     ######       #############       ######                    
-                     ######                           ######                    
-                     ######                           ######                    
-                     ######\                         /######                    
-                      #####################################                     
-                       ###################################                      
-                         ###############################                        
-                           ###########################                          
+                              #####################
+                           ###########################
+                         ###############################
+                       ###################################
+                      #####################################
+                     ######       #############       ######
+                     ######       #############       ######
+                     ######                           ######
+                     ######                           ######
+                     ######\                         /######
+                      #####################################
+                       ###################################
+                         ###############################
+                           ###########################
                                ###################
 ```
 
@@ -457,6 +457,7 @@ The `couchbase_buckets` variable is an empty list by default.  When specified th
 | :--- | :--- | :--- |
 | \*name  |  *null* | The name of the bucket to create. The only characters that can be used for the bucket-name are those in the ranges of A-Z, a-z, and 0-9; plus the underscore, period, dash, and percent characters. The name can be a maximum of 100 characters in length.  |
 | type  | couchbase  | The type of bucket to create. Accepted bucket types are "couchbase", "ephemeral", and "memcached". The Couchbase bucket is the standard bucket type. It supports data persistence, replication, caching, indexing, views, and N1QL queries. The Ephemeral bucket is an in-memory bucket similar to the Couchbase bucket; but it does not support data persistence or views.   The Memcached bucket is a cache-only bucket that does not support persistence, replication, indexing, views, or N1QL querying: this bucket type provides the same behavior as Memcached Server. Memcached buckets are deprecated and Ephemeral buckets should be used instead.  |
+| storage_backend | couchstore | The type of storage to use with the bucket. This is only specified for "couchbase" buckets. Accepted values are "couchstore" or "magma". |
 | ram_size  | 100  | The amount of memory to allocate to the cache for this bucket, in Megabytes. The memory quota of this bucket must fit into the overall cluster memory quota. The minimum cache size is 100MB.  |
 | replicas  | 1  |  The number of servers to which data is replicated. Replicas provide protection against data loss by keeping copies of this bucket’s data on multiple servers. By default, the number of replicas is one, even if there is only a single server in the cluster. The minimum number of replicas is zero, and the maximum three. This option is valid for Couchbase and Ephemeral buckets only.  |
 |  priority | low  | Specifies the priority of this bucket’s background tasks. This option is valid for Couchbase and Ephemeral buckets only. For Couchbase buckets, background task-types include disk I/O, DCP stream-processing, and item-paging. For Ephemeral buckets, background task-types are the same as for Couchbase buckets, with the exception of disk I/O, which does not apply to Ephemeral buckets. The value of this option may be "high" or "low". The default is "low". Specifying "high" may result in faster processing; but only when more than one bucket is defined for the cluster, and when different priority settings have been established among the buckets. When Couchbase and Ephemeral buckets have different priority settings, this affects the prioritization only of task-types other than disk I/O.  |

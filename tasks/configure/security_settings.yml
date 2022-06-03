@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-setting-security.html
 - name: Set the Couchbase Security Settings
+  no_log: true
   shell:
     cmd: |
       /opt/couchbase/bin/couchbase-cli setting-security \

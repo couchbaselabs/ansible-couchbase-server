@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-user-manage.html
 - name: Create User Groups
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli user-manage \
@@ -33,6 +34,7 @@
     - couchbase_user_groups
 
 - name: Create Users
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli user-manage \

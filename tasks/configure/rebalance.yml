@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-rebalance.html
 - name: Rebalance Cluster
+  no_log: true
   shell:
     cmd: |
       /opt/couchbase/bin/couchbase-cli rebalance \

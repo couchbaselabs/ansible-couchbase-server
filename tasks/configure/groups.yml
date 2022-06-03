@@ -1,6 +1,7 @@
 ---
 # Docs: https://docs.couchbase.com/server/current/cli/cbcli/couchbase-cli-group-manage.html
 - name: Create Server Groups
+  no_log: true
   shell:
     cmd: |
       if /opt/couchbase/bin/couchbase-cli group-manage \
@@ -25,6 +26,7 @@
     - couchbase_groups
 
 - name: Assign Nodes to Groups
+  no_log: true
   shell:
     cmd: |
       /opt/couchbase/bin/couchbase-cli group-manage \
