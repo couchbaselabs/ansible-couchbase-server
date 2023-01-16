@@ -51,7 +51,7 @@
 
 - name: Install Couchbase Server package
   apt:
-    name: "couchbase-server{% if couchbase_server_edition == "community" %}-community{% endif %}={{ couchbase_server_version }}"
+    name: "couchbase-server{% if couchbase_server_edition == 'community' %}-community{% endif %}={{ couchbase_server_version }}"
     state: present
   when: (couchbase_server_download_url is defined) and (couchbase_server_download_url | length == 0)
   tags:
