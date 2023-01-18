@@ -1,0 +1,58 @@
+---
+
+- name: Set simple ports
+  lineinfile:
+    path: /opt/couchbase/etc/couchbase/static_config
+    regex: "^{{ '{' }}\\s*{{ item }},.+"
+    line: "{{ '{' }}{{ item }}, {{ couchbase_ports[item] }}{{ '}' }}."
+  loop:
+    - epmd
+    - rest_port
+    - capi_port
+    - query_port
+    - fts_http_port
+    - cbas_http_port
+    - eventing_http_port
+    - indexer_admin_port
+    - indexer_scan_port
+    - indexer_http_port
+    - indexer_stinit_port
+    - indexer_stcatchup_port
+    - indexer_stmaint_port
+    - cbas_admin_port
+    - cbas_cc_http_port
+    - cbas_cc_cluster_port
+    - cbas_cc_client_port
+    - cbas_console_port
+    - cbas_cluster_port
+    - cbas_data_port
+    - cbas_result_port
+    - cbas_messaging_port
+    - cbas_auth_port
+    - cbas_replication_port
+    - cbas_metadata_port
+    - cbas_metadata_callback_port
+    - fts_grpc_port
+    - eventing_debug_port
+    - xdcr_rest_port
+    - projector_port
+    - memcached_dedicated_port
+    - memcached_port
+    - memcached_ssl_port
+    - ssl_rest_port
+    - ssl_capi_port
+    - ssl_query_port
+    - fts_ssl_port
+    - cbas_ssl_port
+    - eventing_ssl_port
+    - fts_grpc_ssl_port
+  register: ports_changed
+
+- name: Remove files after changing ports
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /opt/couchbase/var/lib/couchbase/config/config.dat
+    - /opt/couchbase/var/lib/couchbase/config/chronicle
+  when: ports_changed is changed

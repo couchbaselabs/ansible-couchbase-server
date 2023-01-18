@@ -17,8 +17,8 @@
           --cluster-ramsize {{ couchbase_memory_quotas.data | default(1024) }} \
           --cluster-fts-ramsize {{ couchbase_memory_quotas.fts | default(256) }} \
           --cluster-index-ramsize {{ couchbase_memory_quotas.index | default(256) }} \
-          --cluster-eventing-ramsize {{ couchbase_memory_quotas.eventing | default(256) }} \
-          --cluster-analytics-ramsize {{ couchbase_memory_quotas.analytics | default(1024) }} \
+          {% if (item.services is defined and 'eventing' in item.services) or 'eventing' in couchbase_cluster.default_services %} --cluster-eventing-ramsize {{ couchbase_memory_quotas.eventing | default(256) }}{% endif %} \
+          {% if (item.services is defined and 'analytics' in item.services) or 'analytics' in couchbase_cluster.default_services %} --cluster-analytics-ramsize {{ couchbase_memory_quotas.analytics | default(1024) }}{% endif %} \
           --cluster-name '{{ couchbase_cluster.name | default('My Cluster') }}' \
           --index-storage-setting {{ couchbase_cluster.index_storage | default('default') }} \
           --services '{{ item.services is defined |
