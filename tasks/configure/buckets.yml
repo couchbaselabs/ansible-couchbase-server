@@ -24,8 +24,8 @@
           --conflict-resolution {{ item.conflict_resolution | default('sequence') }} \
           --enable-flush {{ item.flush | default(false) | int }} \
           --durability-min-level {{ item.durability_min_level | default('none') }} \
-          --compression-mode {{ item.compression_mode | default('passive') }} \
-          --max-ttl {{ item.max_ttl | default(0) }} \
+          {% if couchbase_server_edition == "enterprise" %}--compression-mode {{ item.compression_mode | default('passive') }}{% endif %} \
+          {% if couchbase_server_edition == "enterprise" %}--max-ttl {{ item.max_ttl | default(0) }}{% endif %} \
           {% if couchbase_server_edition == "enterprise" and couchbase_server_version is version_compare('7.1', '>=') and item.type | default('couchbase') == 'couchbase' %}
             --storage-backend {{ item.storage_backend | default('couchstore') }} \
           {% endif %}

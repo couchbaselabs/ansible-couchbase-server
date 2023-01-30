@@ -47,10 +47,26 @@
   tags:
     - couchbase_install
 
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: couchbase
+    group: couchbase
+  loop:
+    - "{{ couchbase_paths.data }}"
+    - "{{ couchbase_paths.index }}"
+    - "{{ couchbase_paths.analytics }}"
+    - "{{ couchbase_paths.eventing }}"
+
+- include: configure/ports.yml
+  tags:
+    - couchbase_ports
+
 - name: Make sure Couchbase Server is started and enabled
   service:
     name: couchbase-server
-    state: started
+    state: "{{ 'restarted' if ports_changed is defined and ports_changed is changed else 'started' }}"
     enabled: true
   tags:
     - couchbase_install
