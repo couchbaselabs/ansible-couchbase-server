@@ -65,7 +65,7 @@
 - name: Fail when the buckets[*] has a conflict_resolution property has been set but is invalid
   fail:
     msg: "The buckets[*] 'conflict_resolution' property must be: sequence or timestamp"
-  when: ( item.eviction_policy is defined and item.eviction_policy not in ['sequence', 'timestamp'] )
+  when: ( item.conflict_resolution is defined and item.conflict_resolution not in ['sequence', 'timestamp'] )
   with_items: "{{ couchbase_buckets }}"
   tags:
     - couchbase_configure
@@ -74,7 +74,7 @@
 - name: Fail when the buckets[*] has a compression_mode property has been set but is invalid
   fail:
     msg: "The buckets[*] 'compression_mode' property must be: off, passive, active"
-  when: ( item.eviction_policy is defined and item.eviction_policy not in ['off', 'passive', 'active'] )
+  when: ( item.compression_mode is defined and item.compression_mode not in ['off', 'passive', 'active'] )
   with_items: "{{ couchbase_buckets }}"
   tags:
     - couchbase_configure

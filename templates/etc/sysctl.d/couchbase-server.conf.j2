@@ -5,9 +5,9 @@
 ### STANDARD TUNING
 ###
 
-{% if couchbase_tunings.vm.swapiness is defined %}
+{% if couchbase_tunings.vm.swappiness is defined %}
 # Instructs the kernel to swap only as a last resort
-vm.swappiness = {{ couchbase_tunings.vm.swapiness }}
+vm.swappiness = {{ couchbase_tunings.vm.swappiness }}
 {% endif %}
 
 {% if couchbase_tunings.vm.overcommit_memory is defined %}

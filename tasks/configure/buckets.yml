@@ -18,8 +18,9 @@
           --bucket {{ item.name | default('default') }} \
           --bucket-type {{ item.type | default('couchbase') }} \
           --bucket-ramsize {{ item.ram_size | default(100) }} \
-          --bucket-replica {{ item.replicas | default(0) }} \
+          {% if item.type != "ephemeral" %} --bucket-replica {{ item.replicas | default(0) }} {% endif %}  \
           --bucket-priority {{ item.priority | default('low') }} \
+          % if item.type != "ephemeral" %} --storage-backend {{item.storage_backend}} {% endif %} \
           --bucket-eviction-policy {{ item.eviction_policy | default('valueOnly') }} \
           --conflict-resolution {{ item.conflict_resolution | default('sequence') }} \
           --enable-flush {{ item.flush | default(false) | int }} \
